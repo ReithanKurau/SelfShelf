@@ -1,0 +1,2 @@
+class ShelfInterestsController < ApplicationController
+end
