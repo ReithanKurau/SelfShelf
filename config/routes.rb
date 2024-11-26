@@ -9,7 +9,16 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   resources :interests, only: [:index, :show, :new, :create, :update ]
-  resources :shelf_interests, only: [:index, :create, :show, :update, :destroy] do
+  resources :shelf_interests, only: [ :create, :update, :destroy] do
     resources :comments, only: [:create]
   end
+
+  resources :users, only: [] do
+    resources :shelf_interests, only: [ :show, :index]
+  end
+
+  #I think these routes are created by the above resources -Mason
+  # get "/users/:user_id/shelf_interests", to: "shelf_interests#index"
+  # get "/users/:user_id/shelf_interests?media_type=something", to: "shelf_interests#index"
+
 end
