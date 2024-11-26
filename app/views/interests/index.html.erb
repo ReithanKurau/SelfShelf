@@ -1,3 +1,15 @@
-<h1>Search Results</h1>
+<div class="container">
+  <h1>Search Results</h1>
+  <%= form_with url: art_classes_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+      %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+  <% end %>
 
-<%  %>
+  <% @interests.each do |interest|%>
+    <%= render "shelf_card", interest: interest %>
+  <% end %>
+</div>

@@ -9,4 +9,12 @@ class Interest < ApplicationRecord
   has_one_attached :photo
   MEDIA_TYPE = ["Book", "Movie", "Album"]
   validates :media_type, inclusion: { in: MEDIA_TYPE }
+
+  include PgSearch::Model
+  pg_search_scope :search_by_tite_and_description_and_location,
+  against: [ :title, :description, :location ],
+  using: {
+    tsearch: { prefix: true }
+  }
+
 end
