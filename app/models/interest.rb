@@ -7,4 +7,6 @@ class Interest < ApplicationRecord
   validates :genre, presence: true
   validates :media_type, presence: true
   has_one_attached :photo
+  MEDIA_TYPE = ["Book", "Movie", "Album"]
+  validates :media_type, inclusion: { in: MEDIA_TYPE }
 end
