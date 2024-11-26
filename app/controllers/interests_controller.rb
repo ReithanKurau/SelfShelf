@@ -3,7 +3,7 @@ class InterestsController < ApplicationController
     if params[:query].present?
       @interests = Interest.search_by_title_creator_genre
     else
-      Interest.all
+      @interests = Interest.all
     end
   end
 end

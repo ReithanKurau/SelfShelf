@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Search Results</h1>
-  <%= form_with url: art_classes_path, method: :get, class: "d-flex" do %>
+  <%= form_with url: interests_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
             class: "form-control",
@@ -10,6 +10,6 @@
   <% end %>
 
   <% @interests.each do |interest|%>
-    <%= render "shelf_card", interest: interest %>
+    <%= render "interest_card", interest: interest %>
   <% end %>
 </div>
