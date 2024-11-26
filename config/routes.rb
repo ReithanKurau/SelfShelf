@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   resources :shelf_interests, only: [:index, :create, :show, :update, :destroy] do
     resources :comments, only: [:create]
   end
+
+  get "/users/:user_id/shelf_interests", to: "shelf_interests#index"
+  get "/users/:user_id/shelf_interests?media_type=something", to: "shelf_interests#index"
 end

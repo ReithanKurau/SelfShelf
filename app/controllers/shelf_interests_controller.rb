@@ -1,10 +1,10 @@
 class ShelfInterestsController < ApplicationController
   def index
     if params[:media_type].present?
-      @shelf_interests = ShelfInterest.all
-      @shelf_interests = @shelf_interests.map { |shelf_interest| shelf_interest.interest.where(media_type: params[:media_type]) }
+      @interests = current_user.interests.where(media_type: params[:media_type])
+      render "shelf"
     else
-      @shelf_interests = ShelfInterest.all
+      render "index"
     end
   end
 end

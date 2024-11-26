@@ -2,6 +2,7 @@
 require "open-uri"
 require 'nokogiri'
 
+ShelfInterest.destroy_all
 Interest.destroy_all
 User.destroy_all
 
@@ -54,3 +55,4 @@ album1 = Interest.create!(title: "Smile", creator: "Eve", publishing_year: 2020,
 album2 = Interest.create!(title: "Alien Stage", creator: "Vivinos", publishing_year: 2023, genre: "K-pop", media_type: "Album")
 album3 = Interest.create!(title: "Multitude", creator: "Stromae", publishing_year: 2022, genre: "Pop", media_type: "Album")
 
+shelf_interest1 = ShelfInterest.create!(user: james, interest: book1)
