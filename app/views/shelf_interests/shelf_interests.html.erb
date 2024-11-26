@@ -1,0 +1,17 @@
+<div class="container wallpaper">
+  <div><h1> SelfShelf </h1></div>
+
+  <div><%= image_tag "shelf_picture.jpg", id: "shelf" %></div>
+
+  <div> <%= simple_form_for(@interest) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :creator %>
+    <%= f.input :publishing_year %>
+    <%= f.input :genre %>
+    <%= f.input :media_type %>
+    <%= f.input :cover %>
+    <%= f.submit %>
+    <% end %> 
+  </div>
+  
+</div>
