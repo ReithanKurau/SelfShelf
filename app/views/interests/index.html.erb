@@ -11,5 +11,10 @@
 
   <% @interests.each do |interest|%>
     <%= render "interest_card", interest: interest %>
+    <%= simple_form_for [@shelf_interest] do |f| %>
+      <%= f.input :interest, as: :hidden, input_html: { value: interest } %>
+      <%= f.input :user, as: :hidden, input_html: { value: current_user } %>
+      <%= f.submit 'Add to your shelf!', class: 'submit-btn' %>
+        <% end %>
   <% end %>
 </div>

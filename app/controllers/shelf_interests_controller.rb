@@ -8,4 +8,22 @@ class ShelfInterestsController < ApplicationController
     end
     @interest = Interest.new
   end
+
+  def create
+    #I seem to have shelf_interest passed in as a parameter from the form, but dont know how to read it
+    # @interest = Interest.find(params[:shelf_interest])
+    # raise
+    # @shelf_interest = ShelfInterest.new
+    # @shelf_interest.interest = @interest
+    # @shelf_interest.user = current_user
+    
+    @shelf_interest = params[:shelf_interest]
+
+
+    if @shelf_interest.save
+      redirect_to user_self_interest_path(current_user)
+    else
+      raise # shouldnt ever get here
+    end
+  end
 end

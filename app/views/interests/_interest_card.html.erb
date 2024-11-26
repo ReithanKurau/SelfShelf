@@ -1,3 +1,4 @@
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= interest.photo.attached? ? cl_image_path(interest.photo.key) : image_path('https://www.peeters-leuven.be/covers/no_cover.gif') %>)">
   <h2><%= interest.title %></h2>
+  <h2><%= link_to "See more details", interest_path(interest), class: 'text-decoration-none' %></h2>
 </div>

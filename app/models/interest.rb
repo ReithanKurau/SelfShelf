@@ -12,7 +12,7 @@ class Interest < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_title_creator_genre,
-  against: [ :title, :description, :location ],
+  against: [ :title, :creator, :genre ],
   using: {
     tsearch: { prefix: true }
   }
