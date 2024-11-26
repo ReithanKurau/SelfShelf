@@ -11,13 +11,10 @@ class ShelfInterestsController < ApplicationController
 
   def create
     #I seem to have shelf_interest passed in as a parameter from the form, but dont know how to read it
-    # @interest = Interest.find(params[:shelf_interest])
-    # raise
-    # @shelf_interest = ShelfInterest.new
+
+    @shelf_interest = ShelfInterest.new(shelf_interest_params)
     # @shelf_interest.interest = @interest
     # @shelf_interest.user = current_user
-    
-    @shelf_interest = params[:shelf_interest]
 
 
     if @shelf_interest.save
@@ -25,5 +22,10 @@ class ShelfInterestsController < ApplicationController
     else
       raise # shouldnt ever get here
     end
+  end
+
+  private 
+  def shelf_interest_params
+    params.require(:shelf_interest).permit(:user, :interest)
   end
 end
