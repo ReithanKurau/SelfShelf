@@ -6,5 +6,6 @@ class ShelfInterestsController < ApplicationController
     else
       render "index"
     end
+    @interest = Interest.new
   end
 end
