@@ -16,9 +16,9 @@ sakura = User.create!(username: "Sakura Itou", email: "sakuraItou@gmail.com", pa
 pedro = User.create!(username: "Pedro Gonzales", email: "pedroGonzales@gmail.com", password: "123123")
 elsa = User.create!(username: "Elsa Disney", email: "elsaDisney@gmail.com", password: "123123")
 greg = User.create!(username: "Greg Masters", email: "gregMasters@gmail.com", password: "123123")
-claudia = User.create!(username: "Claudia Ordonez", email: "claudiaOrdonez@gmail.com", password: "123123")
 mason = User.create!(username: "Mason Kamolpechara", email: "masonKamolpechara@gmail.com", password: "123123")
 phyuphyu = User.create!(username: "Phyu Phyu", email: "phyuphyuh@gmail.com", password: "123123")
+claudia = User.create!(username: "Claudia Ordonez", email: "claudiaOrdonez@gmail.com", password: "123123")
 
 
 #attach photos to users
@@ -53,4 +53,3 @@ movie3 = Interest.create!(title: "Pan's Labyrinth", creator: "Guillermo Del Toro
 album1 = Interest.create!(title: "Smile", creator: "Eve", publishing_year: 2020, genre: "J-pop", media_type: "Album")
 album2 = Interest.create!(title: "Alien Stage", creator: "Vivinos", publishing_year: 2023, genre: "K-pop", media_type: "Album")
 album3 = Interest.create!(title: "Multitude", creator: "Stromae", publishing_year: 2022, genre: "Pop", media_type: "Album")
-
