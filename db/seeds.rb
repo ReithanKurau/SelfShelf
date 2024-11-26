@@ -1,9 +1,9 @@
+
 require "open-uri"
 require 'nokogiri'
 
-ArtClass.destroy_all
+Interest.destroy_all
 User.destroy_all
-Reservation.destroy_all
 
 #Seeds for users
 
@@ -35,3 +35,22 @@ users.map do |user|
   file = URI.open(photo_url)
   user.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
 end
+
+#Seeds for books
+
+book1 = Interest.create!(title: "The Little Prince", creator: "Antoine de Saint-Exupéry", publishing_year: 1943, genre: "Science fantasy", media_type: "Book")
+book2 = Interest.create!(title: "The Giver", creator: "Lois Lowry", publishing_year: 1993, genre: "Science fiction", media_type: "Book")
+book3 = Interest.create!(title: "When Hitler Stole Pink Rabbit", creator: "Judith Kerr", publishing_year: 1971, genre: "Historical fiction", media_type: "Book")
+
+#Seeds for movies
+
+movie1 = Interest.create!(title: "Mr. Nobody", creator: "	Jaco Van Dormael", publishing_year: 2009, genre: "Science fiction", media_type: "Movie")
+movie2 = Interest.create!(title: "Maboroshi", creator: "Mari Okada", publishing_year: 2023, genre: "Romance", media_type: "Movie")
+movie3 = Interest.create!(title: "Pan's Labyrinth", creator: "Guillermo Del Toro", publishing_year: 2006, genre: "Fantasy", media_type: "Movie")
+
+#Seeds for albums
+
+album1 = Interest.create!(title: "Smile", creator: "Eve", publishing_year: 2020, genre: "J-pop", media_type: "Album")
+album2 = Interest.create!(title: "Alien Stage", creator: "Vivinos", publishing_year: 2023, genre: "K-pop", media_type: "Album")
+album3 = Interest.create!(title: "Multitude", creator: "Stromae", publishing_year: 2022, genre: "Pop", media_type: "Album")
+
