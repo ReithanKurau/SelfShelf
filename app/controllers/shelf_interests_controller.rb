@@ -19,7 +19,7 @@ class ShelfInterestsController < ApplicationController
     @shelf_interest.user = current_user
 
     if @shelf_interest.save
-      redirect_to user_self_interests_path(current_user, :media_type => @interest.media_type)
+      redirect_to user_shelf_interests_path(current_user, :media_type => @interest.media_type)
     else
       raise # shouldnt ever get here
     end
@@ -27,7 +27,7 @@ class ShelfInterestsController < ApplicationController
 
   private
 
-  def shelf_interest_params
-    params.require(:shelf_interest).permit(:shelf_interest_id, :interest_id)
-  end
+  # def shelf_interest_params
+  #   params.require(:shelf_interest).permit(:interest_id)
+  # end
 end
