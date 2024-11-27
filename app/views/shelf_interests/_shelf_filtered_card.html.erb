@@ -1,4 +1,4 @@
-<div class="card-category " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= shelf_interest.interest.photo.attached? ? cl_image_path(shelf_interest.interest.photo.key) : image_path('https://www.peeters-leuven.be/covers/no_cover.gif') %>)">
+<div class="card-item " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= shelf_interest.interest.photo.attached? ? cl_image_path(shelf_interest.interest.photo.key) : image_path('https://www.peeters-leuven.be/covers/no_cover.gif') %>)">
   <h2><%= shelf_interest.interest.title %></h2>
-  <%= link_to "hello",  user_shelf_interest_path(shelf_interest.user, shelf_interest) %>
+  <%= link_to "",  user_shelf_interest_path(shelf_interest.user, shelf_interest), class: "card-item-link" %>
 </div>
