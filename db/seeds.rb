@@ -60,4 +60,3 @@ shelf_interest2 = ShelfInterest.create!(user: james, interest: book3)
 shelf_interest3 = ShelfInterest.create!(user: james, interest: movie2)
 shelf_interest4 = ShelfInterest.create!(user: james, interest: movie3)
 shelf_interest5 = ShelfInterest.create!(user: james, interest: album1)
-
