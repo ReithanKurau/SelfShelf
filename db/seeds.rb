@@ -42,18 +42,38 @@ end
 book1 = Interest.create!(title: "The Little Prince", creator: "Antoine de Saint-Exupéry", publishing_year: 1943, genre: "Science fantasy", media_type: "book")
 book2 = Interest.create!(title: "The Giver", creator: "Lois Lowry", publishing_year: 1993, genre: "Science fiction", media_type: "book")
 book3 = Interest.create!(title: "When Hitler Stole Pink Rabbit", creator: "Judith Kerr", publishing_year: 1971, genre: "Historical fiction", media_type: "book")
+book4 = Interest.create!(title: "Harry Potter", creator: "J.K. Rowling", publishing_year: 1997, genre: "Fantasy", media_type: "book")
+book5 = Interest.create!(title: "1Q84", creator: "Lois Lowry", publishing_year: 2009, genre: "Science fiction", media_type: "book")
+book6 = Interest.create!(title: "Cat in the Hat", creator: "Dr. Seuss", publishing_year: 1957, genre: "Historical fiction", media_type: "book")
+book7 = Interest.create!(title: "The Great Gatsby", creator: "F. Scott Fitzgerald", publishing_year: 1925 , genre: "Drama", media_type: "book")
+book8 = Interest.create!(title: "Brave New World", creator: "Aldous Huxley", publishing_year: 1932, genre: "Science fiction", media_type: "book")
+book9 = Interest.create!(title: "To Kill a Mockingbird", creator: "Harper Lee", publishing_year: 1960, genre: "Historical fiction", media_type: "book")
+book10 = Interest.create!(title: "Don Quixote", creator: "Cervantes", publishing_year: 1605, genre: "Historical fiction", media_type: "book")
+
 
 #Seeds for movies
 
 movie1 = Interest.create!(title: "Mr. Nobody", creator: "	Jaco Van Dormael", publishing_year: 2009, genre: "Science fiction", media_type: "movie")
 movie2 = Interest.create!(title: "Maboroshi", creator: "Mari Okada", publishing_year: 2023, genre: "Romance", media_type: "movie")
 movie3 = Interest.create!(title: "Pan's Labyrinth", creator: "Guillermo Del Toro", publishing_year: 2006, genre: "Fantasy", media_type: "movie")
+movie4 = Interest.create!(title: "The Shawshank Redemption", creator: "	Frank Darabont", publishing_year: 1994, genre: "Drama", media_type: "movie")
+movie5 = Interest.create!(title: "The Godfather", creator: "Francis Ford Coppola", publishing_year: 1972 , genre: "Drama", media_type: "movie")
+movie6 = Interest.create!(title: "12 Angry Men", creator: " Sidney Lumet", publishing_year: 1957 , genre: "Drama", media_type: "movie")
+movie7 = Interest.create!(title: "The Lord of the Rings: The Return of the King", creator: "Peter Jackson", publishing_year: "2001", genre: "Fantasy", media_type: "movie")
+movie8 = Interest.create!(title: "Gone with the Wind", creator: "	Victor Fleming", publishing_year: 2023, genre: "Romance", media_type: "movie")
+movie9 = Interest.create!(title: "Citizen Kane", creator: "Orson Welles", publishing_year: 1941 , genre: "Drama", media_type: "movie")
+movie10 = Interest.create!(title: "The Dark Knight", creator: "Christopher Nolan", publishing_year: 2008, genre: "Action", media_type: "movie")
+
 
 #Seeds for albums
 
 album1 = Interest.create!(title: "Smile", creator: "Eve", publishing_year: 2020, genre: "J-pop", media_type: "album")
 album2 = Interest.create!(title: "Alien Stage", creator: "Vivinos", publishing_year: 2023, genre: "K-pop", media_type: "album")
 album3 = Interest.create!(title: "Multitude", creator: "Stromae", publishing_year: 2022, genre: "Pop", media_type: "album")
+album4 = Interest.create!(title: "Big Willie Style", creator: "Will Smith", publishing_year: 1997, genre: "Hip-Hop", media_type: "album")
+album5 = Interest.create(title: "Songs about Jane", creator: "Maroon 5", publishing_year: 2002, genre: "Pop", media_type: "album")
+
+#seeds for a couple shelf_interests
 
 shelf_interest1 = ShelfInterest.create!(user: james, interest: book1)
 shelf_interest2 = ShelfInterest.create!(user: james, interest: book3)
