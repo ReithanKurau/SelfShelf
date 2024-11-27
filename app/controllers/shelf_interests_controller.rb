@@ -14,15 +14,21 @@ class ShelfInterestsController < ApplicationController
 
   def create
     @shelf_interest = ShelfInterest.new
-    @interest = Interest.find(params[:shelf_interest][:interest_id])    
+    @interest = Interest.find(params[:shelf_interest][:interest_id])
     @shelf_interest.interest = @interest
     @shelf_interest.user = current_user
 
     if @shelf_interest.save
-      redirect_to user_self_interests_path(current_user, :media_type => @interest.media_type)
+      raise
+      redirect_to user_shelf_interests_path(current_user, :media_type => @interest.media_type)
     else
       raise # shouldnt ever get here
     end
   end
 
+  private
+
+  def shelf_interest_params
+    params.require(:shelf_interest).permit(:shelf_interest_id, :interest_id)
+  end
 end
