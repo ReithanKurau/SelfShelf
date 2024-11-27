@@ -1,4 +1,13 @@
-#shelf {
-  width: 375px;
-  height: 667px;
+.shelf-row {
+  width: 400px;
+  height: 200px;
+  margin: 10px auto;
+}
+
+.shelf-bg {
+  background-size: cover;
+  background-position: center;
+  width: 800px;
+  height: 100vh;
+  margin: 0 auto;
 }

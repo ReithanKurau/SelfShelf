@@ -8,12 +8,15 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  resources :interests, only: [:index, :show, :new, :create, :update ]
-  resources :shelf_interests, only: [ :create, :update, :destroy] do
+  resources :interests, only: [:index, :show, :new, :create, :update]
+  resources :shelf_interests, only: [:destroy] do
     resources :comments, only: [:create]
   end
 
+
   resources :users, only: [:show] do
+  resources :shelf_interests, only: [:show, :index, :create, :update]
+
   end
 
   get "/users/:user_id/shelf_interests", to: "shelf_interests#index", as: :user_shelf
