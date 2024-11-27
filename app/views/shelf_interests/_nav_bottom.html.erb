@@ -1,0 +1,11 @@
+<div class="container d-flex justify-content-between">
+  <%= link_to "", class: 'btn btn-info rounded-circle', role: "button" do %>
+    <i class="fa-solid fa-magnifying-glass"></i>
+  <% end %>
+  <%= link_to interests_path, class: 'btn btn-info rounded-circle', role: "button" do %>
+    <i class="fa-solid fa-plus"></i>
+  <% end %>
+  <%= link_to user_shelf_interests_path(current_user), class: 'avatar' do %>
+    <%= cl_image_tag current_user.photo.key , class: "avatar" %>
+  <% end %>
+</div>
