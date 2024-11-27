@@ -7,4 +7,9 @@ class InterestsController < ApplicationController
       @interests = Interest.all
     end
   end
+
+  def show
+    @shelf_interest = ShelfInterest.new
+    @interest = Interest.find(params[:id])
+  end
 end

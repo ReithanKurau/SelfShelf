@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="d-flex justify-content-center"><h1> <%= @interest.title %></h1></div>
+    <div class="interest-group d-flex">
+      <div class="cover">
+      <% if @interest.photo.attached? %>
+         <%= cl_image_tag @interest.photo.key, class: "w-100" %>
+      <% else %>
+        <%= image_tag 'no_cover', class: "w-100" %> 
+      <% end %>
+      </div>
+
+      <div class="interest-details"> 
+        <p> Creator: <%= @interest.creator %> </p>
+        <p> Genre: <%= @interest.genre %> </p>
+        <p> Publishing year: <%= @interest.publishing_year %> </p>
+      </div>
+    </div>
+
+    <%= simple_form_for @shelf_interest do |f| %>
+      <%= f.input :interest_id, as: :hidden, input_html: { value: @interest.id } %>
+      <%= f.submit 'Add to your shelf!', class: 'submit-btn' %>
+    <% end %>
+
+</div>
