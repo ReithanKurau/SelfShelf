@@ -1,4 +1,5 @@
 class ShelfInterestsController < ApplicationController
+  # skip_before_action :authenticate_user!, only: :index
   def index
     if params[:media_type].present?
       @interests = current_user.interests.where(media_type: params[:media_type])
@@ -14,7 +15,7 @@ class ShelfInterestsController < ApplicationController
 
   def create
     @shelf_interest = ShelfInterest.new
-    @interest = Interest.find(params[:shelf_interest][:interest_id])    
+    @interest = Interest.find(params[:shelf_interest][:interest_id])
     @shelf_interest.interest = @interest
     @shelf_interest.user = current_user
 
