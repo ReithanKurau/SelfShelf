@@ -17,9 +17,9 @@ sakura = User.create!(username: "Sakura Itou", email: "sakuraItou@gmail.com", pa
 pedro = User.create!(username: "Pedro Gonzales", email: "pedroGonzales@gmail.com", password: "123123")
 elsa = User.create!(username: "Elsa Disney", email: "elsaDisney@gmail.com", password: "123123")
 greg = User.create!(username: "Greg Masters", email: "gregMasters@gmail.com", password: "123123")
-claudia = User.create!(username: "Claudia Ordonez", email: "claudiaOrdonez@gmail.com", password: "123123")
 mason = User.create!(username: "Mason Kamolpechara", email: "masonKamolpechara@gmail.com", password: "123123")
 phyuphyu = User.create!(username: "Phyu Phyu", email: "phyuphyuh@gmail.com", password: "123123")
+claudia = User.create!(username: "Claudia Ordonez", email: "claudiaOrdonez@gmail.com", password: "123123")
 
 
 #attach photos to users
@@ -60,3 +60,4 @@ shelf_interest2 = ShelfInterest.create!(user: james, interest: book3)
 shelf_interest3 = ShelfInterest.create!(user: james, interest: movie2)
 shelf_interest4 = ShelfInterest.create!(user: james, interest: movie3)
 shelf_interest5 = ShelfInterest.create!(user: james, interest: album1)
+
