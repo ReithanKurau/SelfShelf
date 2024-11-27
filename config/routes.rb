@@ -16,8 +16,8 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:show, :edit, :update] do
-  resources :shelf_interests, only: [:show, :index, :create, :update]
-
+    resources :shelf_interests, only: [:show, :index, :create, :update]
+  end
 
 
   get "/users/:user_id/shelf_interests", to: "shelf_interests#index", as: :user_shelf
