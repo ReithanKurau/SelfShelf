@@ -19,7 +19,6 @@ class ShelfInterestsController < ApplicationController
     @shelf_interest.user = current_user
 
     if @shelf_interest.save
-      raise
       redirect_to user_shelf_interests_path(current_user, :media_type => @interest.media_type)
     else
       raise # shouldnt ever get here
