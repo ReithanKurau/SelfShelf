@@ -4,19 +4,19 @@
       <img alt="avatar-img" src="https://cdn-icons-png.freepik.com/256/14024/14024658.png?semt=ais_hybrid" />
     </div>
     <div class= "mt-3">
-      USER NAME
+      <%= @user.username %>
     </div>
     <div class= "mt-3">
-      AGE
+      <%= @user.age %>
     </div>
     <div class= "mt-3">
-      LOCATION
+      <%= @user.location %>
     </div>
     <div class= "mt-3">
-      BIO
+      <%= @user.bio %>
     </div>
     <div class= "container mt-3">
-      Here goes the tags
+      <%= link_to 'Edit Profile', edit_user_path(@user) %>
     </div>
   </div>
 </div>
