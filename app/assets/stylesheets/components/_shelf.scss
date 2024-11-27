@@ -1,13 +1,23 @@
 .shelf-row {
-  width: 400px;
+  width: 80%;
   height: 200px;
-  margin: 10px auto;
+  margin: 40px auto;
+  background-color: $light-yellow;
+}
+
+.shelves {
+  position: absolute;
+  bottom: 80px;
+  width: 100%;
 }
 
 .shelf-bg {
   background-size: cover;
   background-position: center;
-  width: 800px;
+  width: 100vw;
   height: 100vh;
   margin: 0 auto;
+}
+.container {
+  position: relative;
 }

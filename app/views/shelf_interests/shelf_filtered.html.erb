@@ -1,5 +1,7 @@
 <div class="container">
-  <% @interests.each do |interest|  %>
-    <%= render "shelf_filtered_card", interest: interest %>
-  <% end %>
+  <div class="cards">
+    <% @shelf_interests.each do |shelf_interest|  %>
+      <%= render "shelf_filtered_card", shelf_interest: shelf_interest %>
+    <% end %>
+  </div>
 </div>

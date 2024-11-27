@@ -21,5 +21,5 @@ Rails.application.routes.draw do
 
 
   get "/users/:user_id/shelf_interests", to: "shelf_interests#index", as: :user_shelf
-  get "/users/:user_id/shelf_interests?media_type=something", to: "shelf_interests#index"
+  # get "/users/:user_id/shelf_interests?media_type=something", to: "shelf_interests#index"
 end
