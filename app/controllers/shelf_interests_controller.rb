@@ -13,7 +13,7 @@ class ShelfInterestsController < ApplicationController
     #I seem to have shelf_interest passed in as a parameter from the form, but dont know how to read it
 
     @shelf_interest = ShelfInterest.new(shelf_interest_params)
-    # @shelf_interest.interest = @interest
+    # @shelf_interest.interest = interest
     # @shelf_interest.user = current_user
 
 
@@ -26,6 +26,6 @@ class ShelfInterestsController < ApplicationController
 
   private 
   def shelf_interest_params
-    params.require(:shelf_interest).permit(:user, :interest)
+    params.require(:shelf_interest).permit(:user_id, :interest_id)
   end
 end
