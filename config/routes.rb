@@ -13,12 +13,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  resources :users, only: [] do
-    resources :shelf_interests, only: [ :show, :index]
+  resources :users, only: [:show] do
   end
 
-  #I think these routes are created by the above resources -Mason
-  # get "/users/:user_id/shelf_interests", to: "shelf_interests#index"
-  # get "/users/:user_id/shelf_interests?media_type=something", to: "shelf_interests#index"
+  get "/users/:user_id/shelf_interests", to: "shelf_interests#index", as: :user_shelf
+  get "/users/:user_id/shelf_interests?media_type=something", to: "shelf_interests#index"
 
 end
