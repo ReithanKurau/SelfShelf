@@ -8,17 +8,18 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  resources :interests, only: [:index, :show, :new, :create, :update ]
-  resources :shelf_interests, only: [ :create, :update, :destroy] do
+  resources :interests, only: [:index, :show, :new, :create, :update]
+  resources :shelf_interests, only: [:destroy] do
     resources :comments, only: [:create]
   end
 
-  resources :users, only: [] do
-    resources :shelf_interests, only: [ :show, :index]
+
+  resources :users, only: [:show] do
+  resources :shelf_interests, only: [:show, :index, :create, :update]
+
   end
 
-  #I think these routes are created by the above resources -Mason
-  # get "/users/:user_id/shelf_interests", to: "shelf_interests#index"
-  # get "/users/:user_id/shelf_interests?media_type=something", to: "shelf_interests#index"
+  get "/users/:user_id/shelf_interests", to: "shelf_interests#index", as: :user_shelf
+  get "/users/:user_id/shelf_interests?media_type=something", to: "shelf_interests#index"
 
 end
