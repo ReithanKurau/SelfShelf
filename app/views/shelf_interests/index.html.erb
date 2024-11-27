@@ -1,35 +1,36 @@
 <div class="container">
   <div class="shelf-bg"  style="background-image: url(<%= image_path('https://sobusobu.com/cdn/shop/files/29778_Mahogany_PI_wall_shelf_3shelves-varnised_front_cut_web_1512x.jpg?v=1724980479' )  %>)">
-    <div class="shelf-row">
-      <ul>
-        <% @books.each do |book|  %>
-          <li>
-            <%= book.title %>
-          </li>
-        <% end %>
-      </ul>
-      <%= link_to "link", user_shelf_interests_path(current_user, :media_type => "book") %>
+    <div class="shelves">
+      <div class="shelf-row">
+        <ul>
+          <% @books.each do |book|  %>
+            <li>
+              <%= book.title %>
+            </li>
+          <% end %>
+        </ul>
+        <%= link_to "link", user_shelf_interests_path(current_user, :media_type => "book") %>
+      </div>
+      <div class="shelf-row">
+        <ul>
+          <% @movies.each do |movie|  %>
+            <li>
+              <%= movie.title %>
+            </li>
+          <% end %>
+        </ul>
+        <%= link_to "link", user_shelf_interests_path(current_user, :media_type => "movie") %>
+      </div>
+      <div class="shelf-row">
+        <ul>
+          <% @albums.each do |album|  %>
+            <li>
+              <%= album.title %>
+            </li>
+          <% end %>
+        </ul>
+        <%= link_to "link", user_shelf_interests_path(current_user, :media_type => "album") %>
+      </div>
     </div>
-    <div class="shelf-row">
-      <ul>
-        <% @movies.each do |movie|  %>
-          <li>
-            <%= movie.title %>
-          </li>
-        <% end %>
-      </ul>
-      <%= link_to "link", user_shelf_interests_path(current_user, :media_type => "movie") %>
-    </div>
-    <div class="shelf-row">
-      <ul>
-        <% @albums.each do |album|  %>
-          <li>
-            <%= album.title %>
-          </li>
-        <% end %>
-      </ul>
-      <%= link_to "link", user_shelf_interests_path(current_user, :media_type => "album") %>
-    </div>
-    <%= render "nav_bottom" %>
   </div>
 </div>

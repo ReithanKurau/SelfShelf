@@ -2,6 +2,9 @@ class ShelfInterestsController < ApplicationController
   def index
     if params[:media_type].present?
       @interests = current_user.interests.where(media_type: params[:media_type])
+      @shelf_interests = current_user.shelf_interests.select do |shelf_interest|
+        shelf_interest.interest.media_type == params[:media_type]
+      end
       render "shelf_filtered"
     else
       # @interests = current_user.interests.all
@@ -14,7 +17,7 @@ class ShelfInterestsController < ApplicationController
 
   def create
     @shelf_interest = ShelfInterest.new
-    @interest = Interest.find(params[:shelf_interest][:interest_id])    
+    @interest = Interest.find(params[:shelf_interest][:interest_id])
     @shelf_interest.interest = @interest
     @shelf_interest.user = current_user
 
@@ -23,6 +26,10 @@ class ShelfInterestsController < ApplicationController
     else
       raise # shouldnt ever get here
     end
+  end
+
+  def show
+    @shelf_interest = ShelfInterest.find(params[:id])
   end
 
   private

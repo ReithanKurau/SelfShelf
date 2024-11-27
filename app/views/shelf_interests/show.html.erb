@@ -1,0 +1,14 @@
+<div class="container">
+  <h1><%= @shelf_interest.interest.title %></h1>
+  <div class="shelf-interest-img">
+    <% if @shelf_interest.photo.attached? %>
+      <%= cl_image_tag @shelf_interest.photo.key %>
+    <% else %>
+      <%= image_tag 'https://www.peeters-leuven.be/covers/no_cover.gif' %>
+    <% end %>
+  </div>
+  <p><%= @shelf_interest.interest.creator %></p>
+  <p><%= @shelf_interest.interest.publishing_year %></p>
+  <p><%= @shelf_interest.interest.genre %></p>
+  <p><%= @shelf_interest.interest.media_type%></p>
+</div>
