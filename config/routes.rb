@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations"}
   root to: "shelf_interests#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -13,9 +13,12 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  resources :users, only: [:show] do
-    resources :shelf_interests, only: [:show, :index]
-  end
+
+
+  resources :users, only: [:show, :edit, :update] do
+  resources :shelf_interests, only: [:show, :index, :create, :update]
+
+
 
   get "/users/:user_id/shelf_interests", to: "shelf_interests#index", as: :user_shelf
   get "/users/:user_id/shelf_interests?media_type=something", to: "shelf_interests#index"
