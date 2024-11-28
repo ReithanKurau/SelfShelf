@@ -9,28 +9,31 @@
             </li>
           <% end %>
         </ul>
-        <%= link_to "link", user_shelf_interests_path(current_user, :media_type => "book") %>
-      </div>
-      <div class="shelf-row">
-        <ul>
-          <% @movies.each do |movie|  %>
-            <li>
-              <%= movie.title %>
-            </li>
-          <% end %>
-        </ul>
-        <%= link_to "link", user_shelf_interests_path(current_user, :media_type => "movie") %>
-      </div>
-      <div class="shelf-row">
-        <ul>
-          <% @albums.each do |album|  %>
-            <li>
-              <%= album.title %>
-            </li>
-          <% end %>
-        </ul>
-        <%= link_to "link", user_shelf_interests_path(current_user, :media_type => "album") %>
+        <%# <% @books.each do |book|  %>
+          <%# <%= render "shelf_item", interest: interest %>
+          <%# end %>
+          <%= link_to "", user_shelf_interests_path(current_user, :media_type => "book"), class: "shelf-row-link" %>
+        </div>
+        <div class="shelf-row">
+          <ul>
+            <% @movies.each do |movie|  %>
+              <li>
+                <%= movie.title %>
+              </li>
+            <% end %>
+          </ul>
+          <%= link_to "", user_shelf_interests_path(current_user, :media_type => "movie"), class: "shelf-row-link" %>
+        </div>
+        <div class="shelf-row">
+          <ul>
+            <% @albums.each do |album|  %>
+              <li>
+                <%= album.title %>
+              </li>
+            <% end %>
+          </ul>
+          <%= link_to "", user_shelf_interests_path(current_user, :media_type => "album"), class: "shelf-row-link" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
