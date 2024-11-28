@@ -1,11 +1,13 @@
-.profile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-
-}
 .avatar-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.avatar {
   width: 30px;
+  height: 30px;
   border-radius: 50%;
+  object-fit: cover;
 }
