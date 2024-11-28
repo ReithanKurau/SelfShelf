@@ -1,6 +1,9 @@
-<div class="container">
+<div class="container text-center my-5">
+  <%= link_to user_shelf_interests_path(current_user, :media_type => "book"), class: 'back-link' do %>
+    <i class="fa-solid fa-left-long"></i><span> Back to <%= @shelf_interest.interest.media_type.pluralize %></span>
+  <% end %>
   <h1><%= @shelf_interest.interest.title %></h1>
-  <div class="shelf-interest-img">
+  <div class="shelf-interest-img my-3">
     <% if @shelf_interest.photo.attached? %>
       <%= cl_image_tag @shelf_interest.photo.key %>
     <% else %>
@@ -10,6 +13,5 @@
   <p><%= @shelf_interest.interest.creator %></p>
   <p><%= @shelf_interest.interest.publishing_year %></p>
   <p><%= @shelf_interest.interest.genre %></p>
-  <p><%= @shelf_interest.interest.media_type%></p>
   <p><%= @shelf_interest.interest.description%></p>
 </div>
