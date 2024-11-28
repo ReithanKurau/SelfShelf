@@ -1,24 +1,22 @@
 <div class="container">
-  <div class="text-center mt-5">
-    <div class="avatar-img">
-      <% if @user.photo.attached? %>
-        <%= cl_image_tag @user.photo.key, class: "avatar-large" %>
-      <% else %>
-        <img alt="avatar-img" src="https://cdn-icons-png.freepik.com/256/14024/14024658.png?semt=ais_hybrid" />
-      <% end %>
-    </div>
+  <% if @user.photo.attached? %>
+    <%= cl_image_tag @user.photo.key, class: "avatar-large mb-3" %>
+  <% else %>
+    <img alt="avatar-large mb-3" src="https://cdn-icons-png.freepik.com/256/14024/14024658.png?semt=ais_hybrid" />
+  <% end %>
+  <div class= "profile-info">
     <div class="mt-3">
-      <%= @user.username %>
+      <h1><%= @user.username %></h1>
     </div>
-    <div class="mt-3">
-      <%= @user.age %>
+    <div>
+      <p class="fw-semibold"><i class="fa-solid fa-user"></i> <%= @user.age %></p>
     </div>
-    <div class="mt-3">
-      <%= @user.location %>
+    <div>
+      <p><i class="fa-solid fa-location-dot"></i><%= @user.location %></p>
     </div>
-    <div class="mt-3">
-      <%= @user.bio %>
+    <div>
+      <p><%= @user.bio %></p>
     </div>
-    <%= link_to 'Edit Profile', edit_user_path(@user) %>
   </div>
+  <p><%= link_to 'Edit Profile', edit_user_path(@user) %></p>
 </div>

@@ -1,13 +1,13 @@
-.avatar-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
+.profile-info{
 
-.avatar {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  object-fit: cover;
+  background-color: $light-pink;
+  border-radius: 10%;
+  padding: 10px;
+
+  h1{
+    margin: 9px;
+  }
+  p{
+    margin: 10%;
+  }
 }
