@@ -1,7 +1,21 @@
-<%= simple_form_for @user do |f|%>
-  <%= f.input :username %>
-  <%= f.input :age %>
-  <%= f.input :location %>
-  <%= f.input :bio %>
-  <%= f.submit %>
-<% end %>
+<div class="login">
+  <div class="text-center">
+    <%= simple_form_for @user do |f| %>
+      <div class="field">
+        <%= f.input :username %>
+      </div>
+      <div class="field">
+        <%= f.input :age %>
+      </div>
+      <div class="field">
+        <%= f.input :location %>
+      </div>
+      <div class="field">
+        <%= f.input :bio %>
+      </div>
+      <div class="actions">
+        <%= f.button :submit, "Update User" %>
+      </div>
+    <% end %>
+  </div>
+</div>
