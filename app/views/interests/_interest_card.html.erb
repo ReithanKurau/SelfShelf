@@ -1,4 +1,14 @@
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= interest.photo.attached? ? cl_image_path(interest.photo.key) : image_path('https://www.peeters-leuven.be/covers/no_cover.gif') %>)">
-  <h2><%= interest.title %></h2>
-  <h2><%= link_to "See more details", interest_path(interest), class: 'text-decoration-none' %></h2>
+<div class="card-item d-flex p-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= interest.photo.attached? ? cl_image_path(interest.photo.key) : image_path('https://www.peeters-leuven.be/covers/no_cover.gif') %>)">
+  <h4><%= interest.title %></h4>
+  <%= link_to "", interest_path(interest), class: "card-item-link" %>
+  <div class="position-absolute bottom-0 start-0">
+  <%= simple_form_for [shelf_interest] do |f| %>
+      <%= f.input :interest_id, as: :hidden, input_html: { value: interest.id } %>
+      <button type="submit" class="star-rating">
+        <i class="fa-solid fa-plus fa-2xs"></i>
+      </button>
+      <% end %>
+  </div>
 </div>
+
+
