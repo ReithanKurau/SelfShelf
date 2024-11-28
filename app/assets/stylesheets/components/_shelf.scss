@@ -1,9 +1,24 @@
+.shelf {
+  width: 84%;
+  height: 64%;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: $light-brown;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+
 .shelf-row {
-  width: 80%;
-  height: 160px;
-  margin: 40px auto;
+  width: 88%;
+  height: 120px;
+  margin: 20px auto;
   background-color: $light-yellow;
   position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .shelf-row-link {
@@ -14,19 +29,42 @@
   left: 0;
 }
 
-.shelves {
-  position: absolute;
-  bottom: 160px;
-  width: 100%;
+.book-item {
+  width: 100px;
+  height: 20px;
+  background-color: $light-brown;
+  transform: rotate(90deg);
+  font-size: 10px;
+  color: $jet;
+  margin-right: -64px;
+  margin-left: -10px;
 }
 
-.shelf-bg {
-  background-size: cover;
-  background-position: center;
-  width: 100vw;
-  height: 100vh;
-  margin: 0 auto;
+.movie-item {
+  width: 80px;
+  height: 14px;
+  background-color: $light-green;
+  transform: rotate(90deg);
+  font-size: 10px;
+  color: $jet;
+  margin-right: -54px;
+  margin-left: -10px;
 }
-.container {
+
+.album-item {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: $lighter-jet;
+  // transform: rotate(90deg);
+  font-size: 10px;
+  color: $light-cream;
+  margin-right: -10px;
+  margin-left: 10px;
   position: relative;
+  span {
+    position: absolute;
+    top: 28px;
+    left: 28px;
+  }
 }

@@ -1,39 +1,31 @@
 <div class="container">
-  <div class="shelf-bg"  style="background-image: url(<%= image_path('https://sobusobu.com/cdn/shop/files/29778_Mahogany_PI_wall_shelf_3shelves-varnised_front_cut_web_1512x.jpg?v=1724980479' )  %>)">
+  <%# <div class="shelf-bg"  style="background-image: url(<%=# image_path('https://sobusobu.com/cdn/shop/files/29778_Mahogany_PI_wall_shelf_3shelves-varnised_front_cut_web_1512x.jpg?v=1724980479' )  %>
+  <div class="shelf">
     <div class="shelves">
       <div class="shelf-row">
-        <ul>
-          <% @books.each do |book|  %>
-            <li>
-              <%= book.title %>
-            </li>
-          <% end %>
-        </ul>
-        <%# <% @books.each do |book|  %>
-          <%# <%= render "shelf_item", interest: interest %>
-          <%# end %>
-          <%= link_to "", user_shelf_interests_path(current_user, :media_type => "book"), class: "shelf-row-link" %>
-        </div>
-        <div class="shelf-row">
-          <ul>
-            <% @movies.each do |movie|  %>
-              <li>
-                <%= movie.title %>
-              </li>
-            <% end %>
-          </ul>
-          <%= link_to "", user_shelf_interests_path(current_user, :media_type => "movie"), class: "shelf-row-link" %>
-        </div>
-        <div class="shelf-row">
-          <ul>
-            <% @albums.each do |album|  %>
-              <li>
-                <%= album.title %>
-              </li>
-            <% end %>
-          </ul>
-          <%= link_to "", user_shelf_interests_path(current_user, :media_type => "album"), class: "shelf-row-link" %>
-        </div>
+        <% @books.each do |book|  %>
+          <div class="book-item">
+            <span><%= book.title %></span>
+          </div>
+        <% end %>
+        <%= link_to "", user_shelf_interests_path(current_user, :media_type => "book"), class: "shelf-row-link" %>
+      </div>
+      <div class="shelf-row">
+        <% @movies.each do |movie|  %>
+          <div class="movie-item">
+            <span><%= movie.title %></span>
+          </div>
+        <% end %>
+        <%= link_to "", user_shelf_interests_path(current_user, :media_type => "movie"), class: "shelf-row-link" %>
+      </div>
+      <div class="shelf-row">
+        <% @albums.each do |album|  %>
+          <div class="album-item">
+            <span><%= album.title %></span>
+          </div>
+        <% end %>
+        <%= link_to "", user_shelf_interests_path(current_user, :media_type => "album"), class: "shelf-row-link" %>
       </div>
     </div>
   </div>
+</div>
