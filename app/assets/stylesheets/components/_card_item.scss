@@ -1,8 +1,8 @@
 .card-item {
   background-size: cover;
   background-position: center;
-  height: 240px;
-  width: 160px;
+  height: 180px;
+  width: 124px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +13,11 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
+
+  h3 {
+    font-family: "Outfit", "Dongle", "sans-serif";
+    font-size: 24px;
+  }
 }
 
 .card-item-link {
