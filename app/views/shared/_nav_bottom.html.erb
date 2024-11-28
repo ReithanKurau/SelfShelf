@@ -9,7 +9,7 @@
     <%= link_to interests_path, class: 'btn btn-info rounded-circle', role: "button" do %>
       <i class="fa-solid fa-plus"></i>
     <% end %>
-    <%= link_to "", class: 'avatar' do %>
+    <%= link_to user_path(current_user), class: 'avatar' do %>
       <%= cl_image_tag current_user.photo.key , class: "avatar" %>
     <% end %>
   </div>
