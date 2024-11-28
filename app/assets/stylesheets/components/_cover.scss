@@ -1,4 +1,15 @@
 .cover {
-  width: 160px;
-  height: 200px
+  width: 200px;
+  height: 250px;
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden
+}
+.cover img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
 }
