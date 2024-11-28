@@ -40,16 +40,42 @@ end
 #Seeds for books
 
 book1 = Interest.create!(title: "The Little Prince", creator: "Antoine de Saint-Exupéry", publishing_year: 1943, genre: "Science fantasy", media_type: "book")
-book2 = Interest.create!(title: "The Giver", creator: "Lois Lowry", publishing_year: 1993, genre: "Science fiction", media_type: "book")
-book3 = Interest.create!(title: "When Hitler Stole Pink Rabbit", creator: "Judith Kerr", publishing_year: 1971, genre: "Historical fiction", media_type: "book")
-book4 = Interest.create!(title: "Harry Potter", creator: "J.K. Rowling", publishing_year: 1997, genre: "Fantasy", media_type: "book")
-book5 = Interest.create!(title: "1Q84", creator: "Lois Lowry", publishing_year: 2009, genre: "Science fiction", media_type: "book")
-book6 = Interest.create!(title: "Cat in the Hat", creator: "Dr. Seuss", publishing_year: 1957, genre: "Historical fiction", media_type: "book")
-book7 = Interest.create!(title: "The Great Gatsby", creator: "F. Scott Fitzgerald", publishing_year: 1925 , genre: "Drama", media_type: "book")
-book8 = Interest.create!(title: "Brave New World", creator: "Aldous Huxley", publishing_year: 1932, genre: "Science fiction", media_type: "book")
-book9 = Interest.create!(title: "To Kill a Mockingbird", creator: "Harper Lee", publishing_year: 1960, genre: "Historical fiction", media_type: "book")
-book10 = Interest.create!(title: "Don Quixote", creator: "Cervantes", publishing_year: 1605, genre: "Historical fiction", media_type: "book")
+file = File.open("app/assets/images/Littleprince.jpg")
+book1.photo.attach(io: file, filename: "Littleprince.jpg", content_type: "image/jpg")
 
+book2 = Interest.create!(title: "The Giver", creator: "Lois Lowry", publishing_year: 1993, genre: "Science fiction", media_type: "book")
+file = File.open("app/assets/images/giver.jpg")
+book2.photo.attach(io: file, filename: "giver.jpg", content_type: "image/jpg")
+
+book3 = Interest.create!(title: "When Hitler Stole Pink Rabbit", creator: "Judith Kerr", publishing_year: 1971, genre: "Historical fiction", media_type: "book")
+
+book4 = Interest.create!(title: "Harry Potter", creator: "J.K. Rowling", publishing_year: 1997, genre: "Fantasy", media_type: "book")
+file = File.open("app/assets/images/harrypotter.jpg")
+book4.photo.attach(io: file, filename: "harrypotter.jpg", content_type: "image/jpg")
+
+book5 = Interest.create!(title: "1q84", creator: "Lois Lowry", publishing_year: 2009, genre: "Science fiction", media_type: "book")
+file = File.open("app/assets/images/1q84.png")
+book5.photo.attach(io: file, filename: "1q84.png", content_type: "image/png")
+
+book6 = Interest.create!(title: "Cat in the Hat", creator: "Dr. Seuss", publishing_year: 1957, genre: "Historical fiction", media_type: "book")
+file = File.open("app/assets/images/catinhat.png")
+book6.photo.attach(io: file, filename: "catinhat.png", content_type: "image/png")
+
+book7 = Interest.create!(title: "The Great Gatsby", creator: "F. Scott Fitzgerald", publishing_year: 1925 , genre: "Drama", media_type: "book")
+file = File.open("app/assets/images/gatsby.jpg")
+book7.photo.attach(io: file, filename: "gatsby.jpg", content_type: "image/jpg")
+
+book8 = Interest.create!(title: "Brave New World", creator: "Aldous Huxley", publishing_year: 1932, genre: "Science fiction", media_type: "book")
+file = File.open("app/assets/images/bravenew.jpg")
+book8.photo.attach(io: file, filename: "bravenew.jpg", content_type: "image/jpg")
+
+book9 = Interest.create!(title: "To Kill a Mockingbird", creator: "Harper Lee", publishing_year: 1960, genre: "Historical fiction", media_type: "book")
+file = File.open("app/assets/images/mockingbird.jpg")
+book9.photo.attach(io: file, filename: "mockingbird.jpg", content_type: "image/jpg")
+
+book10 = Interest.create!(title: "Don Quixote", creator: "Cervantes", publishing_year: 1605, genre: "Historical fiction", media_type: "book")
+file = File.open("app/assets/images/donq.jpg")
+book10.photo.attach(io: file, filename: "donq.jpg", content_type: "image/jpg")
 
 #Seeds for movies
 
