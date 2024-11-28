@@ -9,10 +9,24 @@
             placeholder: "Type a keyword"
       %>
     <% end %>
+
   </div>
   <div class="cards">
     <% @interests.each do |interest|%>
       <%= render "interest_card", interest: interest, shelf_interest: @shelf_interest %>
     <% end %>
   </div>
+  
+  <div class="search-results-movies" data-controller="movies">
+    <form class="row g-2 justify-content-center py-5"
+          data-action="submit->movies#search">
+      <input type="text"
+            class="form-control"
+            placeholder="Find movie"
+            data-movies-target="input">
+    </form>
+    <ul id="results"
+        class="row list-unstyled"
+        data-movies-target="results">
+    </ul>
 </div>
