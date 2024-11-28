@@ -11,13 +11,12 @@ export default class extends Controller {
 
   insertMovies(data) {
     data.results.forEach((result) => {
-      const movieTag = `<li class="col">
+      console.log(result.poster_path);
+      const movieCard = `<div class="card-item" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path('https://image.tmdb.org/t/p/w200${result.poster_path}')" %>')>
         <h3>${result.title}</h3>
         <p>${result.release_date}</p>
-        <p>${result.overview}</p>
-        <img src="${result.poster_path}" alt="${result.title}" class="img-fluid"></img>
-        </li>`
-        this.resultsTarget.insertAdjacentHTML("beforeend", movieTag)
+        </div>`
+        this.resultsTarget.insertAdjacentHTML("beforeend", movieCard)
     })
   }
 
