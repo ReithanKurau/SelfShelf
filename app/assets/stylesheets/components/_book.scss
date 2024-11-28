@@ -4,21 +4,46 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background-color:#FAEDCD;
+  padding-bottom: 70px;
+
+
+  h1{
+    font-size: 40px;
+    text-shadow: 4px 4px pink;
+  }
 
   p{
     text-align: justify;
   }
+
 }
 
-.book-page {
-  text-align: center;
+.interest-details{
+  background-color: #C4F9FF;
+  border-radius: 10%;
+
+  p{
+    padding: 2%;
+  }
 }
 
 .cover img {
   max-width: 100%;
   height: auto;
+  border-radius: 10%;
 }
 
 .summary {
   max-width: 600px;
+  background-color: pink;
+  border-radius: 10%;
+
+  p{
+    padding: 5%;
+  }
+}
+
+.p-1{
+  align-items: flex-end;
 }

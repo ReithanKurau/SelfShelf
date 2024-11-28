@@ -1,17 +1,23 @@
-<div class="container text-center my-5">
-  <%= link_to user_shelf_interests_path(current_user, :media_type => "book"), class: 'back-link' do %>
-    <i class="fa-solid fa-left-long"></i><span> Back to <%= @shelf_interest.interest.media_type.pluralize %></span>
-  <% end %>
-  <h1><%= @shelf_interest.interest.title %></h1>
-  <div class="shelf-interest-img my-3">
-    <% if @shelf_interest.photo.attached? %>
-      <%= cl_image_tag @shelf_interest.photo.key %>
+<div class="container">
+  <div class="p-1">
+    <button type="submit" class="star-rating">
+      <i class="fas fa-star"></i>
+    </button>
+  </div>
+  <h1 class="m-1 p-1"><%= @shelf_interest.interest.title %></h1>
+  <div class="cover">
+    <% if @shelf_interest.interest.photo.attached? %>
+      <%= cl_image_tag @shelf_interest.interest.photo.key, class: "w-100" %>
     <% else %>
-      <%= image_tag 'https://www.peeters-leuven.be/covers/no_cover.gif' %>
+      <%= image_tag 'no_cover.gif', class: "w-100" %>
     <% end %>
   </div>
-  <p><%= @shelf_interest.interest.creator %></p>
-  <p><%= @shelf_interest.interest.publishing_year %></p>
-  <p><%= @shelf_interest.interest.genre %></p>
-  <p><%= @shelf_interest.interest.description%></p>
+  <div class="shelf_interest-details">
+    <p class="fw-semibold"><i class="fa-solid fa-user"></i> <%= @shelf_interest.interest.creator %></p>
+    <p class="fw-semibold"><i class="fa-solid fa-calendar-days"></i> <%= @shelf_interest.interest.publishing_year %></p>
+    <span class="badge rounded-pill text-bg-secondary"> <%= @shelf_interest.interest.genre %></span>
+  </div>
+  <div class="summary m-1 p-1">
+    <p>The Little Prince follows a pilot stranded in the desert who meets a boy from asteroid B-612. The Little Prince shares tales of his travels to planets, each home to peculiar adults, and reflects on love, loneliness, and the meaning of life. Central to his story is his devotion to a rose on his home planet. The novella emphasizes seeing with the heart, valuing relationships, and the wonder of childhood imagination.</p>
+  </div>
 </div>

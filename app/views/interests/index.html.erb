@@ -1,20 +1,20 @@
 <div class="container">
   <h1>Search Results</h1>
-  <%= form_with url: interests_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query,
+  <div class="searchbar mt-2 mb-3" >
+    <%= form_with url: interests_path, method: :get, class:"d-flex" do %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Type a keyword"
-      %>
-    <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-  <% end %>
-  <% @interests.each do |interest|%>
-    <%= simple_form_for [@shelf_interest] do |f| %>
-      <%= f.input :interest_id, as: :hidden, input_html: { value: interest.id } %>
-      <%= f.submit 'Add to your shelf!', class: 'submit-btn' %>
+            placeholder: "Type a keyword"%>
+      <% end %>
+  </div>
+  <div class="cards">
+      <% @interests.each do |interest|%>
+      <%= render "interest_card", interest: interest, shelf_interest: @shelf_interest %>
     <% end %>
-    <%= render "interest_card", interest: interest %>
-  <% end %>
+  </div>
+  
   <div class="search-results-movies" data-controller="movies">
     <form class="row g-2 justify-content-center py-5"
           data-action="submit->movies#search">
@@ -27,5 +27,4 @@
         class="row list-unstyled"
         data-movies-target="results">
     </ul>
-  </div>
 </div>

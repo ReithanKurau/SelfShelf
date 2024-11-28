@@ -1,8 +1,9 @@
 .bottom-nav {
   position: fixed;
-  bottom: 24px;
-  background: transparent;
+  bottom: 0;
+  background: $light-cream;
   z-index: 5;
+  padding: 12px 0;
   width: 100%;
   i {
     color: $jet;
