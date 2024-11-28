@@ -9,8 +9,10 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <%= render "shared/nav_bottom" %>
     <%= render "shared/flashes" %>
-    <%= yield %>
+    <div class="vh-100 d-flex flex-column">
+      <%= yield %>
+      <%= render "shared/nav_bottom" %>
+    </div>
   </body>
 </html>
