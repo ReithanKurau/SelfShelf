@@ -6,11 +6,13 @@
       <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Type a keyword"%>
-      <% end %>
+            placeholder: "Type a keyword"
+      %>
+    <% end %>
+
   </div>
   <div class="cards">
-      <% @interests.each do |interest|%>
+    <% @interests.each do |interest|%>
       <%= render "interest_card", interest: interest, shelf_interest: @shelf_interest %>
     <% end %>
   </div>
