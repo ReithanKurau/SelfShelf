@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Search Results</h1>
-  <%= form_with url: interests_path, method: :get, class: "d-flex" do %>
+  <%= form_with url: interests_path, method: :get do %>
     <%= text_field_tag :query,
             params[:query],
             class: "form-control",
@@ -8,11 +8,9 @@
       %>
     <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
   <% end %>
-   <% @interests.each do |interest|%>
-    <%= simple_form_for [@shelf_interest] do |f| %>
-      <%= f.input :interest_id, as: :hidden, input_html: { value: interest.id } %>
-      <%= f.submit 'Add to your shelf!', class: 'submit-btn' %>
+  <div class="cards">
+      <% @interests.each do |interest|%>
+      <%= render "interest_card", interest: interest, shelf_interest: @shelf_interest %>
     <% end %>
-    <%= render "interest_card", interest: interest %>
-  <% end %>
+  </div>
 </div>
