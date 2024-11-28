@@ -38,6 +38,12 @@
   color: $jet;
   margin-right: -64px;
   margin-left: -10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  text-align: center;
+  line-height: 2;
 }
 
 .movie-item {
@@ -61,10 +67,10 @@
   color: $light-cream;
   margin-right: -10px;
   margin-left: 10px;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   span {
-    position: absolute;
-    top: 28px;
-    left: 28px;
+    text-align: center;
   }
 }
