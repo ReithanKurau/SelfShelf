@@ -1,6 +1,6 @@
 <div class="login">
   <div class="text-center">
-    <%= simple_form_for @user do |f| %>
+    <%= simple_form_for @user, html: { multipart: true } do |f| %>
       <div class="field">
         <%= f.input :username %>
       </div>
@@ -12,6 +12,9 @@
       </div>
       <div class="field">
         <%= f.input :bio %>
+      </div>
+      <div class="field">
+        <%= f.input :photo, as: :file %>
       </div>
       <div class="actions">
         <%= f.button :submit, "Update User" %>

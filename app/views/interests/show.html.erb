@@ -1,28 +1,28 @@
-<div class="container">
-  <div>
-    <h1 class="m-1 p-1"> <%= @interest.title %></h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<div class="container d-flex flex-column align-items-center justify-content-center min-vh-100">
+  <h1 class="m-1 p-1"><%= @interest.title %></h1>
+  <div class="cover">
+    <% if @interest.photo.attached? %>
+      <%= cl_image_tag @interest.photo.key, class: "w-100" %>
+    <% else %>
+      <%= image_tag 'no_cover.gif', class: "w-100" %>
+    <% end %>
   </div>
-  <div class="interest-group">
-    <div class="cover">
-      <% if @interest.photo.attached? %>
-        <%= cl_image_tag @interest.photo.key, class: "w-100" %>
-      <% else %>
-        <%= image_tag 'no_cover.gif', class: "w-100" %>
-      <% end %>
-    </div>
-    <div class="interest-details m-1 p-1">
-      <p class="fw-semibold mb-0"> Creator: <%= @interest.creator %> </p>
-      <p class="fw-semibold mb-0"> Genre: <%= @interest.genre %> </p>
-      <p class="fw-semibold mb-0"> Publishing year: <%= @interest.publishing_year %> </p>
-    </div>
+  <div class="interest-details m-1 p-1">
+    <p class="fw-semibold mb-0">Creator: <%= @interest.creator %></p>
+    <p class="fw-semibold mb-0">Genre: <%= @interest.genre %></p>
+    <p class="fw-semibold mb-0">Publishing year: <%= @interest.publishing_year %></p>
   </div>
   <div class="summary m-1 p-1">
-    <p> The Little Prince follows a pilot stranded in the desert who meets a boy from asteroid B-612. The Little Prince shares tales of his travels to planets, each home to peculiar adults, and reflects on love, loneliness, and the meaning of life. Central to his story is his devotion to a rose on his home planet. The novella emphasizes seeing with the heart, valuing relationships, and the wonder of childhood imagination. </p>
+    <p>The Little Prince follows a pilot stranded in the desert who meets a boy from asteroid B-612. The Little Prince shares tales of his travels to planets, each home to peculiar adults, and reflects on love, loneliness, and the meaning of life. Central to his story is his devotion to a rose on his home planet. The novella emphasizes seeing with the heart, valuing relationships, and the wonder of childhood imagination.</p>
   </div>
   <div class="p-1">
     <%= simple_form_for @shelf_interest do |f| %>
       <%= f.input :interest_id, as: :hidden, input_html: { value: @interest.id } %>
-      <%= f.submit 'Add this to your shelf!', class: 'submit-btn' %>
+      <%= f.submit 'Add to Library!', class: 'button-2' %>
+      <button type="submit" class="star-rating">
+        <i class="fas fa-star"></i>
+      </button>
     <% end %>
   </div>
 </div>

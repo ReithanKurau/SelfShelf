@@ -1,13 +1,15 @@
 <div class="container">
   <h1>Search Results</h1>
-  <%= form_with url: interests_path, method: :get do %>
-    <%= text_field_tag :query,
+  <div class="searchbar mt-2 mb-3" >
+    <%= form_with url: interests_path, method: :get, class:"d-flex" do %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= text_field_tag :query,
             params[:query],
             class: "form-control",
             placeholder: "Type a keyword"
       %>
-    <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-  <% end %>
+      <% end %>
+  </div>
   <div class="cards">
       <% @interests.each do |interest|%>
       <%= render "interest_card", interest: interest, shelf_interest: @shelf_interest %>
