@@ -2,6 +2,7 @@ require "open-uri"
 require 'nokogiri'
 require "json"
 
+Comment.destroy_all
 ShelfInterest.destroy_all
 Interest.destroy_all
 User.destroy_all
@@ -45,7 +46,7 @@ books_serialized = URI.parse(url).read
 books_objs = JSON.parse(books_serialized)
 books = books_objs["docs"]
 
-books.each do |book| 
+books.each do |book|
   title = book["title"]
   creator = book["author_name"]
   publishing_year = book["first_publish_year"]
@@ -54,7 +55,7 @@ books.each do |book|
   isbn = book["isbn"].first
 
   temp_book = Interest.create!(title: title, creator: creator, publishing_year: publishing_year, genre: genre, description: description, media_type: "book")
-  
+
   image = URI.open(pic_url = "https://covers.openlibrary.org/b/isbn/#{isbn}-S.jpg")
   temp_book.photo.attach(io: image, filename: 'name.jpg', content_type: 'image/jpg')
 end

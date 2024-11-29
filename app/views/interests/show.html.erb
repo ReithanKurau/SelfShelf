@@ -2,8 +2,10 @@
 <div class="container">
   <div class="p-1">
     <%= simple_form_for @shelf_interest do |f| %>
-      <%= f.input :interest_id, as: :hidden, input_html: { value: @interest.id } %>
-      <%= f.submit 'Add to Library!', class: 'button-2' %>
+      <% unless current_user.shelf_interests.exists?(interest_id: @interest.id) %>
+        <%= f.input :interest_id, as: :hidden, input_html: { value: @interest.id } %>
+        <%= f.submit 'Add to Library!', class: 'button-2' %>
+      <% end %>
       <button type="submit" class="star-rating">
         <i class="fas fa-star"></i>
       </button>
