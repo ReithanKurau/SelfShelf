@@ -1,12 +1,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <div class="container">
+
+  <div class="p-1">
+    <%= simple_form_for @shelf_interest do |f| %>
+      <% unless current_user.shelf_interests.exists?(interest_id: @interest.id) %>
+        <%= f.input :interest_id, as: :hidden, input_html: { value: @interest.id } %>
+        <%= f.submit 'Add to Library!', class: 'button-2' %>
+      <% end %>
+
   <div class="p-1 d-flex w-100 justify-content-around">
     <%= simple_form_for [@shelf_interest] do |f| %>
       <%= f.input :interest_id, as: :hidden, input_html: { value: @interest.id } %>
       <button type="submit" class="star-rating">
         <i class="fa-solid fa-plus fa-2xs"></i>
       </button>
-    <% end %>
+
 
     <button type="submit" class="star-rating"><i class="fas fa-star"></i></button>
 
