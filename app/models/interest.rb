@@ -6,6 +6,8 @@ class Interest < ApplicationRecord
   validates :publishing_year, presence: true
   validates :genre, presence: true
   validates :media_type, presence: true
+  has_many :comments, through: :shelf_interests
+  has_many :comments, dependent: :destroy
   has_one_attached :photo
   MEDIA_TYPE = ["book", "movie", "album"]
   validates :media_type, inclusion: { in: MEDIA_TYPE }
