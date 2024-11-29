@@ -4,6 +4,8 @@
 }
 .avatar-large {
   width: 230px;
+  height: 230px;
+  object-fit: cover;
   border-radius: 50%;
   border-style: solid;
   border-color: $light-pink;
