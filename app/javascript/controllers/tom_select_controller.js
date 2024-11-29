@@ -9,7 +9,6 @@ export default class extends Controller {
     console.log('connected');
     new TomSelect(
       this.element,
-      this.optionsValue,
       {
         sortField: 'text'
       }
