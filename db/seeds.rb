@@ -106,13 +106,6 @@ album3 = Interest.create!(title: "Multitude", creator: "Stromae", publishing_yea
 album4 = Interest.create!(title: "Big Willie Style", creator: "Will Smith", publishing_year: 1997, genre: "Hip-Hop", media_type: "album")
 album5 = Interest.create(title: "Songs about Jane", creator: "Maroon 5", publishing_year: 2002, genre: "Pop", media_type: "album")
 
-#seeds for a couple shelf_interests
-
-shelf_interest1 = ShelfInterest.create!(user: james, interest: book1)
-shelf_interest2 = ShelfInterest.create!(user: james, interest: book3)
-shelf_interest3 = ShelfInterest.create!(user: james, interest: movie2)
-shelf_interest4 = ShelfInterest.create!(user: james, interest: movie3)
-shelf_interest5 = ShelfInterest.create!(user: james, interest: album1)
 
 #Seeds for movies
 
