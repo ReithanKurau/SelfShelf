@@ -9,7 +9,8 @@ class InterestsController < ApplicationController
   end
 
   def show
-    @shelf_interest = ShelfInterest.new
     @interest = Interest.find(params[:id])
+    @shelf_interest = ShelfInterest.new
+    @comments = @interest.comments.includes(:user)
   end
 end

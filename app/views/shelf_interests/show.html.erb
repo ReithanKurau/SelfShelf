@@ -20,4 +20,23 @@
   <div class="summary m-1 p-1">
     <p>The Little Prince follows a pilot stranded in the desert who meets a boy from asteroid B-612. The Little Prince shares tales of his travels to planets, each home to peculiar adults, and reflects on love, loneliness, and the meaning of life. Central to his story is his devotion to a rose on his home planet. The novella emphasizes seeing with the heart, valuing relationships, and the wonder of childhood imagination.</p>
   </div>
+  <div class="comments-section">
+    <% if @shelf_interest.comments.any? %>
+      <h2>User Comment</h2>
+      <div class="comments-list mt-4">
+        <% @shelf_interest.comments.each do |comment| %>
+          <div class="comment">
+            <p><strong><%= comment.user.username %>:</strong> <%= comment.content %></p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <%= simple_form_for [@shelf_interest, @comment] do |f| %>
+        <div class="form-group">
+          <%= f.input :content, label: "Add a comment", input_html: { class: "form-control" } %>
+        </div>
+        <%= f.submit "Post Comment", class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

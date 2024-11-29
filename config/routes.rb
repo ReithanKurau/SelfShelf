@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update] do
     resources :shelf_interests, only: [:show, :index, :create, :update]
+    resources :comments, only: [:create]
   end
 
 

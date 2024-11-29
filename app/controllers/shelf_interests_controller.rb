@@ -31,11 +31,12 @@ class ShelfInterestsController < ApplicationController
 
   def show
     @shelf_interest = ShelfInterest.find(params[:id])
+    @comment = Comment.new
   end
 
   private
 
-  # def shelf_interest_params
-  #   params.require(:shelf_interest).permit(:interest_id)
-  # end
+  def shelf_interest_params
+    params.require(:shelf_interest).permit(:interest_id)
+  end
 end
