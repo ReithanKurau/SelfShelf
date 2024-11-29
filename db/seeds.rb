@@ -99,8 +99,6 @@ url = 'https://api.themoviedb.org/3/movie/popular?api_key=7a1ee3663533611fa05476
 response = JSON.parse(URI.open(url).read)
 
 response['results'].each do |movie_hash|
-  puts
-  p movie_hash
   Interest.create!(
     poster_url: "https://image.tmdb.org/t/p/w500" + movie_hash['poster_path'],
     title: movie_hash['title'],
