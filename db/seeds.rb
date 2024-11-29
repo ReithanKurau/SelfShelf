@@ -100,7 +100,7 @@ response = JSON.parse(URI.open(url).read)
 
 response['results'].each do |movie_hash|
   Interest.create!(
-    poster_url: "https://image.tmdb.org/t/p/w500" + movie_hash['poster_path'],
+    cover: "https://image.tmdb.org/t/p/w500" + movie_hash['poster_path'],
     title: movie_hash['title'],
     description: movie_hash['overview'],
     publishing_year: movie_hash['release_date'],
