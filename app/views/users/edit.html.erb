@@ -11,13 +11,18 @@
         <%= f.input :photo, as: :file %>
       </div>
       <div class="field">
-        <select class="form-select select optional" multiple="multiple" data-controller="tom-select" data-tom-select-options-value=<%= {tags: true} %> name="user[tag_list][]" id="user_tag_list">
-          <optgroup label="Books">
+        <select class="form-select select optional text-start" multiple="multiple" placeholder="Add tags" data-controller="tom-select" data-tom-select-options-value=<%= {tags: true} %> name="user[tag_list][]" id="user_tag_list">
+          <optgroup label="Books" class="fw-bolder">
             <option value="fiction">fiction</option>
             <option value="horror">horror</option>
             <option value="mystery">mystery</option>
           </optgroup>
-          <optgroup label="Music">
+          <optgroup label="Movies" class="fw-bolder">
+            <option value="comedy">pop</option>
+            <option value="horror">rap</option>
+            <option value="classic">jazz</option>
+          </optgroup>
+          <optgroup label="Music" class="fw-bolder">
             <option value="pop">pop</option>
             <option value="rap">rap</option>
             <option value="jazz">jazz</option>
