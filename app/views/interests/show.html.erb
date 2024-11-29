@@ -1,28 +1,31 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <div class="container">
   <div class="p-1">
-    <%= simple_form_for @shelf_interest do |f| %>
-      <%= f.input :interest_id, as: :hidden, input_html: { value: @interest.id } %>
-      <%= f.submit 'Add to Library!', class: 'button-2' %>
-      <button type="submit" class="star-rating">
-        <i class="fas fa-star"></i>
-      </button>
-    <% end %>
+    <div class="p-1 d-flex w-100 justify-content-around">
+      <%= simple_form_for [@shelf_interest] do |f| %>
+        <%  unless current_user.shelf_interests.exists?(interest_id: @interest.id) %>
+          <%= f.input :interest_id, as: :hidden, input_html: { value: @interest.id } %>
+          <button type="submit" class="star-rating">
+            <i class="fa-solid fa-plus fa-2xs"></i>
+          </button>
+        <% end %>
+      <% end %>
+      <button type="submit" class="star-rating"><i class="fas fa-star"></i></button>
+    </div>
+    <h1 class="m-1 p-1"><%= @interest.title %></h1>
+    <div class="cover">
+      <% if @interest.photo.attached? %>
+        <%= cl_image_tag @interest.photo.key, class: "w-100" %>
+      <% else %>
+        <%= image_tag 'no_cover.gif', class: "w-100" %>
+      <% end %>
+    </div>
+    <div class="shelf_interest-details">
+      <p class="fw-semibold"><i class="fa-solid fa-user"></i> <%= @interest.creator %></p>
+      <p class="fw-semibold"><i class="fa-solid fa-calendar-days"></i> <%= @interest.publishing_year %></p>
+      <span class="badge rounded-pill text-bg-secondary"> <%= @interest.genre %></span>
+    </div>
+    <div class="summary m-1 p-1">
+      <p>The Little Prince follows a pilot stranded in the desert who meets a boy from asteroid B-612. The Little Prince shares tales of his travels to planets, each home to peculiar adults, and reflects on love, loneliness, and the meaning of life. Central to his story is his devotion to a rose on his home planet. The novella emphasizes seeing with the heart, valuing relationships, and the wonder of childhood imagination.</p>
+    </div>
   </div>
-  <h1 class="m-1 p-1"><%= @interest.title %></h1>
-  <div class="cover">
-    <% if @interest.photo.attached? %>
-      <%= cl_image_tag @interest.photo.key, class: "w-100" %>
-    <% else %>
-      <%= image_tag 'no_cover.gif', class: "w-100" %>
-    <% end %>
-  </div>
-  <div class="interest-details">
-    <p class="fw-semibold">Creator: <%= @interest.creator %></p>
-    <p class="fw-semibold">Genre: <%= @interest.genre %></p>
-    <p class="fw-semibold">Publishing year: <%= @interest.publishing_year %></p>
-  </div>
-  <div class="summary m-1 p-1">
-    <p>The Little Prince follows a pilot stranded in the desert who meets a boy from asteroid B-612. The Little Prince shares tales of his travels to planets, each home to peculiar adults, and reflects on love, loneliness, and the meaning of life. Central to his story is his devotion to a rose on his home planet. The novella emphasizes seeing with the heart, valuing relationships, and the wonder of childhood imagination.</p>
-  </div>
-</div>
