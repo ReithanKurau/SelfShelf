@@ -1,6 +1,7 @@
 
 require "open-uri"
 require 'nokogiri'
+require "json"
 
 ShelfInterest.destroy_all
 Interest.destroy_all
@@ -38,6 +39,12 @@ users.map do |user|
 end
 
 #Seeds for books
+
+
+# url = "https://openlibrary.org/search.json?publisher=penguin"
+# books_serialized = URI.parse(url).read
+# books = JSON.parse(books_serialized)
+
 
 book1 = Interest.create!(title: "The Little Prince", creator: "Antoine de Saint-Exupéry", publishing_year: 1943, genre: "Science fantasy", media_type: "book")
 file = File.open("app/assets/images/Littleprince.jpg")
