@@ -5,4 +5,7 @@ class User < ApplicationRecord
   validates :username, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         #params to be added
+
+  acts_as_taggable_on :tags
 end

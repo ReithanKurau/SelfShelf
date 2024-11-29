@@ -10,6 +10,20 @@
       <div class="field">
         <%= f.input :photo, as: :file %>
       </div>
+      <div class="field">
+        <select class="form-select select optional" multiple="multiple" data-controller="tom-select" data-tom-select-options-value=<%= {tags: true} %> name="user[tag_list][]" id="user_tag_list">
+          <optgroup label="Books">
+            <option value="fiction">fiction</option>
+            <option value="horror">horror</option>
+            <option value="mystery">mystery</option>
+          </optgroup>
+          <optgroup label="Music">
+            <option value="pop">pop</option>
+            <option value="rap">rap</option>
+            <option value="jazz">jazz</option>
+          </optgroup>
+        </select>
+      </div>
       <div class="actions">
         <%= f.button :submit, "Update User" %>
       </div>
