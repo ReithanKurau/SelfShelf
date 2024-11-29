@@ -77,20 +77,6 @@ book10 = Interest.create!(title: "Don Quixote", creator: "Cervantes", publishing
 file = File.open("app/assets/images/donq.jpg")
 book10.photo.attach(io: file, filename: "donq.jpg", content_type: "image/jpg")
 
-#Seeds for movies
-
-movie1 = Interest.create!(title: "Mr. Nobody", creator: "	Jaco Van Dormael", publishing_year: 2009, genre: "Science fiction", media_type: "movie")
-movie2 = Interest.create!(title: "Maboroshi", creator: "Mari Okada", publishing_year: 2023, genre: "Romance", media_type: "movie")
-movie3 = Interest.create!(title: "Pan's Labyrinth", creator: "Guillermo Del Toro", publishing_year: 2006, genre: "Fantasy", media_type: "movie")
-movie4 = Interest.create!(title: "The Shawshank Redemption", creator: "	Frank Darabont", publishing_year: 1994, genre: "Drama", media_type: "movie")
-movie5 = Interest.create!(title: "The Godfather", creator: "Francis Ford Coppola", publishing_year: 1972 , genre: "Drama", media_type: "movie")
-movie6 = Interest.create!(title: "12 Angry Men", creator: " Sidney Lumet", publishing_year: 1957 , genre: "Drama", media_type: "movie")
-movie7 = Interest.create!(title: "The Lord of the Rings: The Return of the King", creator: "Peter Jackson", publishing_year: "2001", genre: "Fantasy", media_type: "movie")
-movie8 = Interest.create!(title: "Gone with the Wind", creator: "	Victor Fleming", publishing_year: 2023, genre: "Romance", media_type: "movie")
-movie9 = Interest.create!(title: "Citizen Kane", creator: "Orson Welles", publishing_year: 1941 , genre: "Drama", media_type: "movie")
-movie10 = Interest.create!(title: "The Dark Knight", creator: "Christopher Nolan", publishing_year: 2008, genre: "Action", media_type: "movie")
-
-
 #Seeds for albums
 
 album1 = Interest.create!(title: "Smile", creator: "Eve", publishing_year: 2020, genre: "J-pop", media_type: "album")
@@ -106,3 +92,19 @@ shelf_interest2 = ShelfInterest.create!(user: james, interest: book3)
 shelf_interest3 = ShelfInterest.create!(user: james, interest: movie2)
 shelf_interest4 = ShelfInterest.create!(user: james, interest: movie3)
 shelf_interest5 = ShelfInterest.create!(user: james, interest: album1)
+
+#Seeds for movies
+
+url = 'https://api.themoviedb.org/3/movie/popular?api_key=7a1ee3663533611fa054763973c22bda'
+response = JSON.parse(URI.open(url).read)
+
+response['results'].each do |movie_hash|
+  Interest.create!(
+    poster_url: "https://image.tmdb.org/t/p/w500" + movie_hash['poster_path'],
+    title: movie_hash['title'],
+    description: movie_hash['overview'],
+    publishing_year: movie_hash['release_date'],
+    media_type: 'movie',
+    creator: 'unknown'
+  )
+end

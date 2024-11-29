@@ -1,7 +1,6 @@
 <div class="container">
   <h1>Search Results</h1>
-
-  <div class="search-results-movies" data-controller="movies">
+  <%# <div class="search-results-movies" data-controller="movies">
     <form class="row g-2 justify-content-center py-5"
           data-action="keyup->movies#search">
       <input type="text"
@@ -13,7 +12,7 @@
         class="cards"
         data-movies-target="results">
     </div>
-  </div>
+  </div> %>
   <div class="cards">
     <% @interests.each do |interest|%>
       <%= render "interest_card", interest: interest, shelf_interest: @shelf_interest %>
