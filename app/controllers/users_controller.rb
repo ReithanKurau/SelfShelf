@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+  def index
+    if params[:tag].present?
+      @user = User.tagged_with(params[:tag])
+    else
+      @users = User.all
+    end
+  end
+
   def show
     @user = current_user
   end
@@ -15,6 +23,14 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
+  # def tagged
+  #   if params[:tag].present?
+  #     @user = User.tagged_with(params[:tag])
+  #   else
+  #     @user = User.all
+  #   end
+  # end
 
   private
 
