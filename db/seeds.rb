@@ -120,12 +120,16 @@ url = 'https://api.themoviedb.org/3/movie/popular?api_key=7a1ee3663533611fa05476
 response = JSON.parse(URI.open(url).read)
 
 response['results'].each do |movie_hash|
-  Interest.create!(
+  if Interest.create!(
     cover: "https://image.tmdb.org/t/p/w500" + movie_hash['poster_path'],
     title: movie_hash['title'],
     description: movie_hash['overview'],
     publishing_year: movie_hash['release_date'],
     media_type: 'movie',
-    creator: 'unknown'
+    creator: 'unknown',
+    genre: "unknown"
   )
+  else
+    puts "failed to create"
+  end
 end
