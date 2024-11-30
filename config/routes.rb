@@ -13,13 +13,12 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-
-
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: [:index, :show, :edit, :update] do
     resources :shelf_interests, only: [:show, :index, :create, :update]
     resources :comments, only: [:create]
   end
 
+  get '/users', to: "users#index", as: :tagged
 
   get "/users/:user_id/shelf_interests", to: "shelf_interests#index", as: :user_shelf
   # get "/users/:user_id/shelf_interests?media_type=something", to: "shelf_interests#index"
