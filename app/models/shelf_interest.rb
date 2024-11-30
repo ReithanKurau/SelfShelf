@@ -1,7 +1,8 @@
 class ShelfInterest < ApplicationRecord
   belongs_to :user
+  belongs_to :interest
   has_many :comments, dependent: :destroy
-  
+
   validates :interest, uniqueness: { scope: :user }
   validates :title, presence: true
   validates :creator, presence: true
@@ -12,7 +13,7 @@ class ShelfInterest < ApplicationRecord
   validates :media_type, inclusion: { in: MEDIA_TYPE }
 
   has_one_attached :photo
-  
+
   include PgSearch::Model
   pg_search_scope :search_by_title_creator_genre_description,
   against: [ :title, :creator, :genre, :description ],
