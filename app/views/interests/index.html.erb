@@ -1,16 +1,9 @@
 <div class="container">
   <h1>Search Results</h1>
-  <%= form_with url: interests_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Type a keyword"
-      %>
-    <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-  <% end %>
-  <%# <div class="search-results-movies" data-controller="movies">
-    <form class="row g-2 justify-content-center py-5"
-          data-action="keyup->movies#search">
+
+  <div class="search-results-movies" data-controller="movies">
+    <form class="row g-2 justify-content-center py-5" data-action="keyup->movies#search">
+
       <input type="text"
             class="form-control"
             placeholder="Find movie"
@@ -20,10 +13,17 @@
         class="cards"
         data-movies-target="results">
     </div>
-  </div> %>
-  <div class="cards">
-    <% @interests.each do |interest|%>
-      <%= render "interest_card", interest: interest, shelf_interest: @shelf_interest %>
-    <% end %>
+  </div>
+  <div class="search-results-books" data-controller="books">
+    <form class="row g-2 justify-content-center py-5" data-action="keyup->books#search">
+      <input type="text"
+            class="form-control"
+            placeholder="Find book"
+            data-books-target="input">
+    </form>
+    <div id="results"
+        class="cards"
+        data-books-target="results">
+    </div>
   </div>
 </div>

@@ -12,8 +12,8 @@ class Interest < ApplicationRecord
   validates :media_type, inclusion: { in: MEDIA_TYPE }
 
   include PgSearch::Model
-  pg_search_scope :search_by_title_creator_genre,
-  against: [ :title, :creator, :genre ],
+  pg_search_scope :search_by_title_creator_genre_description,
+  against: [ :title, :creator, :genre, :description ],
   using: {
     tsearch: { prefix: true }
   }
