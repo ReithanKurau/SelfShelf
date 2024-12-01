@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def index
+    @invitation = Invitation.new
     @user = current_user
     @related_users = @user.find_related_tags
   end
@@ -34,5 +35,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :age, :location, :bio, :photo, tag_list: [])
   end
+
+  
 
 end
