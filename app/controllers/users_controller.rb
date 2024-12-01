@@ -2,6 +2,15 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     @related_users = @user.find_related_tags
+
+    if params[:query].present?
+      @users = User.where('username ILIKE ?', "%#{params[:query]}%")
+    end
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: 'list.html', locals: { users: @users } }
+    end
   end
 
   def show
