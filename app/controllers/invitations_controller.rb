@@ -16,8 +16,14 @@ class InvitationsController < ApplicationController
   end
 
   def update
-    invitation = Invitation.find(params[:invitation_id])
+    invitation = Invitation.find(params[:id])
     invitation.update(confirmed: true)
-    redirect_to user_path(invitation.friend_id)
+    redirect_to user_path(current_user.id)
+  end
+
+  def destroy
+    invitation = Invitation.find(params[:id])
+    invitation.destroy
+    redirect_to user_path(current_user.id)
   end
 end

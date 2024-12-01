@@ -32,13 +32,22 @@
   <% end %>
 </ul>
 
-<h3>Pending Requests <strong> <%= @user.username %> </strong> </h3>
+<h3> <strong> <%= @user.username %>'s Pending Requests </strong> </h3>
 <ul>
   <% @user.pending_invitations.each do |invitation| %>
     <li>
       <%= User.find(invitation.user_id).username %>
+      
+      <%= simple_form_for invitation do |f| %>
+            <%= f.input :confirmed, as: :hidden, input_html: { value: true } %>
+            <%= f.submit 'Accept', class: 'btn btn-light' %>
+          <% end %>
+
+      <%= link_to 'Reject Invitation', invitation_path(invitation), data: {turbo_method: :delete}%>
     </li>
   <% end %>
 </ul>
+
+
 
 </div>
