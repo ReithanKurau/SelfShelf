@@ -17,13 +17,19 @@ class InvitationsController < ApplicationController
 
   def update
     invitation = Invitation.find(params[:id])
-    invitation.update(confirmed: true)
-    redirect_to user_path(current_user.id)
+    if invitation.update(confirmed: true)
+      redirect_to user_path(current_user.id)
+    else
+      raise #shouldnt get here
+    end 
   end
 
   def destroy
     invitation = Invitation.find(params[:id])
-    invitation.destroy
-    redirect_to user_path(current_user.id)
+    if invitation.destroy
+      redirect_to user_path(current_user.id)
+    else
+      raise #shouldnt get here
+    end
   end
 end

@@ -6,10 +6,10 @@
 <% User.all.each do |u| %>
     <li>
       <%= u.username %>
-        <% if Invitation.reacted?(@user.id, u.id) == false %>
+        <% if signed_in? && !Invitation.reacted?(current_user.id, u.id) && current_user != u %>
           <%= simple_form_for @invitation do |f| %>
+            <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
             <%= f.input :friend_id, as: :hidden, input_html: { value: u.id } %>
-            <%= f.input :user_id, as: :hidden, input_html: { value: @user.id } %>
             <button type="submit"> <i class="fa-solid fa-plus fa-2xs"></i> </button>
           <% end %>
         <% end %>
