@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
   def index
-    if params[:tag].present?
-      @user = User.tagged_with(params[:tag])
-    else
-      @users = User.all
-    end
+    @user = current_user
+    @related_users = @user.find_related_tags
   end
 
   def show
@@ -24,13 +21,13 @@ class UsersController < ApplicationController
     end
   end
 
-  # def tagged
-  #   if params[:tag].present?
-  #     @user = User.tagged_with(params[:tag])
-  #   else
-  #     @user = User.all
-  #   end
-  # end
+  def tagged
+    if params[:tag].present?
+      @users = User.tagged_with(params[:tag])
+    else
+      @user = User.all
+    end
+  end
 
   private
 
