@@ -2,41 +2,41 @@ require "open-uri"
 require 'nokogiri'
 require "json"
 
-# Comment.destroy_all
-# ShelfInterest.destroy_all
+Comment.destroy_all
+ShelfInterest.destroy_all
 Interest.destroy_all
-# User.destroy_all
+User.destroy_all
 
-# #Seeds for users
+#Seeds for users
 
-# james = User.create!(username: "James Smith", email: "jamesSmith@gmail.com", password: "123123")
-# paula = User.create!(username: "Paula Ortega", email: "paulaOrtega@gmail.com", password: "123123")
-# frederick = User.create!(username: "Frederick Elias", email: "frederickElias@gmail.com", password: "123123")
-# rebecca = User.create!(username: "Rebecca Thompson", email: "rebeccaThompson@gmail.com", password: "123123")
-# mathew = User.create!(username: "Mathew James", email: "mathewJames@gmail.com", password: "123123")
-# sakura = User.create!(username: "Sakura Itou", email: "sakuraItou@gmail.com", password: "123123")
-# pedro = User.create!(username: "Pedro Gonzales", email: "pedroGonzales@gmail.com", password: "123123")
-# elsa = User.create!(username: "Elsa Disney", email: "elsaDisney@gmail.com", password: "123123")
-# greg = User.create!(username: "Greg Masters", email: "gregMasters@gmail.com", password: "123123")
-# mason = User.create!(username: "Mason Kamolpechara", email: "masonKamolpechara@gmail.com", password: "123123")
-# phyuphyu = User.create!(username: "Phyu Phyu", email: "phyuphyuh@gmail.com", password: "123123")
-# claudia = User.create!(username: "Claudia Ordonez", email: "claudiaOrdonez@gmail.com", password: "123123")
+james = User.create!(username: "James Smith", email: "jamesSmith@gmail.com", password: "123123")
+paula = User.create!(username: "Paula Ortega", email: "paulaOrtega@gmail.com", password: "123123")
+frederick = User.create!(username: "Frederick Elias", email: "frederickElias@gmail.com", password: "123123")
+rebecca = User.create!(username: "Rebecca Thompson", email: "rebeccaThompson@gmail.com", password: "123123")
+mathew = User.create!(username: "Mathew James", email: "mathewJames@gmail.com", password: "123123")
+sakura = User.create!(username: "Sakura Itou", email: "sakuraItou@gmail.com", password: "123123")
+pedro = User.create!(username: "Pedro Gonzales", email: "pedroGonzales@gmail.com", password: "123123")
+elsa = User.create!(username: "Elsa Disney", email: "elsaDisney@gmail.com", password: "123123")
+greg = User.create!(username: "Greg Masters", email: "gregMasters@gmail.com", password: "123123")
+mason = User.create!(username: "Mason Kamolpechara", email: "masonKamolpechara@gmail.com", password: "123123")
+phyuphyu = User.create!(username: "Phyu Phyu", email: "phyuphyuh@gmail.com", password: "123123")
+claudia = User.create!(username: "Claudia Ordonez", email: "claudiaOrdonez@gmail.com", password: "123123")
 
 
-# #attach photos to users
-# users = User.all
-# gender = 'all'
-# age = 'all'
-# ethnicity = 'all'
-# url = "https://this-person-does-not-exist.com/new?gender=#{gender}&age=#{age}&etnic=#{ethnicity}"
+#attach photos to users
+users = User.all
+gender = 'all'
+age = 'all'
+ethnicity = 'all'
+url = "https://this-person-does-not-exist.com/new?gender=#{gender}&age=#{age}&etnic=#{ethnicity}"
 
-# users.map do |user|
-#   json = URI.open(url).string
-#   src = JSON.parse(json)['src']
-#   photo_url = "https://this-person-does-not-exist.com#{src}"
-#   file = URI.open(photo_url)
-#   user.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
-# end
+users.map do |user|
+  json = URI.open(url).string
+  src = JSON.parse(json)['src']
+  photo_url = "https://this-person-does-not-exist.com#{src}"
+  file = URI.open(photo_url)
+  user.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+end
 
 # #Seeds for books
 
@@ -109,19 +109,19 @@ Interest.destroy_all
 
 #Seeds for movies
 
-url = 'https://api.themoviedb.org/3/movie/popular?api_key=7a1ee3663533611fa054763973c22bda'
-response = JSON.parse(URI.open(url).read)
+# url = 'https://api.themoviedb.org/3/movie/popular?api_key=7a1ee3663533611fa054763973c22bda'
+# response = JSON.parse(URI.open(url).read)
 
-response['results'].each do |movie_hash|
-  interest = Interest.create!(
-    cover: "https://image.tmdb.org/t/p/w500" + movie_hash['poster_path'],
-    title: movie_hash['title'],
-    description: movie_hash['overview'],
-    publishing_year: movie_hash['release_date'],
-    media_type: 'movie',
-    creator: 'unknown',
-    genre: "unknown"
-  )
-  image = URI.open(interest.cover)
-  interest.photo.attach(io: image, filename: 'name.jpg', content_type: 'image/jpg')
-end
+# response['results'].each do |movie_hash|
+#   interest = Interest.create!(
+#     cover: "https://image.tmdb.org/t/p/w500" + movie_hash['poster_path'],
+#     title: movie_hash['title'],
+#     description: movie_hash['overview'],
+#     publishing_year: movie_hash['release_date'],
+#     media_type: 'movie',
+#     creator: 'unknown',
+#     genre: "unknown"
+#   )
+#   image = URI.open(interest.cover)
+#   interest.photo.attach(io: image, filename: 'name.jpg', content_type: 'image/jpg')
+# end
