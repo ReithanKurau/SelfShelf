@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  get '/users', to: "users#index", as: :tagged
+  get '/tagged', to: "users#tagged", as: :tagged
 
   get "/users/:user_id/shelf_interests", to: "shelf_interests#index", as: :user_shelf
   # get "/users/:user_id/shelf_interests?media_type=something", to: "shelf_interests#index"

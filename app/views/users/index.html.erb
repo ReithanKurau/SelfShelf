@@ -1,8 +1,7 @@
-<% @users.each do |u| %>
-  <h2><%= u.username %></h2>
-  <p>
-    <% u.tag_list.each do |tag| %>
-      <%= link_to tag, tagged_path(tag: tag) %>
-    <% end %>
-  </p>
-<% end %>
+<h1><%= @user.username %></h1>
+<h3>Related Users</h3>
+<ul>
+  <% @related_users.each do |u| %>
+    <li><%= u.username %></li>
+  <% end %>
+</ul>
