@@ -43,6 +43,9 @@
           </optgroup> %>
             </select>
           </div>
+          <div class="field">
+            <%= f.input_field :style, collection: User::STYLE, :prompt => 'Select a style' %>
+          </div>
           <div class="actions">
             <%= f.button :submit, "Update User" %>
           </div>
