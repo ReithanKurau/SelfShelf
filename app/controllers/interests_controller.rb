@@ -8,6 +8,7 @@ class InterestsController < ApplicationController
     # end
     if params[:query].present?
       @interests = MovieApiService.new(params[:query]).call
+      @interests += BookApiService.new(params[:query]).call
     else
       @interests = Interest.first(10)
     end

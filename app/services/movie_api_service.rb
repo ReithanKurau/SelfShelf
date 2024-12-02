@@ -10,19 +10,19 @@ class MovieApiService
     json = URI.open(@url).read
     results = JSON.parse(json)
     results['results'].map do |result|
-      interest = Interest.find_by(title: result['title'], publishing_year: result['release_date'].split('-').first)
+      interest = Interest.find_by(title: result['title'], publishing_year: result['release_date']&.split('-')&.first)
       if interest.nil?
         Interest.create(
           title: result['title'],
-          publishing_year: result['release_date'].split('-').first,
+          publishing_year: result['release_date']&.split('-')&.first,
           description: result['overview'],
-          cover: "https://image.tmdb.org/t/p/w500" + result['poster_path'],
+          cover: "https://image.tmdb.org/t/p/w200#{result['poster_path']}",
           media_type: 'movie'
         )
       else
         interest
       end
-    end
+    end.select(&:id)
   end
 end
 # MovieApiService.new(params[:query]).call

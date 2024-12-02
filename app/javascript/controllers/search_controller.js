@@ -26,7 +26,7 @@ export default class extends Controller {
   // }
 
   search(event) {
-    const url = `${event.currentTarget.action}?query=${this.inputTarget.value}`
+    const url = `${event.currentTarget.action}?query=${this.inputTarget.value.split(' ').join('+')}`
     console.log(url);
     fetch(url, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
