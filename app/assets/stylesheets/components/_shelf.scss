@@ -1,16 +1,37 @@
+.shelf-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $light-yellow;
+
+}
+
+.top-shelf{
+  background-image: asset-url('Cute_top_shelf.gif');
+  flex: 1;
+  width: 150px;
+  height: 245px;
+  background-size: cover;
+  background-position: center;
+}
+
+.portrait{
+  background-image: asset-url('Cute_photo.png');
+  flex: 1;
+  width: 150px;
+  height: 245px;
+  background-size: cover;
+}
+
 .shelf {
-  width: 97%;
-  height: 71%;
-  margin: 0 auto;
   padding: 10px;
-  position: absolute;
-  bottom: 0px;
-  left: 0;
-  right: 0;
-  background-image: url('/assets/Bookshelf.png');
+  background-image: asset-url('Cute_bookshelf.gif');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  width: 400px;
+  height: 700px;
 }
 
 .shelf-Pretty {
@@ -27,13 +48,18 @@
 
 
 .shelf-row {
-  width: 88%;
-  height: 120px;
-  margin: 20px auto;
+  width: 77%;
+  height: 93px;
+  margin: 60px auto;
   position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+}
+
+.shelf-row:first-child{
+  margin-top: 100px;
 }
 
 .shelf-row-link {
