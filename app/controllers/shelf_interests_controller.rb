@@ -13,6 +13,7 @@ class ShelfInterestsController < ApplicationController
       @books = @user.interests.where(media_type: 'book')
       @movies = @user.interests.where(media_type: 'movie')
       @albums = @user.interests.where(media_type: 'album')
+
       render "index"
     end
   end

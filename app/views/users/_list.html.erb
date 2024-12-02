@@ -1,0 +1,14 @@
+<div data-user-search-target="list">
+  <% if params[:query].blank? %>
+    <h1 class="h3"><%= pluralize users.count, 'user' %> available</h1>
+  <% else %>
+    <h1 class="h3"><%= pluralize users.count, 'result' %> for <code><%= params[:query] %></code></h1>
+  <% end %>
+  <div class="users">
+    <% users.each do |user| %>
+      <div class="user-card">
+        <h2><%= user.username %> </h2>
+      </div>
+    <% end %>
+  </div>
+</div>
