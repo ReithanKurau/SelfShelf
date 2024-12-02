@@ -3,9 +3,9 @@
   <% else %>
     <h1><%= @user.username %>'s shelf </h1>
   <% end %>
-  
+
 <div class="container">
-  <div class="shelf">
+  <div class="shelf shelf-<%= @user.style %>">
     <div class="shelves">
       <div class="shelf-row">
         <% @books.each do |book|  %>
