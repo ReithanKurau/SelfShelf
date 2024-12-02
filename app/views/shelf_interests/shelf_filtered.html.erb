@@ -1,6 +1,12 @@
 
 <div class="container">
-  <h1>Your <%= params[:media_type].pluralize %></h1>
+  
+  <% if current_user == @user %>
+    <h1 class="text-center">Your <%= params[:media_type].pluralize %></h1>
+  <% else %>
+    <h1 class="text-center"><%= @user.username %>'s <%= params[:media_type].pluralize %> </h1>
+  <% end %>
+
   <div class="cards">
     <% @shelf_interests.each do |shelf_interest|  %>
       <%= render "shelf_filtered_card", shelf_interest: shelf_interest %>

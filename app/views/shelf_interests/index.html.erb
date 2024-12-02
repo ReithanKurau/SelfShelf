@@ -1,3 +1,9 @@
+  <% if current_user == @user %>
+    <h1> Your shelf </h1>
+  <% else %>
+    <h1><%= @user.username %>'s shelf </h1>
+  <% end %>
+  
 <div class="container">
   <div class="shelf">
     <div class="shelves">
@@ -7,7 +13,7 @@
             <span><%= book.title %></span>
           </div>
         <% end %>
-        <%= link_to "", user_shelf_interests_path(current_user, :media_type => "book"), class: "shelf-row-link" %>
+        <%= link_to "", user_shelf_interests_path(@user, :media_type => "book"), class: "shelf-row-link" %>
       </div>
       <div class="shelf-row">
         <% @movies.each do |movie|  %>
@@ -15,7 +21,7 @@
             <span><%= movie.title %></span>
           </div>
         <% end %>
-        <%= link_to "", user_shelf_interests_path(current_user, :media_type => "movie"), class: "shelf-row-link" %>
+        <%= link_to "", user_shelf_interests_path(@user, :media_type => "movie"), class: "shelf-row-link" %>
       </div>
       <div class="shelf-row">
         <% @albums.each do |album|  %>
@@ -23,7 +29,7 @@
             <span><%= album.title %></span>
           </div>
         <% end %>
-        <%= link_to "", user_shelf_interests_path(current_user, :media_type => "album"), class: "shelf-row-link" %>
+        <%= link_to "", user_shelf_interests_path(@user, :media_type => "album"), class: "shelf-row-link" %>
       </div>
     </div>
   </div>
