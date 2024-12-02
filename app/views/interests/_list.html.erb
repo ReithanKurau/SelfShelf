@@ -4,9 +4,26 @@
   <% else %>
     <h1 class="h3"><%= pluralize interests.count, 'result' %> for <code><%= params[:query] %></code></h1>
   <% end %>
-  <div class="interests cards">
-    <% interests.each do |interest| %>
-      <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
+  <div class="interests">
+    <% if books.nil? && movies.nil? %>
+      <div class="cards">
+        <% interests.each do |interest| %>
+          <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
+        <% end %>
+      </div>
+    <% else %>
+      <h2>Books</h2>
+      <div class="cards">
+        <% books.each do |interest| %>
+          <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
+        <% end %>
+      </div>
+      <h2>Movies</h2>
+      <div class="cards">
+        <% movies.each do |interest| %>
+          <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

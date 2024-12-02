@@ -11,7 +11,7 @@
         class="cards"
         data-movies-target="results">
     </div> %>
-    <%= render 'list', interests: @interests, shelf_interest: @shelf_interest %>
+    <%= render 'list', movies: @movies, books: @books, interests: @interests, shelf_interest: @shelf_interest %>
   </div>
   <%# <div class="search-results-books" data-controller="books">
     <form class="row g-2 justify-content-center py-5" data-action="keyup->books#search">
