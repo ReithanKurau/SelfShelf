@@ -10,23 +10,11 @@
                       action: "keyup->user-search#search"
                     } %>
   <% end %>
-  <%# <div data-user-search-target="list">
-  </div> %>
   <%= render "list", users: @users %>
 </div>
-<%# <form class="row g-2 justify-content-center py-5" data-action="keyup->users#search">
-    <input type="text"
-          class="form-control"
-          placeholder="Find username"
-          data-users-target="input">
-  </form>
-  <ul id="esults"
-      class="list-style"
-      data-users-target="results">
-  </ul> %>
 </div>
 <h3>Similar Shelves</h3>
-<ul>
+<ul class="list-unstyled">
   <% @related_users.each do |u| %>
     <li><%= u.username %></li>
   <% end %>
