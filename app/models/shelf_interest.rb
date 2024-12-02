@@ -21,6 +21,6 @@ class ShelfInterest < ApplicationRecord
     tsearch: { prefix: true }
   }
 
-
+  
 
 end

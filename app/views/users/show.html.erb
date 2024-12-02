@@ -4,6 +4,7 @@
   <% else %>
     <img alt="avatar-large mb-3" src="https://cdn-icons-png.freepik.com/256/14024/14024658.png?semt=ais_hybrid" />
   <% end %>
+
   <div class= "profile-info">
     <div class="mt-3">
       <h1><%= @user.username %></h1>
@@ -20,4 +21,43 @@
   </div>
   <p><%= link_to 'Edit Profile', edit_user_path(@user) %></p>
   <p><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></p>
+
+
+<h3>Friends of <strong> <%= @user.username %> </strong> </h3>
+<ul>
+  <% @user.friends.each do |friend| %>
+    <li>
+      <%= friend.username %>
+       <% if @user == current_user %>
+        <%= link_to 'Unfriend',
+        invitation_path(Invitation.find_invitation(@user.id, friend.id)), data: {turbo_method: :delete}  %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<% if @user == current_user %>
+  <h3> <strong> <%= @user.username %>'s Sent Requests </strong> </h3>
+  <ul>
+    <% Invitation.where(user_id: current_user.id, confirmed: false).each do |invitation| %> 
+      <li>
+        <%= User.find(invitation.friend_id).username %> 's friend request pending
+      </li>
+    <% end %>
+  </ul>
+
+  <h3> <strong> <%= @user.username %>'s Received Requests </strong> </h3>
+  <ul>  
+    <% Invitation.where(friend_id: current_user.id, confirmed: false).each do |invitation| %> 
+      <li>
+        <%= User.find(invitation.user_id).username %>
+        <%= simple_form_for invitation do |f| %>
+          <%= f.input :confirmed, as: :hidden, input_html: { value: true } %>
+          <%= f.submit 'Accept', class: 'btn btn-light' %>
+        <% end %>
+        <%= link_to 'Reject Invitation', invitation_path(invitation), data: {turbo_method: :delete}%>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 </div>
