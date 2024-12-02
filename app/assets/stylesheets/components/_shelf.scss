@@ -7,13 +7,24 @@
 
 }
 
-.top-shelf{
+.top-shelf-cute{
   background-image: asset-url('Cute_top_shelf.gif');
   flex: 1;
   width: 150px;
   height: 245px;
   background-size: cover;
   background-position: center;
+  background-image: 100px;
+}
+
+.top-shelf-classic{
+  background-image: asset-url('Classic_top_shelf.gif');
+  flex: 1;
+  width: 120px;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: -90px;
 }
 
 .portrait{
@@ -39,7 +50,7 @@
 }
 
 .shelf-LOL {
-  background-image: asset-url('shelf_picture.jpg');
+  background-image: asset-url('Classic_bookshelf.gif');
 }
 
 .shelf-nil {
