@@ -6,6 +6,7 @@ Comment.destroy_all
 ShelfInterest.destroy_all
 Interest.destroy_all
 User.destroy_all
+Invitation.destroy_all
 
 #Seeds for users
 
