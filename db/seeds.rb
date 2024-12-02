@@ -2,6 +2,7 @@ require "open-uri"
 require 'nokogiri'
 require "json"
 
+Invitation.destroy_all
 Comment.destroy_all
 ShelfInterest.destroy_all
 Interest.destroy_all
