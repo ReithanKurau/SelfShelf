@@ -8,7 +8,7 @@ class ShelfInterestsController < ApplicationController
       end
       render "shelf_filtered"
     else
-      # @interests = current_user.interests.all
+      @interests = current_user.interests.all
       @books = current_user.interests.where(media_type: 'book')
       @movies = current_user.interests.where(media_type: 'movie')
       @albums = current_user.interests.where(media_type: 'album')

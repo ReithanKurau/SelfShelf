@@ -1,5 +1,25 @@
 <h1><%= @user.username %></h1>
 
+<div class="search-results-users" data-controller="user-search">
+  <%= form_with url: users_path, method: :get, html: { class: 'row g-2 justify-content-center mb-5', data: { user_search_target: 'form' } } do |f| %>
+    <%= f.text_field :query,
+                     class: "form-control",
+                     placeholder: 'Find username',
+                     value: params[:query],
+                     data: {
+                      user_search_target: 'input',
+                      action: "keyup->user-search#search"
+                    } %>
+  <% end %>
+  <%= render "list", users: @users %>
+</div>
+</div>
+<h3>Similar Shelves</h3>
+<ul class="list-unstyled">
+  <% @related_users.each do |u| %>
+    <li><%= u.username %></li>
+
+
 <h3>Related Users</h3>
 
 <ul>
@@ -15,5 +35,6 @@
         <% end %>
     </li>
     <div class="clear"></div>
+
   <% end %>
 </ul>
