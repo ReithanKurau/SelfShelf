@@ -1,0 +1,12 @@
+<div data-search-target="results">
+  <% if params[:query].blank? %>
+    <h1 class="h3"><%= pluralize interests.count, 'result' %> available</h1>
+  <% else %>
+    <h1 class="h3"><%= pluralize interests.count, 'result' %> for <code><%= params[:query] %></code></h1>
+  <% end %>
+  <div class="interests cards">
+    <% interests.each do |interest| %>
+      <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
+    <% end %>
+  </div>
+</div>

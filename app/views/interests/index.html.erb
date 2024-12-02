@@ -1,18 +1,19 @@
 <div class="container">
   <h1>Search Results</h1>
-  <div class="search-results-movies" data-controller="movies">
-    <form class="row g-2 justify-content-center py-5" data-action="keyup->movies#search">
+  <div class="search-results-interests" data-controller="search">
+    <form class="row g-2 justify-content-center py-5" data-action="keyup->search#search">
       <input type="text"
             class="form-control"
-            placeholder="Find movie"
-            data-movies-target="input">
+            placeholder="Find books, movies"
+            data-search-target="input">
     </form>
-    <div id="results"
+    <%# <div id="results"
         class="cards"
         data-movies-target="results">
-    </div>
+    </div> %>
+    <%= render 'list', interests: @interests, shelf_interest: @shelf_interest %>
   </div>
-  <div class="search-results-books" data-controller="books">
+  <%# <div class="search-results-books" data-controller="books">
     <form class="row g-2 justify-content-center py-5" data-action="keyup->books#search">
       <input type="text"
             class="form-control"
@@ -23,5 +24,5 @@
         class="cards"
         data-books-target="results">
     </div>
-  </div>
+  </div> %>
 </div>
