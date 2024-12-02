@@ -14,11 +14,12 @@
     </div>
     <h1 class="m-1 p-1"><%= @interest.title %></h1>
     <div class="cover">
-      <% if @interest.photo.attached? %>
-        <%= cl_image_tag @interest.photo.key, class: "w-100" %>
-      <% else %>
-        <%= image_tag 'no_cover.gif', class: "w-100" %>
-      <% end %>
+      <%# <% if @interest.photo.attached? %>
+      <%# <%= cl_image_tag @interest.photo.key, class: "w-100" %>
+      <%# else %>
+      <%# <%= image_tag 'no_cover.gif', class: "w-100" %>
+      <%# end %>
+      <%= image_tag @interest.cover %>
     </div>
     <div class="shelf_interest-details">
       <p class="fw-semibold"><i class="fa-solid fa-user"></i> <%= @interest.creator %></p>
@@ -28,4 +29,5 @@
     <div class="summary m-1 p-1">
       <p> <%= @interest.description %> </p>
     </div>
+    <p><%= link_to 'Back to Search', interests_path, class: "text-decoration-none" %></p>
   </div>

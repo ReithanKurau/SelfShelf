@@ -16,7 +16,7 @@ class BookApiService
           title: result['title'],
           publishing_year: result['first_publish_year'],
           description: 'none',
-          cover: "https://covers.openlibrary.org/b/isbn/#{result['isbn'].first}-S.jpg",
+          cover: "https://covers.openlibrary.org/b/isbn/#{result['isbn']}-S.jpg",
           media_type: 'book'
         )
       else
