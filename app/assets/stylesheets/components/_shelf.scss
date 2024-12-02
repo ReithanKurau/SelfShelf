@@ -7,7 +7,7 @@
   bottom: 0px;
   left: 0;
   right: 0;
-  // background-image: url('/assets/Bookshelf.png');
+  background-image: url('/assets/Bookshelf.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -20,6 +20,11 @@
 .shelf-LOL {
   background-image: url('/assets/shelf_picture.jpg');
 }
+
+.shelf-nil {
+  background-image: url('/assets/Bookshelf.png');
+}
+
 
 .shelf-row {
   width: 88%;
