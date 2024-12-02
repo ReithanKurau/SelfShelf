@@ -7,7 +7,7 @@ class InvitationsController < ApplicationController
   def create
     id1 = params[:invitation][:user_id]
     id2 = params[:invitation][:friend_id]
-    @invitation = Invitation.new(user_id: id2, friend_id: id1)
+    @invitation = Invitation.new(user_id: id1, friend_id: id2)
     if @invitation.save
       redirect_to users_path
     else
