@@ -52,13 +52,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_01_050244) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "friendships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "interests", force: :cascade do |t|
     t.string "title"
     t.string "creator"

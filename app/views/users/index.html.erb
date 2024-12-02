@@ -1,5 +1,4 @@
 <h1><%= @user.username %></h1>
-
 <div class="search-results-users" data-controller="user-search">
   <%= form_with url: users_path, method: :get, html: { class: 'row g-2 justify-content-center mb-5', data: { user_search_target: 'form' } } do |f| %>
     <%= f.text_field :query,
@@ -17,14 +16,12 @@
 <ul class="list-unstyled">
   <% @related_users.each do |u| %>
     <li><%= u.username %></li>
-
-
-<h3>Related Users</h3>
-
-<ul>
-<% User.all.each do |u| %>
-    <li>
-      <%= u.username %>
+  <% end %>
+  <h3>Related Users</h3>
+  <ul>
+    <% User.all.each do |u| %>
+      <li>
+        <%= u.username %>
         <% if signed_in? && !Invitation.reacted?(current_user.id, u.id) && current_user != u %>
           <%= simple_form_for @invitation do |f| %>
             <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
@@ -32,8 +29,7 @@
             <button type="submit"> <i class="fa-solid fa-plus fa-2xs"></i> </button>
           <% end %>
         <% end %>
-    </li>
-    <div class="clear"></div>
-
-  <% end %>
-</ul>
+      </li>
+      <div class="clear"></div>
+    <% end %>
+  </ul>
