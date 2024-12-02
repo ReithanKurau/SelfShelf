@@ -1,29 +1,39 @@
-<div class="container">
-  <% if @user.photo.attached? %>
-    <%= cl_image_tag @user.photo.key, class: "avatar-large mb-3" %>
-  <% else %>
-    <img alt="avatar-large mb-3" src="https://cdn-icons-png.freepik.com/256/14024/14024658.png?semt=ais_hybrid" />
-  <% end %>
-
-  <div class= "profile-info">
-    <div class="mt-3">
-      <h1><%= @user.username %></h1>
-    </div>
-    <div>
-      <p><%= @user.bio %></p>
-    </div>
-    <div>
-      <h6>Tags:</h6>
-      <% @user.tag_list.each do |tag| %>
-        <%= link_to tag, tagged_path(tag: tag) %>
+<ul class="nav tabs-underlined" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <span class="nav-link tab-underlined active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" role="tab" aria-controls="profile-tab-pane" aria-selected="true">Profile</span>
+  </li>
+  <li class="nav-item" role="presentation">
+    <span class="nav-link tab-underlined" id="friends-tab" data-bs-toggle="tab" data-bs-target="#friends-tab-pane" role="tab" aria-controls="friends-tab-pane" aria-selected="false">Friends</span>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade py-3 show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+    <div class="container">
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, class: "avatar-large mb-3" %>
+      <% else %>
+        <img alt="avatar-large mb-3" src="https://cdn-icons-png.freepik.com/256/14024/14024658.png?semt=ais_hybrid" />
       <% end %>
+      <div class= "profile-info">
+        <div class="mt-3">
+          <h1><%= @user.username %></h1>
+        </div>
+        <div>
+          <p><%= @user.bio %></p>
+        </div>
+      <div>
+      <h6>Tags:</h6>
+        <% @user.tag_list.each do |tag| %>
+          <%= link_to tag, tagged_path(tag: tag) %>
+        <% end %>
+        </div>
+      </div>
+      <p><%= link_to 'Edit Profile', edit_user_path(@user) %></p>
+      <p><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></p>
     </div>
   </div>
-  <p><%= link_to 'Edit Profile', edit_user_path(@user) %></p>
-  <p><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></p>
-
-
-<h3>Friends of <strong> <%= @user.username %> </strong> </h3>
+<div class="tab-pane fade py-3" id="friends-tab-pane" role="tabpanel" aria-labelledby="friends-tab" tabindex="0">
+     <h3>Friends of <strong> <%= @user.username %> </strong> </h3>
 <ul>
   <% @user.friends.each do |friend| %>
     <li>
@@ -60,4 +70,17 @@
     <% end %>
   </ul>
 <% end %>
+  </div>
+  <div class="tab-pane fade py-3" id="requests-tab-pane" role="tabpanel" aria-labelledby="requests-tab" tabindex="0">
+    This is the content for the Requests tab. Notice in the tab HTML there is a href="#requests". This is pointing to the id of this div..
+  </div>
+  <div class="tab-pane fade py-3" id="conversations-tab-pane" role="tabpanel" aria-labelledby="conversations-tab" tabindex="0">
+    This is the content for the Conversations tab. Notice in the tab HTML there is a href="#converstations". This is pointing to the id of this div.
+  </div>
+</div>
+
+  </div>
+  <div class="tab-pane fade py-3" id="conversations-tab-pane" role="tabpanel" aria-labelledby="conversations-tab" tabindex="0">
+    This is the content for the Conversations tab. Notice in the tab HTML there is a href="#converstations". This is pointing to the id of this div.
+  </div>
 </div>
