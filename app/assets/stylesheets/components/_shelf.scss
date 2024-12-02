@@ -1,20 +1,23 @@
 .shelf {
-  width: 84%;
-  height: 64%;
+  width: 97%;
+  height: 71%;
   margin: 0 auto;
   padding: 10px;
-  background-color: $light-brown;
   position: absolute;
   bottom: 0px;
   left: 0;
   right: 0;
+  background-image: url('/assets/Bookshelf.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
 
 .shelf-row {
   width: 88%;
   height: 120px;
   margin: 20px auto;
-  background-color: $light-yellow;
   position: relative;
   display: flex;
   justify-content: flex-start;
