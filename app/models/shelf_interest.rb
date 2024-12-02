@@ -2,16 +2,7 @@ class ShelfInterest < ApplicationRecord
   belongs_to :user
   belongs_to :interest
   has_many :comments, dependent: :destroy
-
   validates :interest, uniqueness: { scope: :user }
-  validates :title, presence: true
-  validates :creator, presence: true
-  validates :publishing_year, presence: true
-  validates :genre, presence: true
-  validates :media_type, presence: true
-  MEDIA_TYPE = ["book", "movie", "album"]
-  validates :media_type, inclusion: { in: MEDIA_TYPE }
-
   has_one_attached :photo
 
   include PgSearch::Model
@@ -21,6 +12,6 @@ class ShelfInterest < ApplicationRecord
     tsearch: { prefix: true }
   }
 
-  
+
 
 end

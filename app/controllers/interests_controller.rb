@@ -6,6 +6,15 @@ class InterestsController < ApplicationController
     # else
     #   @interests = Interest.all
     # end
+    if params[:query].present?
+      @interests = MovieApiService.new(params[:query]).call
+    else
+      @interests = Interest.first(10)
+    end
+    respond_to do |format|
+      format.html
+      format.text { render partial: 'list', locals: { interests: @interests, shelf_interest: @shelf_interest }, formats: [:html] }
+    end
   end
 
   def show
