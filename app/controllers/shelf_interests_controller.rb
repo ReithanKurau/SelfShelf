@@ -1,17 +1,19 @@
 class ShelfInterestsController < ApplicationController
   # skip_before_action :authenticate_user!, only: :index
   def index
+    @user = User.find(params[:user_id])
     if params[:media_type].present?
-      @interests = current_user.interests.where(media_type: params[:media_type])
-      @shelf_interests = current_user.shelf_interests.select do |shelf_interest|
+      @interests = @user.interests.where(media_type: params[:media_type])
+      @shelf_interests = @user.shelf_interests.select do |shelf_interest|
         shelf_interest.interest.media_type == params[:media_type]
       end
       render "shelf_filtered"
     else
       # @interests = current_user.interests.all
-      @books = current_user.interests.where(media_type: 'book')
-      @movies = current_user.interests.where(media_type: 'movie')
-      @albums = current_user.interests.where(media_type: 'album')
+      @books = @user.interests.where(media_type: 'book')
+      @movies = @user.interests.where(media_type: 'movie')
+      @albums = @user.interests.where(media_type: 'album')
+
       render "index"
     end
   end

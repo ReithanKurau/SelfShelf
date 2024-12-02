@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  resources :invitations, only: [:update, :create, :destroy]
+
   get '/tagged', to: "users#tagged", as: :tagged
 
   get "/users/:user_id/shelf_interests", to: "shelf_interests#index", as: :user_shelf
