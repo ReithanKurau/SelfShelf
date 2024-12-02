@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="shelf" id= "bookshelf">
+    <div class="shelf shelf-<%= @user.style %>" id= "bookshelf">
       <div class="shelf-row">
         <% @books.each do |book|  %>
           <div class="book-item">
