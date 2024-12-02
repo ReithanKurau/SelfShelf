@@ -13,6 +13,10 @@ class User < ApplicationRecord
 
   acts_as_taggable_on :tags
 
+
+  USER_TAGS = {Books: ["fiction", "non-fiction", "horror", "fantasy", "mystery", "romance", "young adult"],
+              Movies: ["comedy", "horror", "action", "sci-fi", "animation", "family"]}
+
   def friends
     friends_i_sent_invitations = Invitation.where(user_id: id, confirmed: true).pluck(:friend_id)
     friends_i_got_invitations = Invitation.where(friend_id: id, confirmed: true).pluck(:user_id)
@@ -27,4 +31,5 @@ class User < ApplicationRecord
   def send_invitation(user)
     invitations.create(friend_id: user.id)
   end
+
 end
