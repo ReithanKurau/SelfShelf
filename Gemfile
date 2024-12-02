@@ -54,6 +54,7 @@ gem 'cloudinary', '~> 1.16.0'
 gem "pg_search"
 gem 'acts-as-taggable-on'
 
+
 group :development, :test do
   gem 'dotenv-rails', groups: [:development, :test]
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
