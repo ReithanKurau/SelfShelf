@@ -3,7 +3,7 @@ require 'open-uri'
 class BookApiService
   def initialize(query)
     @query = query
-    @url = "https://openlibrary.org/search.json?q=#{query}&fields=title,isbn"
+    @url = "https://openlibrary.org/search.json?q=#{query}&fields=title,isbn,first_publish_year"
   end
 
   def call
@@ -16,7 +16,7 @@ class BookApiService
           title: result['title'],
           publishing_year: result['first_publish_year'],
           description: 'none',
-          cover: "https://covers.openlibrary.org/b/isbn/#{result['isbn[randIndex]']}-S.jpg",
+          cover: "https://covers.openlibrary.org/b/isbn/#{result['isbn'].first}-S.jpg",
           media_type: 'book'
         )
       else
