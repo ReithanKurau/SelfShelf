@@ -4,7 +4,6 @@ class UsersController < ApplicationController
     @related_users = @user.find_related_tags
 
     @users = []
-
     if params[:query].present?
       @users = User.where('username ILIKE ?', "%#{params[:query]}%")
     end
