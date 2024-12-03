@@ -124,3 +124,37 @@
     text-align: center;
   }
 }
+
+.interest-item {
+  width: 100px;
+  height: 20px;
+  background-color: $light-blue;
+  transform: rotate(90deg);
+  font-size: 10px;
+  color: $jet;
+  margin-right: -64px;
+  margin-left: -10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  line-height: 2;
+}
+
+.other-shelf {
+  position: relative;
+  background-color: $light-yellow;
+}
+
+.add-friend {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: $lighter-jet;
+  transition: color 0.35s;
+}
+
+.add-friend:hover {
+  color: $jet;
+}
