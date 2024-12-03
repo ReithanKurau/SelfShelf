@@ -21,21 +21,24 @@
   <div class="comments-section">
     <% if @shelf_interest.comments.any? %>
       <h2>Overall</h2>
-      <div class="comments-list mt-4">
-        <% @shelf_interest.comments.each do |comment| %>
-          <div class="comment">
-            <p><%= comment.content %></p>
-            <p>by: <strong><%= comment.user.username %></strong> </p>
-          </div>
-        <% end %>
+      <div class= "center-text">
+        <div class="comments-list">
+          <% @shelf_interest.comments.each do |comment| %>
+            <div class="comment">
+              <p><%= comment.content %></p>
+              <p>by: <strong><%= comment.user.username %></strong> </p>
+            </div>
+          <% end %>
+        </div>
       </div>
     <% else %>
-    </div>
-    <div><%= simple_form_for [@shelf_interest, @comment] do |f| %>
-        <div class="form-group">
-          <%= f.input :content, label: "Add a comment", input_html: { class: "form-control", maxlength: 90 } %>
-        </div>
-        <%= f.submit "Post Comment", class: "btn btn-primary" %>
+      <div class= "center-text form">
+        <%= simple_form_for [@shelf_interest, @comment] do |f| %>
+          <div class="form-group">
+            <%= f.input :content, label: "Add a comment", input_html: { class: "form-control", maxlength: 90 } %>
+          </div>
+          <%= f.submit "Post Comment", class: "btn btn-primary" %>
+        <% end %>
       <% end %>
-    <% end %></div>
-</div>
+    </div>
+  </div>
