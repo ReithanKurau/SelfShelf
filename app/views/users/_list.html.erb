@@ -26,24 +26,32 @@
       <div class="row">
         <div class="similar-users">
           <h3>Similar Shelves</h3>
-          <ul>
-          </ul>
-          <ul class="list-unstyled">
+          <div class="related-users">
             <% @related_users.each do |u| %>
-              <li>
+              <div class="name-add d-flex justify-content-between">
                 <h3><%= u.username %></h3>
                 <span>
                   <% if signed_in? && !Invitation.reacted?(current_user.id, u.id) && current_user != u %>
                     <%= simple_form_for @invitation do |f| %>
                       <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
                       <%= f.input :friend_id, as: :hidden, input_html: { value: u.id } %>
-                      <button type="submit"> <i class="fa-solid fa-plus fa-2xs"></i> </button>
+                      <button type="submit" class="star-rating"> <i class="fa-solid fa-plus fa-2xs"></i> </button>
                     <% end %>
                   <% end %>
                 </span>
-              </li>
+              </div>
+              <div class="user-tags">
+                <%= u.tag_list %>
+              </div>
+              <div class="shelf-section">
+                <%= u.interests.each do |i|%>
+                  <div class="interest-item">
+                    <span><%= i.title %></span>
+                  </div>
+                <% end %>
+              </div>
             <% end %>
-          </ul>
+          </div>
         </div>
       </div>
     <% end %>

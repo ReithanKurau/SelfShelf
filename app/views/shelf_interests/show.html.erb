@@ -9,7 +9,8 @@
     <% if @shelf_interest.interest.photo.attached? %>
       <%= cl_image_tag @shelf_interest.interest.photo.key, class: "w-100" %>
     <% else %>
-      <%= image_tag 'no_cover.gif', class: "w-100" %>
+      <%# <%= image_tag 'no_cover.gif', class: "w-100" %>
+      <%= image_tag @shelf_interest.interest.cover %>
     <% end %>
     <%= link_to "", edit_shelf_interest_path(@shelf_interest), class: "shelf-row-link" %>
   </div>
