@@ -6,38 +6,37 @@
   </div>
   <h1 class="m-1 p-1"><%= @shelf_interest.interest.title %></h1>
   <div class="cover">
+
     <% if @shelf_interest.interest.photo.attached? %>
       <%= cl_image_tag @shelf_interest.interest.photo.key, class: "w-100" %>
     <% else %>
       <%# <%= image_tag 'no_cover.gif', class: "w-100" %>
       <%= image_tag @shelf_interest.interest.cover %>
+
     <% end %>
-    <%= link_to "", edit_shelf_interest_path(@shelf_interest), class: "shelf-row-link" %>
   </div>
   <div class="shelf_interest-details">
-    <p class="fw-semibold"><i class="fa-solid fa-calendar-days"></i>Started in:</p>
-    <p class="fw-semibold"><i class="fa-solid fa-calendar-days"></i>Finished in:</p>
-  </div>
-  <div class="summary m-1 p-1">
-    <p>The Little Prince follows a pilot stranded in the desert who meets a boy from asteroid B-612. The Little Prince shares tales of his travels to planets, each home to peculiar adults, and reflects on love, loneliness, and the meaning of life. Central to his story is his devotion to a rose on his home planet. The novella emphasizes seeing with the heart, valuing relationships, and the wonder of childhood imagination.</p>
+    <p class="fw-semibold"><i class="fa-solid fa-moon"></i> Started in:</p>
+    <p class="fw-semibold"><i class="fa-solid fa-sun"></i> Finished in:</p>
   </div>
   <div class="comments-section">
     <% if @shelf_interest.comments.any? %>
-      <h2>User Comment</h2>
+      <h2>Overall</h2>
       <div class="comments-list mt-4">
         <% @shelf_interest.comments.each do |comment| %>
           <div class="comment">
-            <p><strong><%= comment.user.username %>:</strong> <%= comment.content %></p>
+            <p><%= comment.content %></p>
+            <p>by: <strong><%= comment.user.username %></strong> </p>
           </div>
         <% end %>
       </div>
     <% else %>
-      <%= simple_form_for [@shelf_interest, @comment] do |f| %>
+    </div>
+    <div><%= simple_form_for [@shelf_interest, @comment] do |f| %>
         <div class="form-group">
           <%= f.input :content, label: "Add a comment", input_html: { class: "form-control", maxlength: 90 } %>
         </div>
         <%= f.submit "Post Comment", class: "btn btn-primary" %>
       <% end %>
-    <% end %>
-  </div>
+    <% end %></div>
 </div>
