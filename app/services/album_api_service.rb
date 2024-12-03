@@ -21,10 +21,10 @@ class AlbumApiService
   #         cover: "coverartarchive.org/release/#{result['id']}/front",
   #         media_type: 'album'
   #       )
-      
+
     artists = RSpotify::Artist.search(@query)
     artist = artists.first
-    albums = artist.albums 
+    albums = artist.albums
     albums.map do |album|
       interest = Interest.find_by(title: album.name)
       if interest.nil?

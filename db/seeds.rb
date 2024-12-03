@@ -10,18 +10,18 @@ User.destroy_all
 
 #Seeds for users
 
-james = User.create!(username: "James Smith", email: "jamesSmith@gmail.com", password: "123123", style: "Pretty")
-paula = User.create!(username: "Paula Ortega", email: "paulaOrtega@gmail.com", password: "123123", style: "Pretty")
-frederick = User.create!(username: "Frederick Elias", email: "frederickElias@gmail.com", password: "123123", style: "Pretty")
-rebecca = User.create!(username: "Rebecca Thompson", email: "rebeccaThompson@gmail.com", password: "123123", style: "Pretty")
-mathew = User.create!(username: "Mathew James", email: "mathewJames@gmail.com", password: "123123", style: "Pretty")
-sakura = User.create!(username: "Sakura Itou", email: "sakuraItou@gmail.com", password: "123123", style: "Pretty")
-pedro = User.create!(username: "Pedro Gonzales", email: "pedroGonzales@gmail.com", password: "123123", style: "Pretty")
-elsa = User.create!(username: "Elsa Disney", email: "elsaDisney@gmail.com", password: "123123", style: "Pretty")
-greg = User.create!(username: "Greg Masters", email: "gregMasters@gmail.com", password: "123123", style: "Pretty")
-mason = User.create!(username: "Mason Kamolpechara", email: "masonKamolpechara@gmail.com", password: "123123", style: "Pretty")
-phyuphyu = User.create!(username: "Phyu Phyu", email: "phyuphyuh@gmail.com", password: "123123", style: "Pretty")
-claudia = User.create!(username: "Claudia Ordonez", email: "claudiaOrdonez@gmail.com", password: "123123", style: "Pretty")
+james = User.create!(username: "James Smith", email: "jamesSmith@gmail.com", password: "123123", style: "Cute")
+paula = User.create!(username: "Paula Ortega", email: "paulaOrtega@gmail.com", password: "123123", style: "Cute")
+frederick = User.create!(username: "Frederick Elias", email: "frederickElias@gmail.com", password: "123123", style: "Cute")
+rebecca = User.create!(username: "Rebecca Thompson", email: "rebeccaThompson@gmail.com", password: "123123", style: "Cute")
+mathew = User.create!(username: "Mathew James", email: "mathewJames@gmail.com", password: "123123", style: "Cute")
+sakura = User.create!(username: "Sakura Itou", email: "sakuraItou@gmail.com", password: "123123", style: "Cute")
+pedro = User.create!(username: "Pedro Gonzales", email: "pedroGonzales@gmail.com", password: "123123", style: "Cute")
+elsa = User.create!(username: "Elsa Disney", email: "elsaDisney@gmail.com", password: "123123", style: "Cute")
+greg = User.create!(username: "Greg Masters", email: "gregMasters@gmail.com", password: "123123", style: "Cute")
+mason = User.create!(username: "Mason Kamolpechara", email: "masonKamolpechara@gmail.com", password: "123123", style: "Cute")
+phyuphyu = User.create!(username: "Phyu Phyu", email: "phyuphyuh@gmail.com", password: "123123", style: "Cute")
+claudia = User.create!(username: "Claudia Ordonez", email: "claudiaOrdonez@gmail.com", password: "123123", style: "Cute")
 
 
 #attach photos to users
