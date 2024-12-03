@@ -22,8 +22,8 @@ class BookApiService
           title: result['volumeInfo']['title'],
           publishing_year: result['volumeInfo']['publishedDate'],
           description: result['volumeInfo']['description'],
-          creator: result['volumeInfo']['authors'].join(', '),
-          genre: result['volumeInfo']['categories'].join(', '),
+          # creator: result['volumeInfo']['authors'].join(', '),
+          # genre: result['volumeInfo']['categories'].join(', '),
           cover: "http://books.google.com/books/content?id=#{result['id']}&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
           media_type: 'book'
         )
