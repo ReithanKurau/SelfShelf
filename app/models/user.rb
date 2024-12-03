@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   acts_as_taggable_on :tags
 
-  STYLE = ["Pretty", "LOL"]
+  STYLE = ["Cute", "Classic"]
   USER_TAGS = {Books: ["fiction", "non-fiction", "horror", "fantasy", "mystery", "romance", "young adult"],
               Movies: ["comedy", "horror", "action", "sci-fi", "animation", "family"]}
 
