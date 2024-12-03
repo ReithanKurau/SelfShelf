@@ -13,12 +13,7 @@
       <%= image_tag @shelf_interest.interest.cover %>
     <% end %>
   </div>
-  <div class="shelf_interest-details">
-    <p class="fw-semibold"><i class="fa-solid fa-user"></i> <%= @shelf_interest.interest.creator %></p>
-    <p class="fw-semibold"><i class="fa-solid fa-calendar-days"></i> <%= @shelf_interest.interest.publishing_year %></p>
-    <span class="badge rounded-pill text-bg-secondary"> <%= @shelf_interest.interest.genre %></span>
-  </div>
-  <div class="summary m-1 p-1">
+  <div class="summary">
     <p><%= @shelf_interest.description%></p>
     <p class="fw-semibold"><i class="fa-solid fa-moon"></i> Started in:</p>
     <p class="fw-semibold"><i class="fa-solid fa-sun"></i> Finished in:</p>
