@@ -53,6 +53,7 @@ gem "sassc-rails"
 gem 'cloudinary', '~> 1.16.0'
 gem "pg_search"
 gem 'acts-as-taggable-on'
+gem 'rspotify'
 
 
 group :development, :test do
