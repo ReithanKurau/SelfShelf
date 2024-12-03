@@ -6,3 +6,6 @@ import "bootstrap"
 
 import UserSearchController from "./controllers/user_search_controller.js"
 Stimulus.register("users", UserSearchController)
+
+import "trix"
+import "@rails/actiontext"

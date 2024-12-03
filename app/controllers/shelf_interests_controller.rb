@@ -52,7 +52,7 @@ class ShelfInterestsController < ApplicationController
   private
 
   def shelf_interest_params
-    params.require(:shelf_interest).permit(:interest_id, :journal)
+    params.require(:shelf_interest).permit(:interest_id, :rich_journal)
   end
 
 end
