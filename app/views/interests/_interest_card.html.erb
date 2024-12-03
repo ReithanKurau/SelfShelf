@@ -1,5 +1,5 @@
 <div class="card-item d-flex p-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path interest.cover %>')">
-  <h4><%= interest.title %></h4>
+  <h5><%= interest.title %></h5>
   <%= link_to "", interest_path(interest), class: "card-item-link" %>
   <div class="position-absolute bottom-0 start-0">
     <%= simple_form_for [shelf_interest] do |f| %>
