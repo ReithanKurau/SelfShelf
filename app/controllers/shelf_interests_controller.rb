@@ -36,9 +36,23 @@ class ShelfInterestsController < ApplicationController
     @comment = Comment.new
   end
 
+  def edit
+    @shelf_interest = ShelfInterest.find(params[:id])
+  end
+
+  def update
+    @shelf_interest = ShelfInterest.find(params[:id])
+    if @shelf_interest.update(shelf_interest_params)
+      redirect_to user_shelf_interest_path(current_user, @shelf_interest), notice: 'Journal was successfully updated.'
+    else
+      render 'shelf_interests/show', status: :unprocessable_entity
+    end
+  end
+
   private
 
   def shelf_interest_params
     params.require(:shelf_interest).permit(:interest_id, :rich_journal)
   end
+
 end
