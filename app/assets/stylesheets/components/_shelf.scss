@@ -10,11 +10,11 @@
 .top-shelf-cute{
   background-image: asset-url('Cute_top_shelf.gif');
   flex: 1;
-  width: 150px;
+  width: 400px;
   height: 245px;
   background-size: cover;
   background-position: center;
-  background-image: 100px;
+  margin-top: 30px;
 }
 
 .top-shelf-classic{
@@ -113,7 +113,6 @@
   height: 70px;
   border-radius: 50%;
   background-color: $lighter-jet;
-  // transform: rotate(90deg);
   font-size: 10px;
   color: $light-cream;
   margin-right: -10px;
@@ -124,9 +123,4 @@
   span {
     text-align: center;
   }
-}
-
-.comments-section {
-  background-color: $light-green;
-  padding: 5px;
 }

@@ -1,0 +1,5 @@
+<h1>Your journal:</h1>
+<%= simple_form_for [@shelf_interest] do |f| %>
+  <%= f.input :journal, label: "Write something" %>
+  <%= f.submit "Post Comment", class: "btn btn-primary" %>
+<% end %>
