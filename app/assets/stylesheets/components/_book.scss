@@ -17,6 +17,12 @@
   }
 
 
+  &.explore {
+    justify-content: flex-start;
+  }
+}
+
+
   summary {
     max-width: 600px;
     background-color: pink;
