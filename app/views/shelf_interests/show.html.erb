@@ -5,14 +5,15 @@
     </button>
   </div>
   <h1 class="m-1 p-1"><%= @shelf_interest.interest.title %></h1>
-  <div class="cover">
-    <% if @shelf_interest.interest.photo.attached? %>
-      <%= cl_image_tag @shelf_interest.interest.photo.key, class: "w-100" %>
-    <% else %>
-      <%# <%= image_tag 'no_cover.gif', class: "w-100" %>
-      <%= image_tag @shelf_interest.interest.cover %>
-    <% end %>
-  </div>
+  <%= link_to edit_shelf_interest_path(@shelf_interest) do %>
+    <div class="cover">
+      <% if @shelf_interest.interest.photo.attached? %>
+        <%= cl_image_tag @shelf_interest.interest.photo.key, class: "w-100" %>
+      <% else %>
+        <%= image_tag @shelf_interest.interest.cover, class: "w-100" %>
+      <% end %>
+    </div>
+  <% end %>
   <div class="summary">
     <p><%= @shelf_interest.description%></p>
     <p class="fw-semibold"><i class="fa-solid fa-moon"></i> Started in:</p>
