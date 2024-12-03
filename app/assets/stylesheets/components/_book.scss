@@ -7,7 +7,6 @@
   background-color:#FAEDCD;
   padding-bottom: 70px;
 
-
   h1{
     font-size: 40px;
     text-shadow: 4px 4px pink;
@@ -17,43 +16,28 @@
     text-align: justify;
   }
 
-}
 
-.interest-details{
-  background-color: #C4F9FF;
-  border-radius: 10%;
+  summary {
+    max-width: 600px;
+    background-color: pink;
+    border-radius: 10%;
 
-  p{
-    padding: 2%;
+    p{
+      padding: 5%;
+    }
   }
 }
 
 .cover img {
   max-width: 100%;
-  height: auto;
-  border-radius: 10%;
-}
-
-.summary {
-  max-width: 600px;
-  background-color: pink;
-  border-radius: 10%;
-
-  p{
-    padding: 5%;
-  }
-}
-
-.p-1{
-  align-items: flex-end;
+  height: 244px;
+  border-radius: 50%;
 }
 
 .comments-section {
   max-width: 600px;
   background-color: pink;
   border-radius: 10%;
-}
-
-.shelf_interest-details{
-
+  width: 300px;
+  padding: 30px;
 }
