@@ -1,9 +1,4 @@
 <div data-search-target="results">
-  <% if params[:query].blank? %>
-    <h1 class="h3"><%= pluralize interests.count, 'result' %> available</h1>
-  <% else %>
-    <h1 class="h3"><%= pluralize interests.count, 'result' %> for <code><%= params[:query] %></code></h1>
-  <% end %>
   <div class="interests">
     <% if books.nil? && movies.nil? %>
       <div class="cards">
@@ -13,12 +8,22 @@
       </div>
     <% else %>
       <h2>Books</h2>
+      <% if params[:query].blank? %>
+        <h6 class="h3"><%= pluralize books.count, 'result' %> available</h6>
+      <% else %>
+        <h6 class="h3"><%= pluralize books.count, 'result' %> for <code><%= params[:query] %></code></h6>
+      <% end %>
       <div class="cards">
         <% books.each do |interest| %>
           <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
         <% end %>
       </div>
-      <h2>Movies</h2>
+      <h2 class="mt-5">Movies</h2>
+      <% if params[:query].blank? %>
+        <h6 class="h3"><%= pluralize movies.count, 'result' %> available</h6>
+      <% else %>
+        <h6 class="h3"><%= pluralize movies.count, 'result' %> for <code><%= params[:query] %></code></h6>
+      <% end %>
       <div class="cards">
         <% movies.each do |interest| %>
           <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
