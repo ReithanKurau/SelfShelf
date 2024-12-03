@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   resources :interests, only: [:index, :show, :new, :create, :update]
-  resources :shelf_interests, only: [:create, :update, :destroy] do
+  resources :shelf_interests, only: [:create, :edit, :update, :destroy] do
     resources :comments, only: [:create]
   end
 
