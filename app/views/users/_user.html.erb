@@ -1,0 +1,27 @@
+<div class="other-shelf row text-center">
+  <div class="name-add d-flex justify-content-between align-items-center">
+    <h3><%= u.username %></h3>
+    <span>
+      <% if signed_in? && !Invitation.reacted?(current_user.id, u.id) && current_user != u %>
+        <%= simple_form_for invitation do |f| %>
+          <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+          <%= f.input :friend_id, as: :hidden, input_html: { value: u.id } %>
+          <button type="submit" class="add-friend"> <i class="fa-solid fa-plus fa-2xs"></i> <span>Add friend</span> </button>
+        <% end %>
+      <% end %>
+    </span>
+  </div>
+  <div class="user-tags">
+    <% u.tag_list.each do |t| %>
+      <span class="badge rounded-pill bg-primary text-dark"><%= t %></span>
+    <% end %>
+  </div>
+  <div class="shelf-row">
+    <% u.interests.each do |i|%>
+      <div class="interest-item">
+        <p><%= i.title %></p>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "", user_shelf_interests_path(u), class: "card-item-link" %>
+</div>
