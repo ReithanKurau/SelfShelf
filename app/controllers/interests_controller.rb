@@ -16,6 +16,7 @@ class InterestsController < ApplicationController
       @books = []
       @albums = AlbumApiService.new(params[:query]).call
       # @albums = []
+      # debugger
     else
       @interests = Interest.first(10)
     end

@@ -18,7 +18,7 @@
     <span class="badge rounded-pill text-bg-secondary"> <%= @shelf_interest.interest.genre %></span>
   </div>
   <div class="summary m-1 p-1">
-    <p>The Little Prince follows a pilot stranded in the desert who meets a boy from asteroid B-612. The Little Prince shares tales of his travels to planets, each home to peculiar adults, and reflects on love, loneliness, and the meaning of life. Central to his story is his devotion to a rose on his home planet. The novella emphasizes seeing with the heart, valuing relationships, and the wonder of childhood imagination.</p>
+    <p><%= @shelf_interest.description%></p>
   </div>
   <div class="comments-section">
     <% if @shelf_interest.comments.any? %>

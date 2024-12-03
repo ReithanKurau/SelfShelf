@@ -22,20 +22,21 @@ class AlbumApiService
   #         media_type: 'album'
   #       )
       
-  artists = RSpotify::Artist.search(@query)
-  artist = artists.first
-  albums = artist.albums 
-  
-  albums.each do |album|
-    interest = Interest.find_by(title: album.name)
-    if interest.nil?
-      Interest.create(
-        title: album.name,
-        cover: ""
-      )
-    else
-      interest
-    end
-      end.select(&:id)
+    artists = RSpotify::Artist.search(@query)
+    artist = artists.first
+    albums = artist.albums 
+    albums.map do |album|
+      interest = Interest.find_by(title: album.name)
+      if interest.nil?
+        Interest.create(
+          title: album.name,
+          cover: album.images[0]["url"],
+          media_type: "album",
+          publishing_year: album.release_date[0..3].to_i
+          )
+      else
+        interest
+      end
+    end.select(&:id)
   end
 end
