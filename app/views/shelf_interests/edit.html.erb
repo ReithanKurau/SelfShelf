@@ -1,0 +1,10 @@
+<h1>Your journal:</h1>
+<% if current_user %>
+  <%= simple_form_for [@shelf_interest] do |f| %>
+    <%= f.input :journal, label: "Write something" %>
+    <div class="form-inputs">
+      <%= f.rich_text_area :rich_journal %>
+    </div>
+    <%= f.submit "Post Comment", class: "btn btn-primary" %>
+  <% end %>
+<% end %>

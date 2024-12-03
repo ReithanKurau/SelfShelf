@@ -10,11 +10,11 @@
 .top-shelf-Cute{
   background-image: asset-url('Cute_top_shelf.gif');
   flex: 1;
-  width: 150px;
-  height: 245px;
+  width: 320px;
+  height: 380px;
   background-size: cover;
   background-position: center;
-  background-image: 100px;
+  margin-bottom: -100px;
 }
 
 .top-shelf-Classic{
