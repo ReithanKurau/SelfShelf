@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def index
     @invitation = Invitation.new
-    @user = current_user
-    @related_users = @user.find_related_tags
+
+    @related_users = current_user.find_related_tags
 
     @users = []
     if params[:query].present?
@@ -46,6 +46,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :age, :location, :bio, :photo, :style, tag_list: [])
   end
 
-  
+
 
 end

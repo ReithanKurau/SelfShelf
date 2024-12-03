@@ -6,37 +6,46 @@
   </div>
   <h1 class="m-1 p-1"><%= @shelf_interest.interest.title %></h1>
   <div class="cover">
+
     <% if @shelf_interest.interest.photo.attached? %>
       <%= cl_image_tag @shelf_interest.interest.photo.key, class: "w-100" %>
     <% else %>
-      <%= image_tag 'no_cover.gif', class: "w-100" %>
+      <%# <%= image_tag 'no_cover.gif', class: "w-100" %>
+      <%= image_tag @shelf_interest.interest.cover %>
+
     <% end %>
   </div>
   <div class="shelf_interest-details">
+
     <p class="fw-semibold"><i class="fa-solid fa-user"></i> <%= @shelf_interest.interest.creator %></p>
     <p class="fw-semibold"><i class="fa-solid fa-calendar-days"></i> <%= @shelf_interest.interest.publishing_year %></p>
     <span class="badge rounded-pill text-bg-secondary"> <%= @shelf_interest.interest.genre %></span>
   </div>
   <div class="summary m-1 p-1">
     <p><%= @shelf_interest.description%></p>
+
+    <p class="fw-semibold"><i class="fa-solid fa-moon"></i> Started in:</p>
+    <p class="fw-semibold"><i class="fa-solid fa-sun"></i> Finished in:</p>
+
   </div>
   <div class="comments-section">
     <% if @shelf_interest.comments.any? %>
-      <h2>User Comment</h2>
+      <h2>Overall</h2>
       <div class="comments-list mt-4">
         <% @shelf_interest.comments.each do |comment| %>
           <div class="comment">
-            <p><strong><%= comment.user.username %>:</strong> <%= comment.content %></p>
+            <p><%= comment.content %></p>
+            <p>by: <strong><%= comment.user.username %></strong> </p>
           </div>
         <% end %>
       </div>
     <% else %>
-      <%= simple_form_for [@shelf_interest, @comment] do |f| %>
+    </div>
+    <div><%= simple_form_for [@shelf_interest, @comment] do |f| %>
         <div class="form-group">
-          <%= f.input :content, label: "Add a comment", input_html: { class: "form-control" } %>
+          <%= f.input :content, label: "Add a comment", input_html: { class: "form-control", maxlength: 90 } %>
         </div>
         <%= f.submit "Post Comment", class: "btn btn-primary" %>
       <% end %>
-    <% end %>
-  </div>
+    <% end %></div>
 </div>
