@@ -9,14 +9,12 @@ class InterestsController < ApplicationController
     if params[:query].present?
       @interests = []
       # @interests = MovieApiService.new(params[:query]).call
-      # @movies = MovieApiService.new(params[:query]).call
+      @movies = MovieApiService.new(params[:query]).call
       @movies = []
       # @interests += BookApiService.new(params[:query]).call
-      # @books = BookApiService.new(params[:query]).call
-      @books = []
+      @books = BookApiService.new(params[:query]).call
       @albums = AlbumApiService.new(params[:query]).call
-      # @albums = []
-      # debugger
+    
     else
       @interests = Interest.first(10)
     end
