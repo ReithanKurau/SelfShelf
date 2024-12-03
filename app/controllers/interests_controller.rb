@@ -9,16 +9,21 @@ class InterestsController < ApplicationController
     if params[:query].present?
       @interests = []
       # @interests = MovieApiService.new(params[:query]).call
-      @movies = MovieApiService.new(params[:query]).call
+      # @movies = MovieApiService.new(params[:query]).call
+      @movies = []
       # @interests += BookApiService.new(params[:query]).call
-      @books = BookApiService.new(params[:query]).call
+      # @books = BookApiService.new(params[:query]).call
+      @books = []
+      @albums = AlbumApiService.new(params[:query]).call
+      # @albums = []
+      # debugger
     else
       @interests = Interest.first(10)
     end
     respond_to do |format|
       format.html
       # format.text { render partial: 'list', locals: { interests: @interests, shelf_interest: @shelf_interest }, formats: [:html] }
-      format.text { render partial: 'list', locals: { movies: @movies, books: @books, interests: @interests, shelf_interest: @shelf_interest }, formats: [:html] }
+      format.text { render partial: 'list', locals: { movies: @movies, books: @books, albums: @albums, interests: @interests, shelf_interest: @shelf_interest }, formats: [:html] }
     end
   end
 

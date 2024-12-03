@@ -25,6 +25,17 @@
           <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
         <% end %>
       </div>
+      <h2 class="mt-5">Albums</h2>
+      <% if params[:query].blank? %>
+        <h6 class="h3"><%= pluralize albums.count, 'result' %> available</h6>
+      <% else %>
+        <h6 class="h3"><%= pluralize albums.count, 'result' %> for <code><%= params[:query] %></code></h6>
+      <% end %>
+      <div class="cards">
+        <% albums.each do |interest| %>
+          <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
