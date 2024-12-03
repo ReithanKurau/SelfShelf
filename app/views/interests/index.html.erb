@@ -4,7 +4,7 @@
     <form class="row g-2 justify-content-center py-5" data-action="keyup->search#search">
       <input type="text"
             class="form-control"
-            placeholder="Find books, movies"
+            placeholder="Find books, movies, and albums (by artist)"
             data-search-target="input">
     </form>
     <%= render 'list', movies: @movies, books: @books, albums: @albums, interests: @interests, shelf_interest: @shelf_interest %>
