@@ -1,10 +1,15 @@
-<h1>Your journal:</h1>
-<% if current_user %>
-  <%= simple_form_for [@shelf_interest] do |f| %>
-    <%= f.input :journal, label: "Write something" %>
-    <div class="form-inputs">
-      <%= f.rich_text_area :rich_journal %>
-    </div>
-    <%= f.submit "Post Comment", class: "btn btn-primary" %>
+<div class= "container">
+  <div class= "mb-3">
+    <h1>Your journal:</h1>
+  </div>
+  <% if current_user %>
+    <%= simple_form_for [@shelf_interest] do |f| %>
+      <div class="form-inputs">
+        <%= f.rich_text_area :rich_journal, class: "journal-style"  %>
+      </div>
+      <div>
+        <%= f.submit "Return", class: "button-2 mt-3" %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
