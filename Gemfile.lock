@@ -6,6 +6,13 @@ GIT
       actionpack (>= 5.2)
       activemodel (>= 5.2)
 
+GIT
+  remote: https://github.com/jonhue/acts_as_favoritor.git
+  revision: 73320ad669327c947bcc431f0185a9a723a3681f
+  specs:
+    acts_as_favoritor (6.0.2)
+      activerecord (>= 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -386,6 +393,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
+  acts_as_favoritor!
   autoprefixer-rails
   bootsnap
   bootstrap (~> 5.2)

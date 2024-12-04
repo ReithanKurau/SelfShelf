@@ -11,6 +11,8 @@ class Interest < ApplicationRecord
   has_many :comments, through: :shelf_interests
   has_one_attached :photo
 
+  acts_as_favoritable
+
   include PgSearch::Model
   pg_search_scope :search_by_title_creator_genre_description,
   against: [ :title, :creator, :genre, :description ],
