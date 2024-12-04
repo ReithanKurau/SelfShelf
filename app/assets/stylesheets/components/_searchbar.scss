@@ -2,3 +2,18 @@
     display: flex;
     flex-flow: row;
 }
+
+.search-results-users {
+  form {
+    margin: 0 auto;
+
+    input {
+      background-color: $light-yellow;
+    }
+  }
+}
+.user-search-list {
+  li {
+    background-color: $light-yellow;
+  }
+}

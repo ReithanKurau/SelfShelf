@@ -55,6 +55,14 @@ class ShelfInterestsController < ApplicationController
     end
   end
 
+
+  def destroy
+    @shelf_interest = ShelfInterest.find(params[:id])
+    @shelf_interest.destroy
+    redirect_to user_shelf_interest_path(current_user, @shelf_interest), status: :see_other
+  end
+
+
   def favorite
     @shelf_interest = ShelfInterest.find(params[:id])
     current_user.favorite(@shelf_interest)

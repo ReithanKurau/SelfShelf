@@ -1,6 +1,13 @@
-<div class="other-shelf row text-center">
+<div class="other-shelf p-3 row">
   <div class="name-add d-flex justify-content-between align-items-center">
-    <h3><%= u.username %></h3>
+    <div class="user-info d-flex justify-content-start align-items-center">
+      <% if u.photo.attached? %>
+        <%= cl_image_tag u.photo.key , class: "avatar" %>
+      <% else %>
+        <%= image_tag "" , class: "avatar" %>
+      <% end %>
+      <h3 class="ms-2 pt-2"><%= u.username %></h3>
+    </div>
     <span>
       <% if signed_in? && !Invitation.reacted?(current_user.id, u.id) && current_user != u %>
         <%= simple_form_for invitation do |f| %>
@@ -11,15 +18,15 @@
       <% end %>
     </span>
   </div>
-  <div class="user-tags">
-    <% u.tag_list.each do |t| %>
-      <span class="badge rounded-pill bg-primary text-dark"><%= t %></span>
+  <div class="user-tags my-3">
+    <% u.tag_list.select { |tag| current_user.tag_list.include?(tag) }.each do |t| %>
+      <span class="badge rounded-pill bg-info text-dark"><%= t %></span>
     <% end %>
   </div>
-  <div class="shelf-row">
-    <% u.interests.each do |i|%>
-      <div class="interest-item">
-        <p><%= i.title %></p>
+  <div class="cards d-flex justify-content-start">
+    <% u.interests.where(id: current_user.interests).each do |i|%>
+      <div class="card-item-small " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= i.photo.attached? ? cl_image_path(i.photo.key) : image_path(i.cover) %>)">
+        <h3><%= i.title %></h3>
       </div>
     <% end %>
   </div>

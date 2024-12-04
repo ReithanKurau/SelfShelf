@@ -6,30 +6,38 @@
         <% users.each do |user| %>
           <ul class="list-group user-search-list">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              <%= user.username %>
+              <div class="left-user-info">
+                <% if user.photo.attached? %>
+                  <%= cl_image_tag user.photo.key , class: "avatar" %>
+                <% else %>
+                  <%= image_tag "" , class: "avatar" %>
+                <% end %>
+                <%= user.username %>
+              </div>
+              <%= link_to "", user_shelf_interests_path(user), class: "card-item-link" %>
               <span>
                 <% if signed_in? && !Invitation.reacted?(current_user.id, user.id) && current_user != user %>
                   <%= simple_form_for @invitation do |f| %>
                     <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
                     <%= f.input :friend_id, as: :hidden, input_html: { value: user.id } %>
                     <button type="submit" class="add-friend">
-                      <i class="fa-solid fa-plus"></i>
+                      <i class="fa-solid fa-user-plus"></i>
                     </button>
                   <% end %>
                 <% end %>
               </span>
             </li>
-            <%= link_to "", user_shelf_interests_path(user), class: "card-item-link" %>
           </ul>
         <% end %>
       </div>
     <% else %>
-      <div class="similar-users">
-        <h3>Similar Shelves</h3>
-        <div class="related-users">
-          <% @related_users.each do |u| %>
+      <div class="similar-users my-5">
+        <h3 class="text-center">Similar Shelves</h3>
+        <div class="related-users-tags">
+          <% (@related_users + @shared_users).uniq.each do |u| %>
             <%= render 'users/user', u: u, invitation: @invitation %>
           <% end %>
+          <hr>
         </div>
       </div>
     <% end %>
