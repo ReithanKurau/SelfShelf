@@ -4,17 +4,13 @@
       <i class="fa-solid fa-house"></i>
     <% end %>
     <%= link_to users_path, class: 'btn btn-info rounded-circle', role: "button" do %>
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-solid fa-user-group"></i>
     <% end %>
     <%= link_to interests_path, class: 'btn btn-info rounded-circle', role: "button" do %>
       <i class="fa-solid fa-plus"></i>
     <% end %>
-    <%= link_to user_path(current_user), class: 'avatar' do %>
-      <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key , class: "avatar" %>
-      <% else %>
-        <%= image_tag "" , class: "avatar" %>
-      <% end %>
+    <%= link_to user_path(current_user), class: 'btn btn-info rounded-circle', role: "button" do %>
+      <i class="fa-regular fa-user"></i>
     <% end %>
   </div>
 <% end %>

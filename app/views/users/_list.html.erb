@@ -6,7 +6,13 @@
         <% users.each do |user| %>
           <ul class="list-group user-search-list">
             <li class="list-group-item d-flex justify-content-between align-items-center">
+              <% if user.photo.attached? %>
+                <%= cl_image_tag user.photo.key , class: "avatar" %>
+              <% else %>
+                <%= image_tag "" , class: "avatar" %>
+              <% end %>
               <%= user.username %>
+              <%= link_to "", user_shelf_interests_path(user), class: "card-item-link" %>
               <span>
                 <% if signed_in? && !Invitation.reacted?(current_user.id, user.id) && current_user != user %>
                   <%= simple_form_for @invitation do |f| %>
@@ -19,17 +25,26 @@
                 <% end %>
               </span>
             </li>
-            <%= link_to "", user_shelf_interests_path(user), class: "card-item-link" %>
           </ul>
         <% end %>
       </div>
     <% else %>
       <div class="similar-users">
         <h3>Similar Shelves</h3>
-        <div class="related-users">
+        <div class="related-users-tags">
           <% @related_users.each do |u| %>
             <%= render 'users/user', u: u, invitation: @invitation %>
           <% end %>
+          <hr>
+        </div>
+      </div>
+      <div class="similar-users">
+        <h3>Similar Shelves</h3>
+        <div class="related-users-interests">
+          <% @shared_users.each do |u| %>
+            <%= render 'users/user', u: u, invitation: @invitation %>
+          <% end %>
+          <hr>
         </div>
       </div>
     <% end %>

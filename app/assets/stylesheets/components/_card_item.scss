@@ -27,3 +27,38 @@
   top: 0;
   left: 0;
 }
+
+.card-item-small {
+  background-size: cover;
+  background-position: center;
+  height: 160px;
+  width: 104px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+  margin-right: 12px;
+
+  h3 {
+    font-family: "Outfit", "Dongle", "sans-serif";
+    font-size: 24px;
+  }
+}
+
+.delete-btn {
+  position: absolute;
+  top: 3px;
+  right: 8px;
+  color: $light-blue;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+}

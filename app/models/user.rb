@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_many :shelf_interests
   has_many :interests, through: :shelf_interests
-  
-  has_many :invitations  
+
+  has_many :invitations
   has_many :pending_invitations, -> { where confirmed: false }, class_name: 'Invitation', foreign_key: "friend_id"
 
   has_one_attached :photo

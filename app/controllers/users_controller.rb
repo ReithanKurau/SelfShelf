@@ -13,6 +13,17 @@ class UsersController < ApplicationController
       format.html
       format.text { render partial: 'list', locals: { users: @users }, formats: [:html] }
     end
+
+    @all_users = User.all
+    # @shared_users = @all_users.joins(:shelf_interests).where("shelf_interests.interest_id =  ?", current_user.interests.first.id)
+    @shared_users = []
+    current_user.interests.each do |interest|
+       users = @all_users.joins(:shelf_interests).where("shelf_interests.interest_id =  ?", interest.id)
+
+       @shared_users << users.reject { |e| e == current_user }
+    end
+
+    @shared_users = @shared_users.uniq.flatten
   end
 
   def show
@@ -45,7 +56,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :age, :location, :bio, :photo, :style, tag_list: [])
   end
-
-
-
 end
