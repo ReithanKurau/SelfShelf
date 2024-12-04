@@ -1,8 +1,12 @@
 <div class="container">
   <div class="p-1">
-    <button type="submit" class="star-rating">
-      <i class="fas fa-star"></i>
-    </button>
+    <% if @user.favorited?(@shelf_interest) %>
+      <p> This is one of your favorite items! </p>
+    <% else %>
+      <%= link_to "Add this to your favorites!", favorite_shelf_interest_path %>
+    <% end %>
+
+
   </div>
   <h1 class="m-1 p-1"><%= @shelf_interest.interest.title %></h1>
   <div class="cover">
