@@ -1,39 +1,34 @@
 <div class="container">
-
-  <div class="d-flex fixed-top justify-content-left m-1 p-1"> 
+  <div class="d-flex fixed-top justify-content-left m-1 p-1">
     <div class="m-1">
       <% if @user.photo.attached? %>
         <%= cl_image_tag @user.photo.key , class: "avatar-medium" %>
       <% else %>
         <%= image_tag "" , class: "avatar-medium" %>
-      <% end %> 
+      <% end %>
     </div>
-
     <div class="m-1 row">
       <% if current_user == @user %>
         <h1 class="text-left">Your <%= params[:media_type].pluralize %></h1>
       <% else %>
         <h1 class="text-left"><%= @user.username %>'s <%= params[:media_type].pluralize %> </h1>
       <% end %>
-     <div class="d-flex">
+      <div class="d-flex">
         <% if current_user == @user %>
-    
           <p class="text-left">You enjoy <% current_user.tag_list.each do |t| %>
-            <%= t %>
-    <% end %>.</p>
+              <%= t %>
+            <% end %>.</p>
         <% else %>
           <p class="text-left"><%= @user.username %> enjoys  <%= @user.tag_list.join(" ") %>. </p>
         <% end %>
       </div>
     </div>
   </div>
-
-
   <div class="mt-5 row">
-  <%# This current user and this shelf's common interests %>
+    <%# This current user and this shelf's common interests %>
     <div class="d-flex m-2">
-    <% if current_user != @user %>
-      <h3 class="text-center"> You and <%= @user.username %> have these <%= params[:media_type].pluralize %> in common!</h1>
+      <% if current_user != @user %>
+        <h3 class="text-center"> You and <%= @user.username %> have these <%= params[:media_type].pluralize %> in common!</h1>
         <div class="cards">
           <% @shelf_interests.each do |shelf_interest|  %>
             <% if current_user.interests.include?(shelf_interest.interest) %>
@@ -41,39 +36,34 @@
             <% end %>
           <% end %>
         </div>
-    <% end %>
-  </div>
-
-  <%# This shelf's favorites %>
-  <div class="m-2">
-  <% if current_user == @user %>
-        <h3 class="text-center">Your favorite <%= params[:media_type].pluralize %></h1>
-  <% else %>
-        <h3 class="text-center"><%= @user.username %>'s favorite <%= params[:media_type].pluralize %> </h1>
-  <% end %>
-    <div class="cards">
-      <% @shelf_interests.each do |shelf_interest|  %>
-        <% if @user.favorited?(shelf_interest) %>
-          <%= render "shelf_filtered_card", shelf_interest: shelf_interest %>
-        <% end %>
       <% end %>
     </div>
+    <%# This shelf's favorites %>
+    <div class="m-2">
+      <% if current_user == @user %>
+        <h3 class="text-center">Your favorite <%= params[:media_type].pluralize %></h1>
+      <% else %>
+        <h3 class="text-center"><%= @user.username %>'s favorite <%= params[:media_type].pluralize %> </h1>
+      <% end %>
+      <div class="cards">
+        <% @shelf_interests.each do |shelf_interest|  %>
+          <% if @user.favorited?(shelf_interest) %>
+            <%= render "shelf_filtered_card", shelf_interest: shelf_interest %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <%# All interests (of a media type) of the shelf %>
+    <div>
+      <% if current_user == @user %>
+        <h3 class="text-center"> All of your <%= params[:media_type].pluralize %></h1>
+      <% else %>
+        <h3 class="text-center">All of <%= @user.username %>'s <%= params[:media_type].pluralize %> </h1>
+      <% end %>
+      <div class="cards">
+        <% @shelf_interests.each do |shelf_interest|  %>
+          <%= render "shelf_filtered_card", shelf_interest: shelf_interest %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <%# All interests (of a media type) of the shelf %>
-  <div> 
-  <% if current_user == @user %>
-    <h3 class="text-center"> All of your <%= params[:media_type].pluralize %></h1>
-  <% else %>
-    <h3 class="text-center">All of <%= @user.username %>'s <%= params[:media_type].pluralize %> </h1>
-  <% end %>
- 
-  <div class="cards">
-    <% @shelf_interests.each do |shelf_interest|  %>
-      <%= render "shelf_filtered_card", shelf_interest: shelf_interest %>
-    <% end %>
-  </div>
-
-  </div>
-</div>
-
