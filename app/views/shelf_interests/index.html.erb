@@ -6,27 +6,33 @@
   <div class="row">
     <div class="shelf shelf-<%= @user.style %>" id= "bookshelf">
       <div class="shelf-row">
-        <% @books.each do |book|  %>
-          <div class="book-item book-<%= @user.style %>">
-            <span><%= book.title %></span>
-          </div>
-        <% end %>
-        <%= link_to "", user_shelf_interests_path(@user, :media_type => "book"), class: "shelf-row-link" %>
+        <div class= "d-flex justify-content-start align-items-center w-100">
+          <% @books.each do |book|  %>
+            <div class="book-item" style= "background-image: url(<%= asset_url("Cute_book_#{rand(1..4)}.png") %>)">
+            </div>
+          <% end %>
+        </div>
+        <div class= "book-click position-relative"><%= link_to "", user_shelf_interests_path(@user, :media_type => "book"), class: "shelf-row-link" %>
+        </div>
       </div>
       <div class="shelf-row">
-        <% @movies.each do |movie|  %>
-          <div class="movie-item">
-            <span><%= movie.title %></span>
-          </div>
-        <% end %>
-        <%= link_to "", user_shelf_interests_path(@user, :media_type => "movie"), class: "shelf-row-link" %>
+        <div class= "movie-click position-relative"> <%= link_to "", user_shelf_interests_path(@user, :media_type => "movie"), class: "shelf-row-link" %>
+        </div>
+        <div class= "d-flex justify-content-end align-items-center w-100">
+          <% @movies.each do |movie|  %>
+            <div class="movie-item" style= "background-image: url(<%= asset_url("Cute_book_#{rand(1..4)}.png") %>)">
+            </div>
+          <% end %>
+        </div>
       </div>
       <div class="shelf-row">
-        <% @albums.each do |album|  %>
-          <div class="album-item">
-            <span><%= album.title %></span>
-          </div>
-        <% end %>
+        <div class= "d-flex justify-content-start align-items-center w-100">
+          <% @albums.each do |album|  %>
+            <div class="album-item" style= "background-image: url(<%= asset_url("Cute_book_#{rand(1..4)}.png") %>)">
+              Album
+            </div>
+          <% end %>
+        </div>
         <%= link_to "", user_shelf_interests_path(@user, :media_type => "album"), class: "shelf-row-link" %>
       </div>
     </div>
