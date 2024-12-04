@@ -8,6 +8,7 @@
       <% end %>
       <h3 class="ms-2 pt-2"><%= u.username %></h3>
     </div>
+    <%= link_to "", user_shelf_interests_path(u), class: "add-friend-link" %>
     <span>
       <% if signed_in? && !Invitation.reacted?(current_user.id, u.id) && current_user != u %>
         <%= simple_form_for invitation do |f| %>
@@ -30,5 +31,4 @@
       </div>
     <% end %>
   </div>
-  <%= link_to "", user_shelf_interests_path(u), class: "card-item-link" %>
 </div>
