@@ -7,7 +7,7 @@
     <div class="shelf shelf-<%= @user.style %>" id= "bookshelf">
       <div class="shelf-row">
         <% @books.each do |book|  %>
-          <div class="book-item">
+          <div class="book-item book-<%= @user.style %>">
             <span><%= book.title %></span>
           </div>
         <% end %>

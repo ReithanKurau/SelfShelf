@@ -1,15 +1,56 @@
 
 <div class="container">
-  
+  <div> 
   <% if current_user == @user %>
     <h1 class="text-center">Your <%= params[:media_type].pluralize %></h1>
   <% else %>
     <h1 class="text-center"><%= @user.username %>'s <%= params[:media_type].pluralize %> </h1>
   <% end %>
-
-  <div class="cards">
-    <% @shelf_interests.each do |shelf_interest|  %>
-      <%= render "shelf_filtered_card", shelf_interest: shelf_interest %>
-    <% end %>
   </div>
+
+  <%# This shelf's favorites %>
+  <div>
+  <% if current_user == @user %>
+        <h1 class="text-center">Your favorite <%= params[:media_type].pluralize %></h1>
+  <% else %>
+        <h1 class="text-center"><%= @user.username %>'s favorite <%= params[:media_type].pluralize %> </h1>
+  <% end %>
+    <div class="cards">
+      <% @shelf_interests.each do |shelf_interest|  %>
+        <% if @user.favorited?(shelf_interest) %>
+          <%= render "shelf_filtered_card", shelf_interest: shelf_interest %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <%# This current user and this shelf's common interests %>
+  <% if current_user != @user %>
+    <div>
+      <h1 class="text-center"> You and <%= @user.username %> have these <%= params[:media_type].pluralize %> in common!</h1>
+        <div class="cards">
+          <% @shelf_interests.each do |shelf_interest|  %>
+            <% if current_user.items.include?(shelf_interest.interest) %>
+              <%= render "shelf_filtered_card", shelf_interest: shelf_interest %>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+  <% end %>
+
+  <%# All interests (of a media type) of the shelf %>
+  <div> 
+  <% if current_user == @user %>
+    <h1 class="text-center"> All of your <%= params[:media_type].pluralize %></h1>
+  <% else %>
+    <h1 class="text-center">All of <%= @user.username %>'s <%= params[:media_type].pluralize %> </h1>
+  <% end %>
+  
+    <div class="cards">
+      <% @shelf_interests.each do |shelf_interest|  %>
+        <% if @user.favorited?(shelf_interest) %>
+          <%= render "shelf_filtered_card", shelf_interest: shelf_interest %>
+        <% end %>
+      <% end %>
+    </div>
 </div>
