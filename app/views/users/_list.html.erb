@@ -6,12 +6,14 @@
         <% users.each do |user| %>
           <ul class="list-group user-search-list">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              <% if user.photo.attached? %>
-                <%= cl_image_tag user.photo.key , class: "avatar" %>
-              <% else %>
-                <%= image_tag "" , class: "avatar" %>
-              <% end %>
-              <%= user.username %>
+              <div class="left-user-info">
+                <% if user.photo.attached? %>
+                  <%= cl_image_tag user.photo.key , class: "avatar" %>
+                <% else %>
+                  <%= image_tag "" , class: "avatar" %>
+                <% end %>
+                <%= user.username %>
+              </div>
               <%= link_to "", user_shelf_interests_path(user), class: "card-item-link" %>
               <span>
                 <% if signed_in? && !Invitation.reacted?(current_user.id, user.id) && current_user != user %>
@@ -19,7 +21,7 @@
                     <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
                     <%= f.input :friend_id, as: :hidden, input_html: { value: user.id } %>
                     <button type="submit" class="add-friend">
-                      <i class="fa-solid fa-plus"></i>
+                      <i class="fa-solid fa-user-plus"></i>
                     </button>
                   <% end %>
                 <% end %>
