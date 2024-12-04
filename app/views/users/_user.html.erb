@@ -24,11 +24,13 @@
       <span class="badge rounded-pill bg-info text-dark"><%= t %></span>
     <% end %>
   </div>
-  <div class="cards d-flex justify-content-start">
-    <% u.interests.where(id: current_user.interests).each do |i|%>
-      <div class="card-item-small " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= i.photo.attached? ? cl_image_path(i.photo.key) : image_path(i.cover) %>)">
-        <h3><%= i.title %></h3>
-      </div>
-    <% end %>
+  <div class="container-fluid">
+    <div class="cards d-flex justify-content-start flex-row flex-nowrap">
+      <% u.interests.where(id: current_user.interests).each do |i|%>
+        <div class="card-item-small " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= i.photo.attached? ? cl_image_path(i.photo.key) : image_path(i.cover) %>)">
+          <h3><%= i.title %></h3>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

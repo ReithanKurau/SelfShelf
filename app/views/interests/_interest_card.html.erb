@@ -7,12 +7,11 @@
          <div class="card-simple-tags">
     <span class="tag-orange">
       <%= simple_form_for [shelf_interest] do |f| %>
-      <%= f.input_field :interest_id, as: :hidden, input_html: { value: interest.id } %>
+      <%= f.input :interest_id, as: :hidden, input_html: { value: interest.id } %>
   <button type="submit" class="star-rating">
     <i class="fa-solid fa-plus fa-2xs"></i>
   </button>
-<% end %></span
-    >
+<% end %></span>
 </div>
 <div class="card-simple-text">
   <div class= "interest-title">
