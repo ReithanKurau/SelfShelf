@@ -20,11 +20,11 @@
 .top-shelf-Classic{
   background-image: asset-url('Classic_top_shelf.gif');
   flex: 1;
-  width: 120px;
-  height: 350px;
+  width: 130px;
+  height: 260px;
   background-size: cover;
   background-position: center;
-  margin-bottom: -90px;
+  margin-top: 10%;
 }
 
 .portrait{
@@ -49,13 +49,14 @@
 }
 
 .shelf-Classic {
-  background-image: asset-url('Classic_bookshelf.gif');
+  background-image: asset-url('Classic_bookshelf.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: 10px;
   width: 400px;
-  height: 700px;
+  height: 630px;
+  align-items: flex-end;
 }
 
 .shelf-nil {
@@ -83,7 +84,7 @@
 }
 
 .book-item {
-  width: 34px;
+  width: 50px;
   height: 100px;
   overflow: hidden;
   display: flex;
@@ -116,7 +117,7 @@
 }
 
 .movie-item {
-  width: 28px;
+  width: 50px;
   height: 100px;
   overflow: hidden;
   display: flex;

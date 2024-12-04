@@ -80,13 +80,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_04_023838) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
-  create_table "friendships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "interests", force: :cascade do |t|
     t.string "title"
     t.string "creator"
@@ -121,7 +114,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_04_023838) do
     t.string "media_type"
     t.text "description"
     t.string "cover_url"
-    t.integer "rating"
     t.index ["interest_id"], name: "index_shelf_interests_on_interest_id"
     t.index ["user_id"], name: "index_shelf_interests_on_user_id"
   end
