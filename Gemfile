@@ -54,7 +54,7 @@ gem 'cloudinary', '~> 1.16.0'
 gem "pg_search"
 gem 'acts-as-taggable-on'
 gem 'rspotify'
-
+gem 'acts_as_favoritor', github: 'jonhue/acts_as_favoritor'
 
 group :development, :test do
   gem 'dotenv-rails', groups: [:development, :test]
