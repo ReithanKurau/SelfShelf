@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="d-flex fixed-top justify-content-left m-1 p-1">
-    <div class="m-1">
+  <div class="d-flex p-5">
+    <div class="me-5">
       <% if @user.photo.attached? %>
         <%= cl_image_tag @user.photo.key , class: "avatar-medium" %>
       <% else %>
         <%= image_tag "" , class: "avatar-medium" %>
       <% end %>
     </div>
-    <div class="m-1 row">
+    <div class="user-info">
       <% if current_user == @user %>
         <h1 class="text-left">Your <%= params[:media_type].pluralize %></h1>
       <% else %>
@@ -24,9 +24,9 @@
       </div>
     </div>
   </div>
-  <div class="mt-5 row">
+  <div class="mt-5">
     <%# This current user and this shelf's common interests %>
-    <div class="d-flex m-2">
+    <div class="m-2">
       <% if current_user != @user %>
         <h3 class="text-center"> You and <%= @user.username %> have these <%= params[:media_type].pluralize %> in common!</h1>
         <div class="cards">
@@ -54,7 +54,7 @@
       </div>
     </div>
     <%# All interests (of a media type) of the shelf %>
-    <div>
+    <div class="m-2">
       <% if current_user == @user %>
         <h3 class="text-center"> All of your <%= params[:media_type].pluralize %></h1>
       <% else %>
