@@ -13,8 +13,8 @@
                   <%= image_tag "" , class: "avatar" %>
                 <% end %>
                 <%= user.username %>
+                <%= link_to "", user_shelf_interests_path(user), class: "add-friend-link" %>
               </div>
-              <%= link_to "", user_shelf_interests_path(user), class: "card-item-link" %>
               <span>
                 <% if signed_in? && !Invitation.reacted?(current_user.id, user.id) && current_user != user %>
                   <%= simple_form_for @invitation do |f| %>
@@ -36,8 +36,8 @@
         <div class="related-users-tags">
           <% (@related_users + @shared_users).uniq.each do |u| %>
             <%= render 'users/user', u: u, invitation: @invitation %>
+            <hr>
           <% end %>
-          <hr>
         </div>
       </div>
     <% end %>

@@ -1,4 +1,5 @@
 <div class="container">
+
   <div class="d-flex fixed-top justify-content-left m-1 p-1"> 
     <div class="m-1">
       <% if @user.photo.attached? %>
@@ -66,7 +67,7 @@
   <% else %>
     <h3 class="text-center">All of <%= @user.username %>'s <%= params[:media_type].pluralize %> </h1>
   <% end %>
-  
+ 
   <div class="cards">
     <% @shelf_interests.each do |shelf_interest|  %>
       <%= render "shelf_filtered_card", shelf_interest: shelf_interest %>
@@ -75,3 +76,4 @@
 
   </div>
 </div>
+

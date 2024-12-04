@@ -114,7 +114,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_04_023838) do
     t.string "media_type"
     t.text "description"
     t.string "cover_url"
-    t.integer "rating"
     t.index ["interest_id"], name: "index_shelf_interests_on_interest_id"
     t.index ["user_id"], name: "index_shelf_interests_on_user_id"
   end

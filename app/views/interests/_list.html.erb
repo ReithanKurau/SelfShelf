@@ -7,34 +7,53 @@
         <% end %>
       </div>
     <% else %>
-      <h2>Books</h2>
-      <% if params[:query].present? %>
-        <h5><%= pluralize books.count, 'result' %> for <code><%= params[:query] %></code></h5>
-      <% end %>
-      <div class="cards">
-        <% books.each do |interest| %>
-          <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
-        <% end %>
-      </div>
-      <h2 class="mt-5">Movies</h2>
-      <% if params[:query].present? %>
-        <h5><%= pluralize movies.count, 'result' %> for <code><%= params[:query] %></code></h5>
-      <% end %>
-      <div class="cards">
-        <% movies.each do |interest| %>
-          <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
-        <% end %>
-      </div>
-      <h2 class="mt-5">Albums</h2>
-      <% if params[:query].blank? %>
-        <h6 class="h3"><%= pluralize albums.count, 'result' %> available</h6>
-      <% else %>
-        <h6 class="h3"><%= pluralize albums.count, 'result' %> for <code><%= params[:query] %></code></h6>
-      <% end %>
-      <div class="cards">
-        <% albums.each do |interest| %>
-          <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
-        <% end %>
+      <ul class="nav tabs-underlined justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <span class="nav-link tab-underlined active" id="books-tab" data-bs-toggle="tab" data-bs-target="#books-tab-pane" role="tab" aria-controls="books-tab-pane" aria-selected="true">Books</span>
+        </li>
+        <li class="nav-item" role="presentation">
+          <span class="nav-link tab-underlined" id="movies-tab" data-bs-toggle="tab" data-bs-target="#movies-tab-pane" role="tab" aria-controls="movies-tab-pane" aria-selected="false">Movies</span>
+        </li>
+        <li class="nav-item" role="presentation">
+          <span class="nav-link tab-underlined" id="albums-tab" data-bs-toggle="tab" data-bs-target="#albums-tab-pane" role="tab" aria-controls="albums-tab-pane" aria-selected="false">Albums</span>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade py-3 show active" id="books-tab-pane" role="tabpanel" aria-labelledby="books-tab" tabindex="0">
+          <h2>Books</h2>
+          <% if params[:query].present? %>
+            <h5><%= pluralize books.count, 'result' %> for <code><%= params[:query] %></code></h5>
+          <% end %>
+          <div class="cards">
+            <% books.each do |interest| %>
+              <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
+            <% end %>
+          </div>
+        </div>
+        <div class="tab-pane fade py-3" id="movies-tab-pane" role="tabpanel" aria-labelledby="movies-tab" tabindex="0">
+          <h2 class="mt-5">Movies</h2>
+          <% if params[:query].present? %>
+            <h5><%= pluralize movies.count, 'result' %> for <code><%= params[:query] %></code></h5>
+          <% end %>
+          <div class="cards">
+            <% movies.each do |interest| %>
+              <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
+            <% end %>
+          </div>
+        </div>
+        <div class="tab-pane fade py-3" id="albums-tab-pane" role="tabpanel" aria-labelledby="albums-tab" tabindex="0">
+          <h2 class="mt-5">Albums</h2>
+          <% if params[:query].blank? %>
+            <h6 class="h3"><%= pluralize albums.count, 'result' %> available</h6>
+          <% else %>
+            <h6 class="h3"><%= pluralize albums.count, 'result' %> for <code><%= params[:query] %></code></h6>
+          <% end %>
+          <div class="cards">
+            <% albums.each do |interest| %>
+              <%= render 'interest_card', interest: interest, shelf_interest: shelf_interest %>
+            <% end %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
