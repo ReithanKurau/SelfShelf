@@ -9,11 +9,6 @@ class UsersController < ApplicationController
       @users = User.where('username ILIKE ?', "%#{params[:query]}%")
     end
 
-    respond_to do |format|
-      format.html
-      format.text { render partial: 'list', locals: { users: @users }, formats: [:html] }
-    end
-
     @all_users = User.all
     # @shared_users = @all_users.joins(:shelf_interests).where("shelf_interests.interest_id =  ?", current_user.interests.first.id)
     @shared_users = []
@@ -24,6 +19,12 @@ class UsersController < ApplicationController
     end
 
     @shared_users = @shared_users.uniq.flatten
+
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: 'list', locals: { users: @users }, formats: [:html] }
+    end
   end
 
   def show

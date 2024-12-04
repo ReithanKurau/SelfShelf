@@ -129,6 +129,12 @@
 .other-shelf {
   position: relative;
   background-color: $light-yellow;
+  width: 90%;
+  margin: 0 auto;
+}
+.related-users-tags, .related-users-interests {
+  width: 100%;
+  margin: 0 auto;
 }
 
 .add-friend {

@@ -32,16 +32,7 @@
       <div class="similar-users">
         <h3>Similar Shelves</h3>
         <div class="related-users-tags">
-          <% @related_users.each do |u| %>
-            <%= render 'users/user', u: u, invitation: @invitation %>
-          <% end %>
-          <hr>
-        </div>
-      </div>
-      <div class="similar-users">
-        <h3>Similar Shelves</h3>
-        <div class="related-users-interests">
-          <% @shared_users.each do |u| %>
+          <% (@related_users + @shared_users).uniq.each do |u| %>
             <%= render 'users/user', u: u, invitation: @invitation %>
           <% end %>
           <hr>

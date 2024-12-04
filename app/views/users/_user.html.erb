@@ -19,12 +19,12 @@
     </span>
   </div>
   <div class="user-tags my-3">
-    <% u.tag_list.each do |t| %>
+    <% u.tag_list.select { |tag| current_user.tag_list.include?(tag) }.each do |t| %>
       <span class="badge rounded-pill bg-info text-dark"><%= t %></span>
     <% end %>
   </div>
-  <div class="d-flex justify-content-start">
-    <% u.interests.each do |i|%>
+  <div class="cards d-flex justify-content-start">
+    <% u.interests.where(id: current_user.interests).each do |i|%>
       <div class="card-item-small " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= i.photo.attached? ? cl_image_path(i.photo.key) : image_path(i.cover) %>)">
         <h3><%= i.title %></h3>
       </div>
