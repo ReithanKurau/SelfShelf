@@ -16,6 +16,11 @@ class ShelfInterestsController < ApplicationController
 
       render "index"
     end
+    
+    @favorite_books = @user.all_favorites.where(media_type: 'book')
+    @favorite_movies = @user.all_favorites.where(media_type: 'movie')
+    @favorite_albums = @user.all_favorites.where(media_type: 'album')
+
   end
 
   def create
@@ -33,6 +38,7 @@ class ShelfInterestsController < ApplicationController
 
   def show
     @shelf_interest = ShelfInterest.find(params[:id])
+    @user = @shelf_interest.user
     @comment = Comment.new
   end
 
@@ -48,6 +54,13 @@ class ShelfInterestsController < ApplicationController
       render 'shelf_interests/show', status: :unprocessable_entity
     end
   end
+
+  def favorite
+    @shelf_interest = ShelfInterest.find(params[:id])
+    current_user.favorite(@shelf_interest)
+    redirect_to user_shelf_interest_path(current_user, @shelf_interest)
+  end
+
 
   private
 

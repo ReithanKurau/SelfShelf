@@ -12,7 +12,8 @@ class User < ApplicationRecord
          #params to be added
 
   acts_as_taggable_on :tags
-
+  acts_as_favoritor
+  
   STYLE = ["Cute", "Classic"]
   USER_TAGS = {Books: ["fiction", "non-fiction", "horror", "fantasy", "mystery", "romance", "young adult"],
               Movies: ["comedy", "horror", "action", "sci-fi", "animation", "family"]}
