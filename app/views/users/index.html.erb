@@ -1,7 +1,7 @@
 <div class="container explore">
   <div class="search-users align-top">
     <div class="search-results-users py-5" data-controller="user-search">
-      <%= form_with url: users_path, method: :get, html: { class: 'row g-2 justify-content-center mb-5 w-75', data: { user_search_target: 'form' } } do |f| %>
+      <%= form_with url: users_path, method: :get, html: { class: 'row g-2 mb-5 w-75', data: { user_search_target: 'form' } } do |f| %>
         <%= f.text_field :query,
                       class: "form-control",
                       placeholder: 'Search username',

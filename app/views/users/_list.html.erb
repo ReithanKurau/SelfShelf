@@ -29,8 +29,8 @@
         <% end %>
       </div>
     <% else %>
-      <div class="similar-users">
-        <h3>Similar Shelves</h3>
+      <div class="similar-users my-5">
+        <h3 class="text-center">Similar Shelves</h3>
         <div class="related-users-tags">
           <% (@related_users + @shared_users).uniq.each do |u| %>
             <%= render 'users/user', u: u, invitation: @invitation %>
