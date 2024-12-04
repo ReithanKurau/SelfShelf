@@ -13,14 +13,14 @@
       <h1 class="text-center"> You and <%= @user.username %> have these <%= params[:media_type].pluralize %> in common!</h1>
         <div class="cards">
           <% @shelf_interests.each do |shelf_interest|  %>
-            <% if current_user.items.include?(shelf_interest.interest) %>
+            <% if current_user.shelf_interests.include?(shelf_interest.interest) %>
               <%= render "shelf_filtered_card", shelf_interest: shelf_interest %>
             <% end %>
           <% end %>
         </div>
     </div>
   <% end %>
-  
+
   <%# This shelf's favorites %>
   <div>
   <% if current_user == @user %>
