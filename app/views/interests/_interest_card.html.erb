@@ -1,12 +1,22 @@
-<div class="card-item d-flex p-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path(interest.cover) %>')">
-  <h5><%= interest.title %></h5>
+<div class="card-simple">
   <%= link_to "", interest_path(interest), class: "card-item-link" %>
-  <div class="position-absolute bottom-0 start-0">
-    <%= simple_form_for [shelf_interest] do |f| %>
-      <%= f.input :interest_id, as: :hidden, input_html: { value: interest.id } %>
-      <button type="submit" class="star-rating">
-        <i class="fa-solid fa-plus fa-2xs"></i>
-      </button>
-    <% end %>
+  <img
+        alt=""
+        class="card-simple-image"
+        src="<%= image_path(interest.cover) %>"/>
+         <div class="card-simple-tags">
+    <span class="tag-orange">
+      <%= simple_form_for [shelf_interest] do |f| %>
+      <%= f.input_field :interest_id, as: :hidden, input_html: { value: interest.id } %>
+  <button type="submit" class="star-rating">
+    <i class="fa-solid fa-plus fa-2xs"></i>
+  </button>
+<% end %></span
+    >
+</div>
+<div class="card-simple-text">
+  <div class= "interest-title">
+    <p><%= interest.title %></p>
   </div>
+</div>
 </div>

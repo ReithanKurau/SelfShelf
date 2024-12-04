@@ -1,7 +1,19 @@
-<div class="card-item " style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= shelf_interest.interest.photo.attached? ? cl_image_path(shelf_interest.interest.photo.key) : image_path(shelf_interest.interest.cover) %>)">
-  <h3><%= shelf_interest.interest.title %></h3>
+<div class="card-simple">
   <%= link_to "",  user_shelf_interest_path(shelf_interest.user, shelf_interest), class: "card-item-link" %>
-  <%= link_to shelf_interest_path(shelf_interest), data: {turbo_method: :delete}, class: "delete-btn" do %>
+  <img
+        alt=""
+        class="card-simple-image"
+        src="<%= shelf_interest.interest.photo.attached? ? cl_image_path(shelf_interest.interest.photo.key) : image_path(shelf_interest.interest.cover) %>"/>
+         <div class="card-simple-tags">
+    <span class="tag-orange">
+      <%= link_to shelf_interest_path(shelf_interest), data: {turbo_method: :delete}, class: "delete-btn" do %>
     <i class="fa-solid fa-xmark"></i>
-  <% end %>
+<% end %></span
+    >
+</div>
+<div class="card-simple-text">
+  <div class= "interest-title">
+    <p><%= shelf_interest.interest.title %></p>
+  </div>
+</div>
 </div>
