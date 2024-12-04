@@ -1,6 +1,7 @@
 .tabs-underlined {
     display: flex;
     align-items: center;
+    color: red;
   }
   .tabs-underlined {
     .tab-underlined {
@@ -19,11 +20,5 @@
     .tab-underlined.active {
       opacity: 1;
       border-bottom: 3px solid #555555;
-    }
-  }
-
-  #myTab {
-    .nav-link {
-      color: $jet;
     }
   }

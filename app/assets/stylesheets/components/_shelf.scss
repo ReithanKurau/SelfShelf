@@ -159,7 +159,6 @@
 
 
 .other-shelf {
-  position: relative;
   background-color: $light-yellow;
   width: 90%;
   margin: 0 auto;
@@ -187,17 +186,17 @@ hr {
   color: $jet;
 }
 
-.user-search-list {
+.left-user-info {
+  position: relative;
+}
+.user-info {
   position: relative;
 }
 .add-friend-link {
   position: absolute;
-  top: 3px;
-  right: 8px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 
-  &:hover {
-    i {
-      opacity: 0.5;
-    }
-  }
 }
