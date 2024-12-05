@@ -16,12 +16,9 @@
       <% end %>
       <div class="d-flex">
         <% if current_user == @user %>
-          <p class="text-left">You enjoy <% current_user.tag_list.each do |t| %>
-              <%= t %>
-            <% end %>
-          </p>
+          <p class="text-left">You enjoy <%= current_user.tag_list.join(", ") %>. </p>
         <% else %>
-          <p class="text-left"><%= @user.first_name %> enjoys  <%= @user.tag_list.join(" ") %>. </p>
+          <p class="text-left"><%= @user.first_name %> enjoys  <%= @user.tag_list.join(", ") %>. </p>
         <% end %>
       </div>
     </div>
