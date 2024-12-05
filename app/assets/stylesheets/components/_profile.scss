@@ -9,7 +9,9 @@
   h1{
     margin: 9px;
     text-align: center;
+    padding: 2%;
   }
+
   p{
     padding: 10%;
   }
@@ -34,4 +36,23 @@ color: black;
 .profile {
   justify-items: center;
   margin-top: 50px;
+}
+
+.interest-info-card {
+  border-radius: 34px;
+  background: #FAEDCD;
+  box-shadow:  5px -5px 17px #d2c7ac,
+               -5px 5px 17px #ffffee;
+}
+.user-info {
+
+  h1 {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  p{
+    text-align: center;
+    font-size: 20px;
+  }
 }
