@@ -14,10 +14,12 @@ class ShelfInterestsController < ApplicationController
       @movies = @user.interests.where(media_type: 'movie')
       @albums = @user.interests.where(media_type: 'album')
 
-      @fav_books = @user.favorited_by_type('ShelfInterest').map { |si| si.interest if si.interest.media_type == 'book' }
-      @fav_movies = @user.favorited_by_type('ShelfInterest').map { |si| si.interest if si.interest.media_type == 'movie' }
-      @fav_album = @user.favorited_by_type('ShelfInterest').map { |si| si.interest if si.interest.media_type == 'album' }
-
+      @fav_books = @user.favorited_by_type('ShelfInterest').joins( :interest ).where("interests.media_type = ?", "book")
+      @fav_movies = @user.favorited_by_type('ShelfInterest').joins( :interest ).where("interests.media_type = ?", "movie")
+      @fav_albums = @user.favorited_by_type('ShelfInterest').joins( :interest ).where("interests.media_type = ?", "album")
+      @fav_book = @fav_books.sample if @fav_books.any?
+      @fav_movie = @fav_movies.sample if @fav_movies.any?
+      @fav_album = @fav_albums.sample if @fav_albums.any?
       render "index"
     end
   end
@@ -67,7 +69,7 @@ class ShelfInterestsController < ApplicationController
     current_user.favorite(@shelf_interest)
     redirect_to user_shelf_interest_path(current_user, @shelf_interest)
   end
-  
+
   def unfavorite
     @shelf_interest = ShelfInterest.find(params[:id])
     current_user.unfavorite(@shelf_interest)
