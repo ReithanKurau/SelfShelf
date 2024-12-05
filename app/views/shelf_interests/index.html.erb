@@ -5,7 +5,11 @@
   </div>
   <div class= "d-flex">
     <div class= "name-shelf">
-      <h1><%= @user.username %>'s Room</h1>
+      <% if @user == current_user %>
+        <h1> Your Room</h1>
+      <% else %>
+        <h1><%= @user.username %>'s Room</h1>
+      <% end %>
     </div>
   </div>
   <div class="row">
