@@ -17,6 +17,10 @@
   }
 }
 
+#profile-tab-pane {
+  width: 100%;
+}
+
 .profile-tag a {
 color: black;
 }
@@ -55,4 +59,12 @@ color: black;
     text-align: center;
     font-size: 20px;
   }
+}
+
+.whatever {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
