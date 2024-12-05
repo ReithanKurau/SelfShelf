@@ -53,12 +53,16 @@
 .delete-btn {
   position: absolute;
   top: 3px;
-  right: 8px;
+  left: 8px;
   color: $light-blue;
   opacity: 0.5;
 
   &:hover {
     opacity: 1;
+  }
+
+  i {
+    font-size: 24px;
   }
 }
 
@@ -66,11 +70,14 @@
   position: absolute;
   top: 3px;
   right: 8px;
-  color: $light-blue;
-  opacity: 0.5;
+  color: gold;
+  opacity: 1;
 
   &:hover {
-    opacity: 1;
+    opacity: 0.8;
+  }
+  i {
+    font-size: 24px;
   }
 }
 
