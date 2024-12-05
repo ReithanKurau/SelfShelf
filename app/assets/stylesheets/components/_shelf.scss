@@ -230,5 +230,10 @@ hr {
   height: 100%;
   top: 0;
   left: 0;
+}
 
+.user-profile-link {
+  text-decoration: none;
+  color: $lighter-jet;
+  text-shadow: 2px 2px 2px $light-blue;
 }
