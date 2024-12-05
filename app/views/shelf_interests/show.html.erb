@@ -1,37 +1,39 @@
 <div class="container">
-  <div class="p-1">
-    <% if @user.favorited?(@shelf_interest) %>
-      <%= link_to unfavorite_shelf_interest_path do %>
-        <i class="fa-solid fa-star"></i>
-      <% end %>
-    <% else %>
-      <%= link_to favorite_shelf_interest_path do %>
-        <i class="fa-regular fa-star"></i>
-      <% end %>
-    <% end %>
-    <% unless current_user.interests.include?(@shelf_interest.interest) %>
-      <%= simple_form_for @shelf_interest do |f| %>
-        <%= f.input :interest_id, as: :hidden, input_html: { value: @shelf_interest.interest.id } %>
-        <%= f.submit 'Add to Library!', class: 'button-2' %>
-        <button type="submit" class="star-rating">
-          <i class="fas fa-plus"></i>
-        </button>
-      <% end %>
-    <% end %>
-  </div>
-  <%= link_to user_shelf_interests_path(@user) do %>
-    <i class="fa-solid fa-arrow-rotate-left"></i>
-  <% end %>
-  <h1 class="m-1 p-1"><%= @shelf_interest.interest.title %></h1>
-  <%= link_to edit_shelf_interest_path(@shelf_interest) do %>
-    <div class="cover">
-      <% if @shelf_interest.interest.photo.attached? %>
-        <%= cl_image_tag @shelf_interest.interest.photo.key, class: "w-100" %>
+  <div class="d-flex justify-content-between align-items-center">
+    <%= link_to "Back", user_shelf_interests_path(@user), class: "button-2 mt-3 mb-3" %>
+    <div class="p-1">
+      <% if @user.favorited?(@shelf_interest) %>
+        <%= link_to unfavorite_shelf_interest_path do %>
+          <i class="fa-solid fa-star star-rating"></i>
+        <% end %>
       <% else %>
-        <%= image_tag @shelf_interest.interest.cover, class: "w-100" %>
+        <%= link_to favorite_shelf_interest_path do %>
+          <i class="fa-regular fa-star star-rating"></i>
+        <% end %>
+      <% end %>
+      <% unless current_user.interests.include?(@shelf_interest.interest) %>
+        <%= simple_form_for @shelf_interest do |f| %>
+          <%= f.input :interest_id, as: :hidden, input_html: { value: @shelf_interest.interest.id } %>
+          <%= f.submit 'Add to Library!', class: 'button-2' %>
+          <button type="submit" class="star-rating">
+            <i class="fas fa-plus"></i>
+          </button>
+        <% end %>
       <% end %>
     </div>
-  <% end %>
+  </div>
+  <div class="d-flex flex-column align-items-center">
+    <h1 class="m-1 p-1"><%= @shelf_interest.interest.title %></h1>
+    <%= link_to edit_shelf_interest_path(@shelf_interest) do %>
+      <div class="cover">
+        <% if @shelf_interest.interest.photo.attached? %>
+          <%= cl_image_tag @shelf_interest.interest.photo.key, class: "w-100" %>
+        <% else %>
+          <%= image_tag @shelf_interest.interest.cover, class: "w-100" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
   <div class="summary">
     <p class="overflow-ellipsis"><%= @shelf_interest.interest.description%></p>
     <%# <p class="fw-semibold"><i class="fa-solid fa-moon"></i> Started in:</p>
@@ -43,8 +45,8 @@
       <p><i class="fa-regular fa-circle-user"></i> <%= @shelf_interest.interest.creator%></p>
     </div>
     <div>
-      <p><%= @shelf_interest.interest.genre%></p>
-      <p><%= @shelf_interest.interest.media_type%></p>
+      <p><i class="fa-regular fa-bookmark"></i> <%= @shelf_interest.interest.genre%></p>
+      <p><i class="fa-regular fa-image"></i> <%= @shelf_interest.interest.media_type%></p>
     </div>
   </div>
   <div class="comments-section">
