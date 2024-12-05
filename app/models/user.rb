@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   acts_as_taggable_on :tags
   acts_as_favoritor
-  
+
   STYLE = ["Cute", "Classic"]
   USER_TAGS = {Books: ["fiction", "non-fiction", "horror", "fantasy", "mystery", "romance", "young adult"],
               Movies: ["comedy", "horror", "action", "sci-fi", "animation", "family"]}
@@ -31,6 +31,10 @@ class User < ApplicationRecord
 
   def send_invitation(user)
     invitations.create(friend_id: user.id)
+  end
+
+  def first_name
+    username.split()[0]
   end
 
 end
