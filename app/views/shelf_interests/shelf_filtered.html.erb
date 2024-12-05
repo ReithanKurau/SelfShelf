@@ -1,4 +1,7 @@
 <div class="container">
+  <%= link_to user_shelf_interests_path(@user) do %>
+    <i class="fa-solid fa-arrow-rotate-left"></i>
+  <% end %>
   <div class="d-flex p-5">
     <div class="me-5">
       <% if @user.photo.attached? %>

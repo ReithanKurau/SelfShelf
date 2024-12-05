@@ -68,7 +68,12 @@ class ShelfInterestsController < ApplicationController
     current_user.favorite(@shelf_interest)
     redirect_to user_shelf_interest_path(current_user, @shelf_interest)
   end
-
+  
+  def unfavorite
+    @shelf_interest = ShelfInterest.find(params[:id])
+    current_user.unfavorite(@shelf_interest)
+    redirect_to user_shelf_interest_path(current_user, @shelf_interest)
+  end
 
   private
 

@@ -1,9 +1,13 @@
 <div class="container">
   <div class="p-1">
     <% if @user.favorited?(@shelf_interest) %>
-      <p> This is one of your favorite items! </p>
+      <%= link_to unfavorite_shelf_interest_path do %>
+        <i class="fa-solid fa-star"></i>
+      <% end %>
     <% else %>
-      <%= link_to "Add this to your favorites!", favorite_shelf_interest_path %>
+      <%= link_to favorite_shelf_interest_path do %>
+        <i class="fa-regular fa-star"></i>
+      <% end %>
     <% end %>
     <% unless current_user.interests.include?(@shelf_interest.interest) %>
       <%= simple_form_for @shelf_interest do |f| %>
@@ -15,6 +19,9 @@
       <% end %>
     <% end %>
   </div>
+  <%= link_to user_shelf_interests_path(@user) do %>
+    <i class="fa-solid fa-arrow-rotate-left"></i>
+  <% end %>
   <h1 class="m-1 p-1"><%= @shelf_interest.interest.title %></h1>
   <%= link_to edit_shelf_interest_path(@shelf_interest) do %>
     <div class="cover">
