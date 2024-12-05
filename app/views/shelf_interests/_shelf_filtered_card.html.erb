@@ -8,18 +8,34 @@
       <p><%= shelf_interest.interest.title %></p>
     </div>
   </div>
-  <%= link_to shelf_interest_path(shelf_interest), data: {turbo_method: :delete}, class: "delete-btn" do %>
-    <i class="fa-solid fa-circle-xmark mt-2"></i>
-  <% end %>
-  <div>
-    <% if shelf_interest.user.favorited?(shelf_interest) %>
-      <%= link_to unfavorite_shelf_interest_path(shelf_interest), class: "star-btn" do %>
-        <i class="fa-solid fa-star mt-2"></i>
-      <% end %>
-    <% else %>
-      <%= link_to favorite_shelf_interest_path(shelf_interest), class: "star-btn" do %>
-        <i class="fa-regular fa-star mt-2"></i>
-      <% end %>
+
+  <% if shelf_interest.user == current_user %>
+    <%= link_to shelf_interest_path(shelf_interest), data: {turbo_method: :delete}, class: "delete-btn" do %>
+      <i class="fa-solid fa-xmark"></i>
     <% end %>
-  </div>
+    <div>
+      <% if shelf_interest.user.favorited?(shelf_interest) %>
+        <%= link_to unfavorite_shelf_interest_path(shelf_interest), class: "star-btn" do %>
+          <i class="fa-solid fa-star"></i>
+        <% end %>
+      <% else %>
+        <%= link_to favorite_shelf_interest_path(shelf_interest), class: "star-btn" do %>
+          <i class="fa-regular fa-star"></i>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <div>
+      <% if shelf_interest.user.favorited?(shelf_interest) %>
+        <div class="star-btn">
+          <i class="fa-solid fa-star"></i>
+        </div>
+      <% else %>
+        <div class="star-btn">
+          <i class="fa-regular fa-star star-btn"></i>
+        </div>
+
+      <% end %>
+    </div>
+  <% end %>
 </div>
