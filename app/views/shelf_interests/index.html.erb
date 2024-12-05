@@ -14,6 +14,7 @@
         <div class= "d-flex justify-content-start align-items-center w-100">
           <% @books.each do |book|  %>
             <div class="book-item" style= "background-image: url(<%= asset_url("Cute_book_#{rand(1..4)}.png") %>)">
+              <div class="item-title"><%= book.title %></div>
             </div>
           <% end %>
         </div>
