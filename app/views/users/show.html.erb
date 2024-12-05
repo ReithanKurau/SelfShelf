@@ -1,4 +1,4 @@
-<div class="container justify-content-center" style="min-height: 89vh;">
+<div class="container" style="min-height: 89vh;">
   <ul class="nav tabs-underlined" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <span class="nav-link tab-underlined active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" role="tab" aria-controls="profile-tab-pane" aria-selected="true">Profile</span>
@@ -6,7 +6,14 @@
     <li class="nav-item" role="presentation">
       <span class="nav-link tab-underlined" id="friends-tab" data-bs-toggle="tab" data-bs-target="#friends-tab-pane" role="tab" aria-controls="friends-tab-pane" aria-selected="false">Friends</span>
     </li>
-
+    <% if current_user == @user %>
+      <li class="nav-item" role="presentation">
+        <span class="nav-link tab-underlined" id="received-tab" data-bs-toggle="tab" data-bs-target="#received-tab-pane" role="tab" aria-controls="received-tab-pane" aria-selected="false">Received</span>
+      </li>
+      <li class="nav-item" role="presentation">
+        <span class="nav-link tab-underlined" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending-tab-pane" role="tab" aria-controls="pending-tab-pane" aria-selected="false">Sent</span>
+      </li>
+    <% end %>
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class= "tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
@@ -19,7 +26,13 @@
         <div class= "profile-info">
           <div class="mt-3">
             <h1><%= @user.username %></h1>
-
+          </div>
+          <div class= "profile-tag">
+            <p><%= @user.bio %></p>
+            <p>Tags: <% @user.tag_list.each do |tag| %>
+                <%= link_to tag, tagged_path(tag: tag)%>
+              <% end %></p>
+          </div>
         </div>
         <div class= "d-flex">
           <div class= "button-2 mt-2 me-3">
@@ -30,68 +43,69 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="tab-pane fade" id="friends-tab-pane" role="tabpanel" aria-labelledby="friends-tab" tabindex="0">
-      <div class= "friend-list">
-        <% if current_user == @user %>
-          <h3>Your friends
-            <h3>
-            <% else %>
-              <h3>Friends of <%= @user.username %> </h3>
-            <% end %>
-            <div class="cards d-flex justify-content-start">
-              <ul class="list-group">
-                <% @user.friends.each do |friend| %>
-                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <div class="left-user-info">
-                      <% if friend.photo.attached? %>
-                        <%= cl_image_tag friend.photo.key , class: "avatar" %>
-                      <% else %>
-                        <%= image_tag "" , class: "avatar" %>
-                      <% end %>
-                      <%= link_to friend.username, user_shelf_interests_path(friend), class: "text-decoration-none" %>
-                    </div>
-                    <% if current_user == @user %>
-                      <div>
-                        <%= link_to 'Unfriend', invitation_path(Invitation.find_invitation(@user.id, friend.id)), data: {turbo_method: :delete}, class: 'btn btn-warning' %>
+      <div class="tab-pane fade" id="friends-tab-pane" role="tabpanel" aria-labelledby="friends-tab" tabindex="0">
+        <div class= "friend-list">
+          <% if current_user == @user %>
+            <h3>Your friends
+              <h3>
+              <% else %>
+                <h3>Friends of <%= @user.username %> </h3>
+              <% end %>
+              <div class="cards d-flex justify-content-start">
+                <ul class="list-group">
+                  <% @user.friends.each do |friend| %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <div class="left-user-info">
+                        <% if friend.photo.attached? %>
+                          <%= cl_image_tag friend.photo.key , class: "avatar" %>
+                        <% else %>
+                          <%= image_tag "" , class: "avatar" %>
+                        <% end %>
+                        <%= link_to friend.username, user_shelf_interests_path(friend), class: "text-decoration-none" %>
                       </div>
-                    <% end %>
-                  </li>
-                <% end %>
-              </div>
-            </ul>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="received-tab-pane" role="tabpanel" aria-labelledby="received-tab" tabindex="0">
-          <h3> <strong> Your Received Requests </strong> </h3>
-          <div class= "received-list">
-            <div class="cards d-flex justify-content-start">
-              <ul class="list-group">
-                <% Invitation.where(friend_id: current_user.id, confirmed: false).each do |invitation| %>
-                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <div class="left-user-info">
-                      <% if invitation.user.photo.attached? %>
-                        <%= cl_image_tag invitation.user.photo.key , class: "avatar" %>
-                      <% else %>
-                        <%= image_tag "" , class: "avatar" %>
+                      <% if current_user == @user %>
+                        <div>
+                          <%= link_to 'Unfriend', invitation_path(Invitation.find_invitation(@user.id, friend.id)), data: {turbo_method: :delete}, class: 'btn btn-warning' %>
+                        </div>
                       <% end %>
-                      <%= link_to User.find(invitation.user_id).username, user_shelf_interests_path(User.find(invitation.user_id)) %>
-                    </div>
-                    <%= simple_form_for invitation do |f| %>
-                      <%= f.input :confirmed, as: :hidden, input_html: { value: true } , wrapper_html:{style: "margin: 0!important"}%>
-                      <%= f.submit 'Accept', class: 'btn btn-success' %>
-                    <% end %>
-                    <%= link_to 'Reject', invitation_path(invitation), data: {turbo_method: :delete}, class: 'btn btn-warning'%>
-                  </li>
-                <% end %>
-              </div>
-            </ul>
+                    </li>
+                  <% end %>
+                </div>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="tab-pane fade" id="pending-tab-pane" role="tabpanel" aria-labelledby="pending-tab" tabindex="0">
-          <h3> Your Sent Requests </h3>
-          <% Invitation.where(user_id: current_user.id, confirmed: false).each do |invitation| %>
-            <%= link_to User.find(invitation.friend_id).username, user_shelf_interests_path(User.find(invitation.friend_id)) %> 's friend request pending <br>
-          <% end %>
+          <div class="tab-pane fade" id="received-tab-pane" role="tabpanel" aria-labelledby="received-tab" tabindex="0">
+            <h3> <strong> Your Received Requests </strong> </h3>
+            <div class= "received-list">
+              <div class="cards d-flex justify-content-start">
+                <ul class="list-group">
+                  <% Invitation.where(friend_id: current_user.id, confirmed: false).each do |invitation| %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <div class="left-user-info">
+                        <% if invitation.user.photo.attached? %>
+                          <%= cl_image_tag invitation.user.photo.key , class: "avatar" %>
+                        <% else %>
+                          <%= image_tag "" , class: "avatar" %>
+                        <% end %>
+                        <%= link_to User.find(invitation.user_id).username, user_shelf_interests_path(User.find(invitation.user_id)) %>
+                      </div>
+                      <%= simple_form_for invitation do |f| %>
+                        <%= f.input :confirmed, as: :hidden, input_html: { value: true } , wrapper_html:{style: "margin: 0!important"}%>
+                        <%= f.submit 'Accept', class: 'btn btn-success' %>
+                      <% end %>
+                      <%= link_to 'Reject', invitation_path(invitation), data: {turbo_method: :delete}, class: 'btn btn-warning'%>
+                    </li>
+                  <% end %>
+                </div>
+              </ul>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="pending-tab-pane" role="tabpanel" aria-labelledby="pending-tab" tabindex="0">
+            <h3> Your Sent Requests </h3>
+            <% Invitation.where(user_id: current_user.id, confirmed: false).each do |invitation| %>
+              <%= link_to User.find(invitation.friend_id).username, user_shelf_interests_path(User.find(invitation.friend_id)) %> 's friend request pending <br>
+            <% end %>
+          </div>
         </div>
       </div>
+    </div>
