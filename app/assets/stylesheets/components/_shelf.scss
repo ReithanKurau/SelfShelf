@@ -25,6 +25,7 @@
   background-size: cover;
   background-position: center;
   margin-top: 10%;
+  margin-bottom: 5%;
 }
 
 .portrait{
@@ -102,7 +103,7 @@
   // left: -2px;
 }
 .book-item {
-  width: 50px;
+  width: 36px;
   height: 100px;
   overflow: hidden;
   display: flex;
@@ -116,7 +117,6 @@
 }
 
 .book-click {
-  background-image: asset-url('Cute_book_outline.gif');
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -124,8 +124,8 @@
   line-height: 2;
   background-position: center;
   background-size: cover;
-  width: 210px;
-  height:100px;
+  width: 376px;
+  height:97px;
 }
 
 .book-Cute {
@@ -137,8 +137,9 @@
 }
 
 .movie-item {
-  width: 50px;
+  width: 36px;
   height: 100px;
+  overflow: hidden;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -149,7 +150,7 @@
 }
 
 .movie-click {
-  background-image: asset-url('Cute_movie_outline.gif');
+  position: relative;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -157,25 +158,35 @@
   line-height: 2;
   background-position: center;
   background-size: cover;
-  width: 160px;
-  height:120px;
+  width: 300px;
+  height:115px;
 }
 
+
 .album-item {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background-color: $lighter-jet;
-  font-size: 10px;
-  color: $light-cream;
-  margin-right: -10px;
-  margin-left: 10px;
+  width: 36px;
+  height: 100px;
+  overflow: hidden;
+  overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: center;
-  span {
-    text-align: center;
-  }
+  text-align: center;
+  line-height: 2;
+  background-position: center;
+  background-size: cover;
+}
+
+.album-click {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  line-height: 2;
+  background-position: center;
+  background-size: cover;
+  width: 339px;
+  height:92px;
 }
 
 
