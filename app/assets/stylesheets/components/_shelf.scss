@@ -139,8 +139,11 @@
 }
 
 .movie-item {
-  width: 42px;
-  height: 100px;
+
+  width: 33px;
+  max-width: 33px;
+  height: 93px;
+
   overflow: hidden;
   overflow: hidden;
   display: flex;
