@@ -5,6 +5,7 @@ class ShelfInterest < ApplicationRecord
   validates :interest, uniqueness: { scope: :user }
   has_one_attached :photo
   has_rich_text :rich_journal
+  acts_as_favoritable
 
   include PgSearch::Model
   pg_search_scope :search_by_title_creator_genre_description,

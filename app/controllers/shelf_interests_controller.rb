@@ -14,13 +14,12 @@ class ShelfInterestsController < ApplicationController
       @movies = @user.interests.where(media_type: 'movie')
       @albums = @user.interests.where(media_type: 'album')
 
+      @fav_books = @user.favorited_by_type('ShelfInterest').map { |si| si.interest if si.interest.media_type == 'book' }
+      @fav_movies = @user.favorited_by_type('ShelfInterest').map { |si| si.interest if si.interest.media_type == 'movie' }
+      @fav_album = @user.favorited_by_type('ShelfInterest').map { |si| si.interest if si.interest.media_type == 'album' }
+
       render "index"
     end
-    
-    @favorite_books = @user.all_favorites.where(media_type: 'book')
-    @favorite_movies = @user.all_favorites.where(media_type: 'movie')
-    @favorite_albums = @user.all_favorites.where(media_type: 'album')
-
   end
 
   def create
@@ -68,7 +67,12 @@ class ShelfInterestsController < ApplicationController
     current_user.favorite(@shelf_interest)
     redirect_to user_shelf_interest_path(current_user, @shelf_interest)
   end
-
+  
+  def unfavorite
+    @shelf_interest = ShelfInterest.find(params[:id])
+    current_user.unfavorite(@shelf_interest)
+    redirect_to user_shelf_interest_path(current_user, @shelf_interest)
+  end
 
   private
 
