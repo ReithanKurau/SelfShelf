@@ -67,13 +67,13 @@ class ShelfInterestsController < ApplicationController
   def favorite
     @shelf_interest = ShelfInterest.find(params[:id])
     current_user.favorite(@shelf_interest)
-    redirect_to user_shelf_interest_path(current_user, @shelf_interest)
+    redirect_to user_shelf_interests_path(current_user, :media_type => @shelf_interest.interest.media_type)
   end
 
   def unfavorite
     @shelf_interest = ShelfInterest.find(params[:id])
     current_user.unfavorite(@shelf_interest)
-    redirect_to user_shelf_interest_path(current_user, @shelf_interest)
+    redirect_to user_shelf_interests_path(current_user, :media_type => @shelf_interest.interest.media_type)
   end
 
   private
