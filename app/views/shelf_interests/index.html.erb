@@ -18,7 +18,7 @@
       <div class="shelf-row">
         <div class= "movie-click position-relative"> <%= link_to "", user_shelf_interests_path(@user, :media_type => "movie"), class: "shelf-row-link" %>
         </div>
-        <div class= "d-flex justify-content-end align-items-center w-100">
+        <div class= "d-flex justify-content-start align-items-center w-100">
           <% @movies.each do |movie|  %>
             <div class="movie-item" style= "background-image: url(<%= asset_url("Cute_book_#{rand(1..4)}.png") %>)">
             </div>
