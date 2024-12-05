@@ -39,7 +39,7 @@
   </div>
   <div class= "friend-list">
     <div class="tab-pane fade" id="friends-tab-pane" role="tabpanel" aria-labelledby="friends-tab" tabindex="0">
-      <h3>Friends of <strong> <%= @user.username %> </strong> </h3>
+      <p>Friends of <strong> <%= @user.username %> </strong> </p>
       <ul>
         <% @user.friends.each do |friend| %>
           <li>
@@ -52,7 +52,7 @@
         <% end %>
       </ul>
       <% if @user == current_user %>
-        <h3> <strong> <%= @user.username %>'s Sent Requests </strong> </h3>
+        <p> <strong> <%= @user.username %>'s</strong> Sent Requests</p>
         <ul>
           <% Invitation.where(user_id: current_user.id, confirmed: false).each do |invitation| %>
             <li>
@@ -60,7 +60,7 @@
             </li>
           <% end %>
         </ul>
-        <h3> <strong> <%= @user.username %>'s Received Requests </strong> </h3>
+        <p> <strong> <%= @user.username %>'s</strong> Received Requests </p>
         <ul>
           <% Invitation.where(friend_id: current_user.id, confirmed: false).each do |invitation| %>
             <li>

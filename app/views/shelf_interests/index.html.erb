@@ -5,37 +5,46 @@
   </div>
   <div class= "d-flex">
     <div class= "name-shelf">
-      <h1><%= @user.username %>'s Room</h1>
+      <h1><%= @user.username %>'s Shelf</h1>
     </div>
   </div>
   <div class="row">
     <div class="shelf shelf-<%= @user.style %>" id= "bookshelf">
       <div class="shelf-row">
+        <div>
+          <%= image_tag @user.interests.find_by(media_type: "book")&.cover, width: 70, class: "border border-2 border-white" %>
+        </div>
         <div class= "d-flex justify-content-start align-items-center w-100">
           <% @books.each do |book|  %>
-            <div class="book-item" style= "background-image: url(<%= asset_url("Cute_book_#{rand(1..4)}.png") %>)">
+            <div class="book-item" style= "background-image: url(<%= asset_url("#{@user.style}_book_#{rand(1..4)}.png") %>)">
             </div>
           <% end %>
         </div>
-        <div class= "book-click position-relative"><%= link_to "", user_shelf_interests_path(@user, :media_type => "book"), class: "shelf-row-link" %>
+        <div class= "book-click position-relative" style= "background-image: url(<%= asset_url("#{@user.style}_book_outline.gif") %>);"><%= link_to "", user_shelf_interests_path(@user, :media_type => "book"), class: "shelf-row-link" %>
         </div>
       </div>
       <div class="shelf-row">
-        <div class= "movie-click position-relative"> <%= link_to "", user_shelf_interests_path(@user, :media_type => "movie"), class: "shelf-row-link" %>
+        <div>
+          <%= image_tag @user.interests.find_by(media_type: "movie")&.cover, width: 70, class: "border border-2 border-white" %>
+        </div>
+        <div class= "movie-click position-relative" style= "background-image: url(<%= asset_url("#{@user.style}_movie_outline.gif") %>);"> <%= link_to "", user_shelf_interests_path(@user, :media_type => "movie"), class: "shelf-row-link" %>
         </div>
         <div class= "d-flex justify-content-start align-items-center w-100">
           <% @movies.each do |movie|  %>
-            <div class="movie-item" style= "background-image: url(<%= asset_url("Cute_book_#{rand(1..4)}.png") %>)">
+            <div class="movie-item" style= "background-image: url(<%= asset_url("#{@user.style}_movie_#{rand(1..4)}.png") %>)">
             </div>
           <% end %>
         </div>
       </div>
       <div class="shelf-row">
-        <div class= "movie-click position-relative"> <%= link_to "", user_shelf_interests_path(@user, :media_type => "album"), class: "shelf-row-link" %>
+        <div>
+          <%= image_tag @user.interests.find_by(media_type: "book")&.cover, width: 70, class: "border border-2 border-white" %>
+        </div>
+        <div class= "album-click position-relative" style= "background-image: url(<%= asset_url("#{@user.style}_album_outline.gif") %>);" > <%= link_to "", user_shelf_interests_path(@user, :media_type => "album"), class: "shelf-row-link" %>
         </div>
         <div class= "d-flex justify-content-start align-items-center w-100">
-          <% @movies.each do |movie|  %>
-            <div class="movie-item" style= "background-image: url(<%= asset_url("Cute_book_#{rand(1..4)}.png") %>)">
+          <% @albums.each do |album|  %>
+            <div class="album-item" style= "background-image: url(<%= asset_url("#{@user.style}_album_#{rand(1..4)}.png") %>)">
             </div>
           <% end %>
         </div>
