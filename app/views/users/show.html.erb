@@ -1,5 +1,6 @@
 <div class="container" style="min-height: 89vh;">
 
+
 <ul class="nav tabs-underlined" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
     <span class="nav-link tab-underlined active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" role="tab" aria-controls="profile-tab-pane" aria-selected="true">Profile</span>
@@ -34,27 +35,25 @@
             <% end %></p>
         </div>
       </div>
-      <div>
-        <button class="button-2 mt-3" type="button">
-          <h6 class="button-profile"><%= link_to 'Edit Profile', edit_user_path(@user), class: "dropdown-item"  %></h6>
-        </button>
-        <button class="button-2" type="button">
-          <h6><%= link_to 'Log out', destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"  %></h6>
-        </button>
+      <div class= "button-2 mt-2">
+        <p class="button-profile"><%= link_to 'Edit Profile', edit_user_path(@user), class: "dropdown-item"  %></p>
       </div>
-  </div>
-  <div class="tab-pane fade" id="friends-tab-pane" role="tabpanel" aria-labelledby="friends-tab" tabindex="0">
-    <div class= "friend-list">
-      <% if current_user == @user %>
-        <h3>Your friends<h3>
-      <% else %>     
-      <h3>Friends of <%= @user.username %> </h3>
-      <% end %>
-          <div class="cards d-flex justify-content-start">
-            <ul class="list-group">
+      <div class= "button-2 mt-2">
+        <p><%= link_to 'Log out', destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"  %></p>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="friends-tab-pane" role="tabpanel" aria-labelledby="friends-tab" tabindex="0">
+      <div class= "friend-list">
+        <% if current_user == @user %>
+          <h3>Your friends<h3>
+        <% else %>     
+        <h3>Friends of <%= @user.username %> </h3>
+        <% end %>
+        <div class="cards d-flex justify-content-start">
+          <ul class="list-group">
             <% @user.friends.each do |friend| %>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <div class="left-user-info">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="left-user-info">
                   <% if friend.photo.attached? %>
                     <%= cl_image_tag friend.photo.key , class: "avatar" %>
                   <% else %>
@@ -70,17 +69,17 @@
                   </li>
             <% end %>
           </div>
-          </ul>  
+        </ul>
+      </div>
     </div>
-  </div>
-  <div class="tab-pane fade" id="received-tab-pane" role="tabpanel" aria-labelledby="received-tab" tabindex="0">
-    <h3> Your Received Requests </h3>
-    <div class= "received-list">     
-          <div class="cards d-flex justify-content-start">
-            <ul class="list-group">
-             <% Invitation.where(friend_id: current_user.id, confirmed: false).each do |invitation| %>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <div class="left-user-info">
+    <div class="tab-pane fade" id="received-tab-pane" role="tabpanel" aria-labelledby="received-tab" tabindex="0">
+      <h3> <strong> Your Received Requests </strong> </h3>
+      <div class= "received-list">
+        <div class="cards d-flex justify-content-start">
+          <ul class="list-group">
+            <% Invitation.where(friend_id: current_user.id, confirmed: false).each do |invitation| %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="left-user-info">
                   <% if invitation.user.photo.attached? %>
                     <%= cl_image_tag invitation.user.photo.key , class: "avatar" %>
                   <% else %>
@@ -96,13 +95,14 @@
                   </li>
             <% end %>
           </div>
-          </ul>  
+        </ul>
+      </div>
     </div>
-  </div>
-  <div class="tab-pane fade" id="pending-tab-pane" role="tabpanel" aria-labelledby="pending-tab" tabindex="0">
-          <h3> Your Sent Requests </h3>
-            <% Invitation.where(user_id: current_user.id, confirmed: false).each do |invitation| %>
-            <%= link_to User.find(invitation.friend_id).username, user_shelf_interests_path(User.find(invitation.friend_id)) %> 's friend request pending <br>
-            <% end %>
-  </div>
+    <div class="tab-pane fade" id="pending-tab-pane" role="tabpanel" aria-labelledby="pending-tab" tabindex="0">
+      <h3> Your Sent Requests </h3>
+        <% Invitation.where(user_id: current_user.id, confirmed: false).each do |invitation| %>
+          <%= link_to User.find(invitation.friend_id).username, user_shelf_interests_path(User.find(invitation.friend_id)) %> 's friend request pending <br>
+        <% end %>
+     </div>
 </div>
+

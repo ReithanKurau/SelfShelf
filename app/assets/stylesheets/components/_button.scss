@@ -1,21 +1,23 @@
+
 .button-2 {
-  background-color: #CCD5AE;
+  background-color: $light-green;
   border-radius: 8px;
-  border-width: 0;
+  text-decoration: none;
   color: black;
+  border: 0.3px solid black;
+  cursor: pointer;
   display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 500;
   line-height: 20px;
   list-style: none;
+  margin: 0;
   padding: 10px 12px;
   text-align: center;
   transition: all 200ms;
   vertical-align: baseline;
   white-space: nowrap;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  text-decoration: none;
 
 }
 
@@ -34,9 +36,4 @@
 
 .star-rating:hover {
   color: gold;
-}
-
-.button-return {
-  width: 60px;
-  height: 60px;
 }

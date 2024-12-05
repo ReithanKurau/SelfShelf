@@ -1,10 +1,6 @@
 <div class="container">
-  <div class= "button-return">
-    <%= link_to user_shelf_interests_path(@user) do %>
-      <i class="fa-solid fa-arrow-rotate-left"></i>
-    <% end %>
-  </div>
-  <div class="d-flex">
+  <%= link_to "Back", user_shelf_interests_path(@user), class: "button-2 mt-3 mb-3" %>
+  <div class="interest-info-card d-flex">
     <div class="shelf-interest-avatar">
       <% if @user.photo.attached? %>
         <%= cl_image_tag @user.photo.key , class: "avatar-medium" %>
@@ -16,15 +12,16 @@
       <% if current_user == @user %>
         <h1 class="text-left">Your <%= params[:media_type].pluralize %></h1>
       <% else %>
-        <h1 class="text-left"><%= @user.username %>'s <%= params[:media_type].pluralize %> </h1>
+        <h1 class="text-left"><%= @user.first_name %>'s <%= params[:media_type].pluralize %> </h1>
       <% end %>
       <div class="d-flex">
         <% if current_user == @user %>
           <p class="text-left">You enjoy <% current_user.tag_list.each do |t| %>
               <%= t %>
-            <% end %>.</p>
+            <% end %>
+          </p>
         <% else %>
-          <p class="text-left"><%= @user.username %> enjoys  <%= @user.tag_list.join(" ") %>. </p>
+          <p class="text-left"><%= @user.first_name %> enjoys  <%= @user.tag_list.join(" ") %>. </p>
         <% end %>
       </div>
     </div>
@@ -33,7 +30,7 @@
     <%# This current user and this shelf's common interests %>
     <div class="m-2">
       <% if current_user != @user %>
-        <h3 class="text-center"> You and <%= @user.username %> have these <%= params[:media_type].pluralize %> in common!</h1>
+        <h3 class="text-center"> You and <%= @user.first_name %> have these <%= params[:media_type].pluralize %> in common!</h1>
         <div class="cards">
           <% @shelf_interests.each do |shelf_interest|  %>
             <% if current_user.interests.include?(shelf_interest.interest) %>
