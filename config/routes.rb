@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :shelf_interests, only: [:create, :edit, :update, :destroy] do
     resources :comments, only: [:create]
-    member do 
+    member do
       get :favorite, :unfavorite
     end
   end
