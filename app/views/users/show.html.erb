@@ -35,12 +35,8 @@
           </div>
         </div>
         <div class= "d-flex">
-          <div class= "button-2 mt-2 me-3">
-            <p class="button-profile"><%= link_to 'Edit Profile', edit_user_path(@user), class: "dropdown-item"  %></p>
-          </div>
-          <div class= "button-2 mt-2">
-            <p><%= link_to 'Log out', destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"  %></p>
-          </div>
+          <%= link_to "Edit Profile", edit_user_path(@user), class: "button-2 mt-3 mb-3 dropdown-item" %>
+          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "button-2 mt-3 mb-3 dropdown-item" %>
         </div>
       </div>
     </div>
@@ -91,7 +87,7 @@
                 </div>
                 <%= simple_form_for invitation do |f| %>
                   <%= f.input :confirmed, as: :hidden, input_html: { value: true } , wrapper_html:{style: "margin: 0!important"}%>
-                  <%= f.submit 'Accept', class: 'btn btn-success' %>
+                  <%= f.submit 'Accept', class: 'btn btn-success ' %>
                 <% end %>
                 <%= link_to 'Reject', invitation_path(invitation), data: {turbo_method: :delete}, class: 'btn btn-warning'%>
               </li>
