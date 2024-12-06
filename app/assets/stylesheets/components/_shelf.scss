@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-color: $light-yellow;
+  background-size: cover;
 }
 
 .top-shelf-Cute{
@@ -211,6 +211,7 @@ hr {
 .related-users-tags, .related-users-interests {
   width: 100%;
   margin: 0 auto;
+  background-color: $light-green;
 }
 
 .add-friend {
