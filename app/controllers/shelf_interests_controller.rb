@@ -41,6 +41,7 @@ class ShelfInterestsController < ApplicationController
     @shelf_interest = ShelfInterest.find(params[:id])
     @user = @shelf_interest.user
     @comment = Comment.new
+    @interest = @shelf_interest.interest
   end
 
   def edit

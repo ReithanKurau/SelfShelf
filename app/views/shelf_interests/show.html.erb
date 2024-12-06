@@ -1,7 +1,7 @@
 <div class="container">
   <div class="d-flex justify-content-between align-items-center">
     <%= link_to "Back", user_shelf_interests_path(@user), class: "button-2 mt-3 mb-3" %>
-    <div class="p-1">
+    <div class="p-1 d-flex align-items-center">
       <% if @user.favorited?(@shelf_interest) %>
         <%= link_to unfavorite_shelf_interest_path do %>
           <i class="fa-solid fa-star star-rating"></i>
@@ -11,12 +11,11 @@
           <i class="fa-regular fa-star star-rating"></i>
         <% end %>
       <% end %>
-      <% unless current_user.interests.include?(@shelf_interest.interest) %>
-        <%= simple_form_for @shelf_interest do |f| %>
-          <%= f.input :interest_id, as: :hidden, input_html: { value: @shelf_interest.interest.id } %>
-          <%= f.submit 'Add to Library!', class: 'button-2' %>
-          <button type="submit" class="star-rating">
-            <i class="fas fa-plus"></i>
+      <%= simple_form_for [@shelf_interest] do |f| %>
+        <%  unless current_user.shelf_interests.exists?(interest_id: @interest.id) %>
+          <%= f.input :interest_id, as: :hidden, input_html: { value: @interest.id } %>
+          <button type="submit" class="star-rating mb-1 ms-3">
+            <i class="fa-solid fa-plus fa-2xs fs-3"></i>
           </button>
         <% end %>
       <% end %>
