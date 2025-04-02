@@ -1,28 +1,28 @@
-<div class="shelf-container")>
+<div class="shelf-container">
   <div class= "d-flex">
     <div class="top-shelf-<%= @user.style %>">
     </div>
   </div>
-  <div class= "d-flex">
+  <div class="d-flex">
     <div class= "name-shelf">
       <h1><span><%= link_to @user.first_name, user_path(@user), class: 'user-profile-link' %></span>'s Shelf</h1>
     </div>
   </div>
-  <div class="row">
+  <div class="d-flex">
     <div class="shelf shelf-<%= @user.style %>" id= "bookshelf">
       <div class="shelf-row">
         <div class= "d-flex justify-content-start align-items-center w-100">
           <% if @fav_books.any? %>
-            <% @fav_books.where.not(id: @fav_book).first(2).each do |books|  %>
+            <% @fav_books.where.not(id: @fav_book).limit(2).each do |book| %>
               <div class="book-item" style= "background-image: url(<%= asset_url("#{@user.style}_book_#{rand(1..4)}.png") %>)">
               </div>
             <% end %>
           <% end %>
-        </div>
+      </div>
         <div class= "book-click position-relative" style= "background-image: url(<%= asset_url("#{@user.style}_book_outline.gif") %>);"><%= link_to "", user_shelf_interests_path(@user, :media_type => "book"), class: "shelf-row-link" %>
         </div>
         <% if @fav_book %>
-          <div>
+        <div>
             <%= image_tag @fav_book.interest.cover, width: 60, class: "border border-2 border-white" %>
           </div>
         <% end %>
@@ -32,7 +32,7 @@
         </div>
         <div class= "d-flex justify-content-start align-items-center w-100">
           <% if @fav_movies.any? %>
-            <% @fav_movies.where.not(id: @fav_movie).first(2).each do |movies|  %>
+            <% @fav_movies.where.not(id: @fav_movie).limit(2).each do |movie| %>
               <div class="movie-item" style= "background-image: url(<%= asset_url("#{@user.style}_movie_#{rand(1..4)}.png") %>)">
               </div>
             <% end %>
@@ -49,7 +49,7 @@
         </div>
         <div class= "d-flex justify-content-start align-items-center w-100">
           <% if @fav_albums.any? %>
-            <% @fav_albums.where.not(id: @fav_album).first(2).each do |albums|  %>
+            <% @fav_albums.where.not(id: @fav_album).limit(2).each do |album| %>
               <div class="album-item" style= "background-image: url(<%= asset_url("#{@user.style}_album_#{rand(1..4)}.png") %>)">
               </div>
             <% end %>
